@@ -7,14 +7,6 @@ import DotGroup from "../Dots";
 type ExperienceArea = [area: string, icon: Function];
 
 export default function ExperienceOverview() {
-	const experienceAreaMap = new Map();
-	experienceAreaMap
-		.set("Business Analysis", ClipboardDocumentCheckIcon)
-		.set("Software Development", CodeBracketSquareIcon)
-		.set("UI / UX Design", RectangleGroupIcon)
-		.set("Digital Arts & Science", PencilSquareIcon)
-		.set("Sociology", UserGroupIcon);
-
 	const experienceAreas: ExperienceArea[] = [
 		["Business Analysis", ClipboardDocumentCheckIcon],
 		["Software Development", CodeBracketSquareIcon],
