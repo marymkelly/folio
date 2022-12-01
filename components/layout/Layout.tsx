@@ -8,10 +8,9 @@ interface Props {
 
 export default function Layout(props: Props): JSX.Element {
 	return (
-		<div className='min-w-[360px] h-full w-full flex flex-col relative'>
-			{/* <div className='3xl:pl-[18%] min-w-[360px] h-full relative'> */}
+		<div className='min-w-[360px] h-full w-full flex flex-col flex-auto relative'>
 			<PageHead />
-			{props.children}
+			<main className='flex flex-col w-full flex-auto h-auto overflow-x-clip'>{props.children}</main>
 			<Footer />
 		</div>
 	);

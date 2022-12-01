@@ -10,6 +10,7 @@ module.exports = {
 					orange: "#FF5C00",
 					black: "#141414",
 					navy: "#0D3C56",
+					teal: "#4ADEFF",
 					gray: { blue: "#85A1B5", outline: "#B2B2B2", dots: "#F6F6F6" },
 				},
 				project: {
@@ -22,15 +23,13 @@ module.exports = {
 				},
 			},
 			fontFamily: {
-				sans: ["Didact Gothic", "stolzl", "itc-avant-garde-gothic-pro", ...defaultTheme.fontFamily.sans],
-				itc: "itc-avant-garde-gothic-pro, sans-serif;",
-				stolzl: "stolzl, sans-serif;",
+				sans: ["Didact Gothic", "stolzl", "itc-avant-garde-gothic-pro", "gravesend-sans", ...defaultTheme.fontFamily.sans],
+				itc: "itc-avant-garde-gothic-pro, sans-serif",
+				stolzl: "stolzl, sans-serif",
+				gravesend: "gravesend-sans, sans-serif",
 			},
-			screen: {
-				screens: {
-					"2xl": "1536px",
-					"3xl": "1728px",
-				},
+			screens: {
+				"3xl": "1728px",
 			},
 		},
 	},
