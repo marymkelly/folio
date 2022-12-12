@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+	.section-header--main {
+		@apply font-itc font-light text-4xl md:text-5xl lg:text-6xl text-custom-black dark:text-white mb-[52px] lg:mb-10;
+	}
+}
+
 html,
 body {
 	padding: 0;
@@ -14,9 +20,7 @@ body {
 	height: 100%;
 	min-width: 360px;
 	min-height: 100vh;
-	color: #141414;
-	display: flex;
-	flex-grow: 2;
+	color: #111111;
 }
 
 a {
@@ -28,13 +32,12 @@ a {
 	box-sizing: border-box;
 }
 
-/* 
 @media (prefers-color-scheme: dark) {
 	html {
 		color-scheme: dark;
 	}
 	body {
 		color: white;
-		background: black;
+		background: #022e46;
 	}
-} */
+}

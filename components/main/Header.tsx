@@ -28,8 +28,8 @@ export default function MainHeader() {
 		<header className='relative 2xl:pl-[2%] 3xl:pl-[18%] flex h-full w-full min-h-screen justify-center 3xl:justify-start items-center align-center'>
 			<section className='flex flex-col lg:flex-row lg:-mr-[3%] 2xl:-mr-[4%] 3xl:-mr-0 z-40'>
 				<div className='flex flex-col'>
-					<h3 className='text-7xl lg:text-[60px] 2xl:text-[90px] text-custom-navy font-itc font-medium pl-1.5'>
-						Hello! <span className='text-custom-gray-blue'>I&apos;m</span>
+					<h3 className='text-7xl lg:text-[60px] 2xl:text-[90px] text-custom-navy dark:text-slate-300/70 font-itc font-medium pl-1.5'>
+						Hello! <span className='text-custom-gray-blue dark:text-slate-500'>I&apos;m</span>
 					</h3>
 					<h1 className='font-itc text-9xl lg:text-[120px] 2xl:text-[160px] font-medium leading-snug lg:leading-none'>Mary</h1>
 					<div className='lg:border-[4px] 2xl:border-[5px] border-custom-orange w-[97px] lg:ml-[8px] 2xl:ml-[10px] lg:mt-8 2xl:mt-9 hidden lg:block' />
@@ -46,10 +46,10 @@ export default function MainHeader() {
 					</p>
 				</div>
 			</section>
-			<div className='absolute top-28 left-0 w-4/6 sm:w-[48%] xl:w-4/12 3xl:w-[24%] h-36'>
+			<div className='absolute top-28 left-0 w-4/6 sm:w-[48%] xl:w-4/12 3xl:w-[24%] h-36 dark:opacity-[3%]'>
 				<SvgDots id='small-main-dots' density={3.25} size={3.5} />
 			</div>
-			<div className='absolute right-0 -bottom-[22%] w-5/12 h-[400px]'>
+			<div className='absolute right-0 -bottom-[22%] w-5/12 h-[400px] dark:opacity-[3%]'>
 				<SvgDots id='large-main-dots' density={3.5} size={4.5} className='fill-custom-gray-dots opacity-70' />
 			</div>
 		</header>

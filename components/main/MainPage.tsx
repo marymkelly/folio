@@ -3,6 +3,7 @@ import IntroTextBlurb from "./IntroBlurb";
 import Experience from "./Experience";
 import FeaturedWorks from "./FeaturedWorks";
 import Literature from "./Literature";
+import Contact from "./Contact";
 
 export default function MainPage() {
 	return (
@@ -11,7 +12,8 @@ export default function MainPage() {
 			<IntroTextBlurb />
 			<Experience />
 			<FeaturedWorks />
-			<Literature />
+			{/* <Literature /> */}
+			<Contact />
 		</>
 	);
 }

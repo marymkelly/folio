@@ -12,7 +12,7 @@ export default function IntroTextBlurb() {
 				</p>
 			</div>
 			<div className='w-5/12 h-[120px] self-end'>
-				<SvgDots id='bottom-intro-text-dots' density={3.5} size={4.5} className='fill-custom-gray-dots opacity-70' />
+				<SvgDots id='bottom-intro-text-dots' density={3.5} size={4.5} className='fill-custom-gray-dots opacity-70 dark:opacity-5 dark:fill-custom-gray-blue' />
 			</div>
 		</Fragment>
 	);

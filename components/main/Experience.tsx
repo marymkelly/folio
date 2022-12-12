@@ -23,7 +23,7 @@ export default function ExperienceOverview() {
 	return (
 		<div className='pb-32 2xl:pb-36 pt-8 px-20 md:px-28 lg:pl-[10%] xl:pl-[18%] min-w-[360px] w-full h-full flex flex-col'>
 			<div className='mb-12 md:mb-20'>
-				<h2 className='font-itc font-light text-6xl text-custom-black mb-[52px] lg:mb-10'>Experience</h2>
+				<h2 className='section-header--main'>Experience</h2>
 				<p className="font-['Didact_Gothic'] pl-0.5 lg:pl-1 text-base md:text-lg lg:text-xl leading-[1.75] lg:leading-loose tracking-wide xl:max-w-[1105px]">
 					In my quest to contribute towards improving the human-computer experience, I have gained a diverse background related to software
 					development, which I pull from and apply as needed today, when defining, designing, or developing solutions. Educationally, I have
@@ -33,7 +33,7 @@ export default function ExperienceOverview() {
 			<div className='max-w-[1200px] flex flex-col h-auto mb-16 md:mb-36'>
 				<div className='flex flex-col md:flex-row h-auto  mb-24'>
 					<div className='min-w-[100px] w-2/12 pt-3 pl-0.5'>
-						<h3 className='font-itc text-lg tracking-[.037em] text-custom-navy pt-0.5 mb-8 md:mb-0'>Areas</h3>
+						<h3 className='font-itc text-lg tracking-[.037em] text-custom-navy dark:text-slate-300 pt-0.5 mb-8 md:mb-0'>Areas</h3>
 					</div>
 					<div className='grid grid-flow-row-dense md:grid-flow-col-dense grid-cols-1 md:grid-cols-2 md:grid-rows-3 w-full h-auto md:w-10/12'>
 						{experienceAreas.map((area: ExperienceArea, i: number): JSX.Element => {
@@ -53,7 +53,7 @@ export default function ExperienceOverview() {
 				</div>
 				<div className='flex flex-col md:flex-row h-auto'>
 					<div className='min-w-[100px] w-2/12 pt-1 pl-0.5'>
-						<h3 className='font-itc text-lg tracking-[.037em] text-custom-navy xl:pt-0.5 mb-8 md:mb-0'>Current</h3>
+						<h3 className='font-itc text-lg tracking-[.037em] text-custom-navy dark:text-slate-300 xl:pt-0.5 mb-8 md:mb-0'>Current</h3>
 					</div>
 					<div className='grid grid-flow-row-dense md:grid-flow-col-dense grid-cols-1 md:grid-cols-2 md:grid-rows-1 w-full h-auto md:w-10/12'>
 						{recentExperience.map((entry: ExperienceHistoryItem, i: number): JSX.Element => {
@@ -75,13 +75,13 @@ export default function ExperienceOverview() {
 				</div>
 			</div>
 			<div className='relative'>
-				<div className='w-[480px] h-[138px] absolute -mt-6 -ml-[16%] z-[-1]'>
+				<div className='w-[480px] h-[138px] absolute -mt-6 -ml-[16%] z-[-1] dark:opacity-10'>
 					<DotGroup id='more-experience-dots' density={3.25} size={3} />
 				</div>
 				<Button
 					label='Learn more about my experience'
 					showArrow={true}
-					className='text-custom-orange text-opacity-70 hover:text-opacity-90 border-custom-orange border-opacity-60 hover:border-opacity-75 bg-white hover:bg-[#FFF8F3] bg-opacity-80 border-2 px-7 py-3.5 font-itc font-normal text-lg tracking-wide z-40'
+					className='text-custom-orange dark:text-slate-300 text-opacity-70 hover:text-opacity-90 border-custom-orange dark:border-slate-400 border-opacity-60 hover:border-opacity-75 bg-white hover:bg-[#FFF8F3] dark:bg-custom-dark-navy bg-opacity-80 border-2 px-7 py-3.5 font-itc font-normal text-lg tracking-wide z-40'
 				/>
 			</div>
 		</div>
