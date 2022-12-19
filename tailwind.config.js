@@ -19,6 +19,10 @@ module.exports = {
 					teal: "#4ADEFF",
 					gray: { blue: "#85A1B5", outline: "#B2B2B2", dots: "#F6F6F6" },
 				},
+				logo: {
+					blue: "#00B2E7",
+					teal: "#00D4E7",
+				},
 				project: {
 					parrot: {
 						green: { logo: "#09E181", text: "#1FB471", fade: "#F6FFFB" },
@@ -52,6 +56,16 @@ module.exports = {
 				1100: "1100%",
 				1200: "1200%",
 			},
+			keyframes: {
+				tailfade: {
+					"0%, 82%": { opacity: "1" },
+					"100%": { opacity: "0" },
+				},
+			},
+			animation: {
+				tailfade: "tailfade 3s ease-in-out infinite",
+			},
 		},
 	},
+	plugins: [require("./lib/plugins/text-stroke")],
 };

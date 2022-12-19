@@ -16,13 +16,15 @@ export default function MainHeader() {
 		["Problem", "Solver"],
 	];
 
-	const [adjSet, setAdjSet] = useState(adjArray[getRandomInt(0, adjArray.length)]);
+	const [adjIndex, setAdjIndex] = useState(3);
 
-	// useEffect(() => {
-	// 	setInterval(() => {
-	// 		setAdjSet(adjArray[getRandomInt(0, adjArray.length)]);
-	// 	}, 2000);
-	// }, []);
+	useEffect(() => {
+		if (window) {
+			setInterval(() => {
+				setAdjIndex(getRandomInt(0, adjArray.length));
+			}, 3000);
+		}
+	}, []);
 
 	return (
 		<header className='relative 2xl:pl-[2%] 3xl:pl-[18%] flex h-full w-full min-h-screen justify-center 3xl:justify-start items-center align-center'>
@@ -36,13 +38,11 @@ export default function MainHeader() {
 				</div>
 				<div className='lg:border-[3px] 2xl:border-[4px] border-custom-navy mt-1.5 mb-16 2xl:mt-3 2xl:mb-[60px] lg:mx-16 2xl:mx-20 hidden lg:block' />
 				<div className='flex lg:flex-col mt-3.5 lg:mt-0 border lg:border-none border-custom-orange justify-center lg:justify-start py-1 lg:py-0 ml-1.5 lg:ml-0'>
-					<p className='text-[28px] lg:text-[65px] 2xl:text-[100px] tracking-wider lg:tracking-normal font-itc font-light lg:font-medium text-custom-orange lg:leading-none lg:-mt-1 mr-3 lg:mr-0'>
-						{/* {adjSet[0]} */}
-						Digital
+					<p className='animate-tailfade text-[28px] lg:text-[65px] 2xl:text-[100px] tracking-wider lg:tracking-normal font-itc font-light lg:font-medium text-custom-orange lg:leading-none lg:-mt-1 mr-3 lg:mr-0'>
+						{adjArray[adjIndex][0]}
 					</p>
-					<p className='text-[28px] leading-normal lg:text-[85px] 2xl:text-[130px] tracking-wider lg:tracking-normal font-itc font-light lg:font-medium text-custom-orange 2xl:leading-snug'>
-						{/* {adjSet[1]} */}
-						Solutionist
+					<p className='animate-tailfade text-[28px] leading-normal lg:text-[85px] 2xl:text-[130px] tracking-wider lg:tracking-normal font-itc font-light lg:font-medium text-custom-orange 2xl:leading-snug'>
+						{adjArray[adjIndex][1]}
 					</p>
 				</div>
 			</section>

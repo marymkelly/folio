@@ -8,6 +8,11 @@
 	.section-header--main {
 		@apply font-itc font-light text-4xl md:text-5xl lg:text-6xl text-custom-black dark:text-white mb-[52px] lg:mb-10;
 	}
+
+	.outline-text {
+		-webkit-text-stroke: 1.25px #85a1b5;
+		text-stroke: 1.25px #85a1b5;
+	}
 }
 
 html,

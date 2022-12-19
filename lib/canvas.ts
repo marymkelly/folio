@@ -1,4 +1,4 @@
-import { TimelineTick } from "../pages/test";
+import { TimelineTick } from "./data/timeline";
 import { animations } from "./constants";
 
 export interface AnimationProps {
@@ -19,6 +19,7 @@ export interface CanvasController {
 	input: InputHandler;
 	sprite: SpriteController;
 	timeline: HTMLDivElement;
+	timelineInformation: HTMLDivElement;
 	setPercent: Function;
 }
 
@@ -46,6 +47,7 @@ interface SpriteController {
 	speedX: number;
 	speedY: number;
 	speed: number;
+	spriteSheet: HTMLImageElement;
 	spriteWidth: number;
 	spriteHeight: number;
 	src: string;
@@ -97,17 +99,27 @@ class InputHandler {
 		this.animator = animator;
 
 		window.addEventListener("keydown", (e) => {
-			this.animator.lastKey = "P" + e.key;
+			if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+				if (this.animator.currentKeys.indexOf(e.key) === -1) {
+					this.animator.currentKeys.push(e.key);
+				}
 
-			if ((e.key === "ArrowLeft" || e.key === "ArrowRight") && this.animator.currentKeys.indexOf(e.key) === -1) {
-				this.animator.currentKeys.push(e.key);
+				if (this.animator.lastKey !== "P" + e.key && this.animator.currentKeys[this.animator.currentKeys.length - 1] == e.key) {
+					this.animator.lastKey = "P" + e.key;
+				}
+
+				if (this.animator.currentKeys.length === 0 && this.animator.lastKey.startsWith("R")) {
+					this.animator.lastKey = "";
+				}
 			}
 		});
 
 		window.addEventListener("keyup", (e) => {
-			this.animator.lastKey = "R" + e.key;
-
 			if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+				if (this.animator.currentKeys.length === 1 || e.key.slice(1) === this.animator.lastKey.slice(1)) {
+					this.animator.lastKey = "R" + e.key;
+				}
+
 				this.animator.currentKeys.splice(this.animator.currentKeys.indexOf(e.key), 1);
 			}
 		});
@@ -126,6 +138,7 @@ class SpriteController {
 		this.speed = 0;
 		this.spriteWidth = 600;
 		this.spriteHeight = 600;
+		this.spriteSheet = new Image();
 		this.src = "/images/Sprite_Board_Extended.png";
 		this.gameFrame = 0;
 		this.maxFrames = 120;
@@ -133,6 +146,8 @@ class SpriteController {
 		this.delayAmount = 0;
 		this.delaying = false;
 		this.configureAnimations(animations);
+
+		this.spriteSheet.src = this.src;
 	}
 
 	configureAnimations(arr: AnimationProps[]) {
@@ -164,36 +179,26 @@ class SpriteController {
 			ctx!.clearRect(0, 0, this.width, this.height);
 		} else {
 			if (!this.currentAnimation) this.setAnimation("idle", 0);
-			// ctx!.clearRect(0, 0, this.width * 2, this.height);
-			const spriteboard = new Image();
-			spriteboard.src = this.src;
+			if (this.gameFrame > this.maxFrames) this.gameFrame = 0;
 
 			const staggerFrames = this.animations[this.currentAnimation].speed;
 			const frames = this.animations[this.currentAnimation].location.length;
 			let position = Math.floor(this.gameFrame / staggerFrames) % frames; // amount of frames of animation
-			if (position > frames - 1) {
-				position = 0;
-				this.gameFrame = 0;
-			}
+
 			const frameX = this.spriteWidth * position;
 			const frameY = this.animations[this.currentAnimation].location[position].y;
-			ctx!.drawImage(spriteboard, frameX, frameY, this.spriteWidth, this.spriteHeight, this.x, 0, 400, 400);
+			ctx!.drawImage(this.spriteSheet, frameX, frameY, this.spriteWidth, this.spriteHeight, this.x, this.y, this.height, this.width);
 		}
 	}
-
-	// setSpeed(speedX: number, speedY: number) {
-	// 	this.speedX = speedX;
-	// 	// this.speedY = speedY;
-	// }
-
 	setAnimation(name: string, startingFramePosition: number = 0) {
-		this.currentAnimation = name;
-		this.gameFrame = Math.floor(startingFramePosition * this.animations[this.currentAnimation].speed);
-		this.maxFrames = this.animations[this.currentAnimation].speed * this.animations[this.currentAnimation].location.length;
-		this.delayFrame = 0;
-		this.delaying = false;
-		this.delayAmount =
-			this.animations[this.currentAnimation].delayLoopSeconds > 0 ? this.animations[this.currentAnimation].delayLoopSeconds * 60 : 0;
+		if (this.currentAnimation !== name) {
+			this.currentAnimation = name;
+			this.gameFrame = Math.floor(startingFramePosition * this.animations[this.currentAnimation].speed);
+			this.maxFrames = this.animations[this.currentAnimation].speed * this.animations[this.currentAnimation].location.length;
+			this.delayFrame = 0;
+			this.delaying = false;
+			this.delayAmount = Math.floor(this.animations[this.currentAnimation].delayLoopSeconds * 60);
+		}
 	}
 
 	update() {
@@ -207,96 +212,105 @@ class SpriteController {
 		}
 
 		if (this.animator.lastKey === "PArrowLeft") {
-			if (this.currentAnimation !== "walk_left" && this.currentAnimation !== "pivot_left") {
+			document.getElementById("left-arrow-container")!.classList.add("pressed");
+			document.getElementById("right-arrow-container")!.classList.remove("pressed");
+
+			if (this.currentAnimation === "idle" || this.currentAnimation.startsWith("crossarms") || this.currentAnimation === "walk_right") {
 				this.speedX = 0;
 				this.setAnimation("pivot_left", 0);
+				return;
 			}
 
-			if (this.currentAnimation === "walk_left") {
-				this.speedX = -2.2;
-			}
-		} else if (this.animator.lastKey === "PArrowRight") {
-			if (this.currentAnimation !== "walk_right" && this.currentAnimation !== "pivot_right") {
+			if (this.currentAnimation === "walk_left" && this.speedX !== -2.4) this.speedX = -2.4;
+		}
+
+		if (this.animator.lastKey === "PArrowRight") {
+			document.getElementById("right-arrow-container")!.classList.add("pressed");
+			document.getElementById("left-arrow-container")!.classList.remove("pressed");
+
+			if (this.currentAnimation === "idle" || this.currentAnimation.startsWith("crossarms") || this.currentAnimation === "walk_left") {
 				this.speedX = 0;
 				this.setAnimation("pivot_right", 0);
+				return;
 			}
 
-			if (this.currentAnimation === "walk_right") {
-				this.speedX = 2.2;
-			}
-		} else if (this.animator.lastKey === "RArrowLeft") {
-			if (this.currentAnimation === "walk_left") {
+			if (this.currentAnimation === "walk_right" && this.speedX !== 2.4) this.speedX = 2.4;
+		}
+
+		if (this.animator.lastKey === "RArrowLeft") {
+			if (this.currentAnimation === "walk_left" || this.currentAnimation.startsWith("pivot")) {
 				this.speedX = 0;
 				let startFrame = getPivotToIdleStart(this);
 				this.setAnimation("crossarms_left", startFrame);
 			}
-		} else if (this.animator.lastKey === "RArrowRight") {
-			if (this.currentAnimation === "walk_right") {
+
+			document.getElementById("left-arrow-container")!.classList.remove("pressed");
+		}
+
+		if (this.animator.lastKey === "RArrowRight") {
+			if (this.currentAnimation === "walk_right" || this.currentAnimation.startsWith("pivot")) {
 				this.speedX = 0;
 				let startFrame = getPivotToIdleStart(this);
 				this.setAnimation("crossarms_right", startFrame);
 			}
-		} else {
-			if (this.animator.currentKeys.length === 0) {
-				if (!this.currentAnimation.startsWith("portal") && this.currentAnimation !== "idle") {
-					this.speedX = 0;
-					this.setAnimation("idle", 0);
-				}
+
+			document.getElementById("right-arrow-container")!.classList.remove("pressed");
+		}
+
+		if (this.animator.currentKeys.length === 0) {
+			if (!this.currentAnimation.startsWith("portal") && !this.currentAnimation.startsWith("crossarms") && this.currentAnimation !== "idle") {
+				this.speedX = 0;
+				this.setAnimation("idle", 0);
+				this.animator.lastKey = "";
 			}
+
+			document.getElementById("right-arrow-container")!.classList.remove("pressed");
+			document.getElementById("left-arrow-container")!.classList.remove("pressed");
 		}
 
 		if (this.delaying) {
-			if (this.delayFrame >= this.delayAmount) {
+			if (this.delayFrame <= this.delayAmount) {
+				this.delayFrame++;
+			} else {
 				this.delayFrame = 0;
 				this.delaying = false;
-			} else {
-				this.delayFrame++;
 			}
 		} else {
-			if (this.gameFrame >= this.maxFrames) {
+			if (this.gameFrame < this.maxFrames) {
+				this.gameFrame++;
+				if (this.gameFrame === this.maxFrames) {
+					if (this.currentAnimation.startsWith("crossarms")) {
+						this.speedX = 0;
+						this.setAnimation("idle", 0);
+						this.animator.lastKey = undefined;
+					} else if (this.currentAnimation.startsWith("pivot")) {
+						this.speedX = this.currentAnimation === "pivot_left" ? -2.4 : 2.4;
+						this.currentAnimation === "pivot_left" ? this.setAnimation("walk_left", 0) : this.setAnimation("walk_right", 0);
+					} else if (this.currentAnimation.startsWith("portal_entry")) {
+						this.speedX = 0;
+						const activeTick = this.animator.activeTick;
+						const percentAdjustment = activeTick.index + 1 > 7 ? 1 : 2;
+						this.x =
+							activeTick.index === 0
+								? 0
+								: ((activeTick.percent - percentAdjustment) / 100) * (this.animator.width - (activeTick.index === 11 ? 225 : 300));
+
+						this.currentAnimation === "portal_entry_right"
+							? this.setAnimation("portal_exit_right", 0)
+							: this.setAnimation("portal_exit_left", 0);
+					} else if (this.currentAnimation.startsWith("portal_exit")) {
+						this.speedX = 0;
+						this.currentAnimation === "portal_exit_left"
+							? this.setAnimation("crossarms_left", 0)
+							: this.setAnimation("crossarms_right", 0);
+					}
+				}
+			} else {
 				if (this.animations[this.currentAnimation].delayLoopSeconds > 0) {
 					this.delaying = true;
 				}
+
 				this.gameFrame = 0;
-			} else {
-				this.gameFrame++;
-
-				if (
-					this.gameFrame === this.maxFrames &&
-					(this.currentAnimation === "crossarms_left" || this.currentAnimation === "crossarms_right")
-				) {
-					this.speedX = 0;
-					this.setAnimation("idle", 0);
-				}
-				if (this.gameFrame === this.maxFrames && this.currentAnimation === "pivot_left") {
-					this.speedX = -2;
-					this.setAnimation("walk_left", 0);
-				}
-				if (this.gameFrame === this.maxFrames && this.currentAnimation === "pivot_right") {
-					this.speedX = 2;
-					this.setAnimation("walk_right", 0);
-				}
-				if (
-					this.gameFrame === this.maxFrames &&
-					(this.currentAnimation === "portal_entry_left" || this.currentAnimation === "portal_entry_right")
-				) {
-					this.speedX = 0;
-					const activeTick = this.animator.activeTick;
-					const percentAdjustment = activeTick.index + 1 > 7 ? 1 : 2;
-					this.x = ((activeTick.percent - percentAdjustment) / 100) * (this.animator.width - (activeTick.index === 11 ? 225 : 300));
-
-					this.currentAnimation === "portal_entry_right"
-						? this.setAnimation("portal_exit_right", 0)
-						: this.setAnimation("portal_exit_left", 0);
-				}
-				if (this.gameFrame === this.maxFrames && this.currentAnimation === "portal_exit_left") {
-					this.speedX = 0;
-					this.setAnimation("crossarms_left", 0);
-				}
-				if (this.gameFrame === this.maxFrames && this.currentAnimation === "portal_exit_right") {
-					this.speedX = 0;
-					this.setAnimation("crossarms_right", 0);
-				}
 			}
 		}
 
@@ -311,7 +325,7 @@ class SpriteController {
 		let timelinePercent = this.x;
 
 		if (timelinePercent < 50) {
-			timelinePercent = 2;
+			timelinePercent = 0;
 		} else if (timelinePercent > this.animator.width - 300) {
 			timelinePercent = 100;
 		} else {
