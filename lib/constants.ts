@@ -1,4 +1,4 @@
-import { AnimationProps } from "./canvas";
+import { AnimationProps } from "./classes/sprite";
 
 export const animations: AnimationProps[] = [
 	{

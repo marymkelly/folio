@@ -1,3 +1,5 @@
+import React from "react";
+
 export function DuoArrowControls() {
 	return (
 		<svg id='arrow-controls' className='fill-custom-gray-blue/50' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 235.54 114.18'>

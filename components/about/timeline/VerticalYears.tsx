@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { TimelineTick, translateClass } from "../../lib/data/timeline";
+import { TimelineTick, translateClass } from "../../../lib/data/timeline";
 
 export function HorizonalYears(props: { percentage: number; activeTick: number; ticks: TimelineTick[]; years: number[] }): JSX.Element {
 	const [percentTranslate, setPercentTranslate] = useState<number>(0);

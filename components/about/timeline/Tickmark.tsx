@@ -1,5 +1,5 @@
 import React from "react";
-import { TickmarkProps, TimelineTick } from "../../lib/data/timeline";
+import { TickmarkProps, TimelineTick } from "../../../lib/data/timeline";
 
 export function Tickmark<T extends Omit<TimelineTick, "element"> & TickmarkProps>(props: T): JSX.Element {
 	const active = props.activeIndex === props.index;

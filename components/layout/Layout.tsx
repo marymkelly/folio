@@ -1,9 +1,8 @@
-import { ReactNode } from "react";
 import Footer from "./Footer";
 import PageHead from "./Head";
 
 interface Props {
-	children: ReactNode;
+	children: JSX.Element;
 }
 
 export default function Layout(props: Props): JSX.Element {

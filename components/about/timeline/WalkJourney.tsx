@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import { CanvasController } from "../../lib/canvas";
+import { CanvasController } from "../../../lib/canvas";
 import Image from "next/image";
-import { TimelineTick, TimelineEvent, timelineData } from "../../lib/data/timeline";
-import { HorizonalYears } from "./YearScroll";
+import { TimelineTick, TimelineEvent, timelineData } from "../../../lib/data/timeline";
+import { HorizonalYears } from "./VerticalYears";
 import { Tickmark } from "./Tickmark";
 import { ArrowControls } from "./ArrowControls";
 
@@ -169,10 +169,10 @@ export default function ExperienceJourney() {
 	}, [activeTick, ticks]);
 
 	return (
-		<div className='min-h-[800px] w-full flex flex-col flex-1 relative bg-[#5eadcc] bg-opacity-[10%] '>
-			<div className='w-[30%] absolute ml-24 mt-24'>
+		<div className=' lg:flex min-h-[800px] w-full flex-col flex-1 relative bg-[#5eadcc] bg-opacity-[10%]'>
+			<div className='w-6/12 lg:w-[30%] absolute ml-24 mt-24'>
 				<h3
-					className={`font-itc font-bold text-7xl tracking-wide mb-8 transition-all duration-500 delay-100 ${
+					className={`font-itc font-bold md:whitespace-nowrap text-7xl tracking-wide mb-8 transition-all duration-500 delay-100 ${
 						canvasControllerRef?.current?.sprite && canvasControllerRef?.current?.sprite.x > 50
 							? "text-custom-navy opacity-[10%]"
 							: "text-custom-black"
@@ -193,7 +193,7 @@ export default function ExperienceJourney() {
 					<div
 						ref={timelineBlurbRef}
 						className={`w-full max-w-[450px] ${
-							activeEvent ? "translate-y-0 bg-[#dce5ff] bg-opacity-[75%]" : "translate-y-[140%]"
+							activeEvent ? "translate-y-0 bg-[#71E3DC] bg-opacity-[20%]" : "translate-y-[140%]"
 						} h-auto flex flex-col p-8 absolute left-[10%] transition-all`}>
 						<div
 							className={`self-end font-stolzl tracking-wide text-custom-gray-blue opacity-60 absolute ${
