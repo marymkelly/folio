@@ -22,7 +22,7 @@ export default function ExperienceOverview() {
 	];
 
 	return (
-		<div className='pb-32 2xl:pb-36 pt-8 px-20 md:px-28 lg:pl-[10%] xl:pl-[18%] min-w-[360px] w-full h-full flex flex-col'>
+		<div className='pb-32 2xl:pb-36 md:pt-8 px-10 md:px-28 lg:pl-[10%] xl:pl-[18%] min-w-[360px] w-full h-full flex flex-col'>
 			<div className='mb-12 md:mb-20'>
 				<h2 className='section-header--main'>Experience</h2>
 				<p className="font-['Didact_Gothic'] pl-0.5 lg:pl-1 text-base md:text-lg lg:text-xl leading-[1.75] lg:leading-loose tracking-wide xl:max-w-[1105px]">

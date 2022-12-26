@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SvgDots from "../Dots";
+import { CanvasController } from "../../lib/classes/canvas";
+import { sittingAnimation as animations } from "../../lib/constants";
 
 function getRandomInt(min: number, max: number): number {
 	min = Math.ceil(min);
@@ -10,25 +12,72 @@ function getRandomInt(min: number, max: number): number {
 export default function MainHeader() {
 	const adjArray = [
 		["Software", "Developer"],
-		["Business", "Analyst"],
+		// ["Business", "Analyst"],
 		["Product", "Designer"],
 		["Digital", "Solutionist"],
 		["Problem", "Solver"],
 	];
 
 	const [adjIndex, setAdjIndex] = useState(3);
+	const [hitTimer, setHitTimer] = useState<boolean>(false);
+	const canvasRef = useRef<HTMLCanvasElement>(null);
+	const canvasControllerRef = useRef<CanvasController>();
+	let canvasDimensions = { width: 400, height: 400 };
 
 	useEffect(() => {
 		if (window) {
-			setInterval(() => {
-				setAdjIndex(getRandomInt(0, adjArray.length));
-			}, 3000);
+			if (!hitTimer) {
+				setTimeout(() => {
+					setHitTimer(true);
+				}, 3000);
+			}
 		}
 	}, []);
 
+	// INIT
+	useEffect(() => {
+		let ctx: any;
+		let canvas: any;
+
+		canvasRef.current!.width = canvasDimensions.width;
+		canvasRef.current!.height = canvasDimensions.height;
+
+		if (!canvasControllerRef.current) {
+			ctx = canvasRef.current!.getContext("2d");
+			canvas = new CanvasController(canvasDimensions.width, canvasDimensions.height, "/images/sprites/Sitting_Sprite_Board_Extended.png", animations);
+
+			canvasControllerRef.current = canvas;
+			animate();
+		}
+
+		function animate(timestamp?: number) {
+			if (timestamp !== canvasControllerRef.current!.lastAnimation) {
+				ctx!.clearRect(0, 0, canvasDimensions.width, canvasDimensions.height);
+				canvas.render(ctx, timestamp);
+			}
+			requestAnimationFrame(animate);
+		}
+	}, []);
+
+	useEffect(() => {
+		if (hitTimer) {
+			let newIndex = getRandomInt(0, adjArray.length);
+
+			if (newIndex === adjIndex) {
+				adjIndex === 0 ? newIndex++ : newIndex--;
+			}
+
+			setHitTimer(false);
+			setTimeout(() => {
+				setHitTimer(true);
+			}, 3000);
+			setAdjIndex(newIndex);
+		}
+	}, [hitTimer]);
+
 	return (
 		<header className='relative 2xl:pl-[2%] 3xl:pl-[18%] flex h-full w-full min-h-screen justify-center 3xl:justify-start items-center align-center'>
-			<section className='flex flex-col lg:flex-row lg:-mr-[3%] 2xl:-mr-[4%] 3xl:-mr-0 z-40'>
+			<section className='flex flex-col lg:flex-row lg:-mr-[3%] 2xl:-mr-[4%] 3xl:-mr-0 z-40 -mt-40 lg:mt-0'>
 				<div className='flex flex-col'>
 					<h3 className='text-7xl lg:text-[60px] 2xl:text-[90px] text-custom-navy dark:text-slate-300/70 font-itc font-medium pl-1.5'>
 						Hello! <span className='text-custom-gray-blue dark:text-slate-500'>I&apos;m</span>
@@ -51,6 +100,9 @@ export default function MainHeader() {
 			</div>
 			<div className='absolute right-0 -bottom-[22%] w-5/12 h-[400px] dark:opacity-[3%]'>
 				<SvgDots id='large-main-dots' density={3.5} size={4.5} className='fill-custom-gray-dots opacity-70' />
+			</div>
+			<div className='flex flex-col items-center w-auto absolute right-7 lg:right-48 -bottom-4'>
+				<canvas ref={canvasRef} id='canvas' className={`w-[300px] h-[300px] border-none border-custom-gray-blue border-[1px]`} />
 			</div>
 		</header>
 	);

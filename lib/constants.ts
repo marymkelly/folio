@@ -1,6 +1,6 @@
 import { AnimationProps } from "./classes/sprite";
 
-export const animations: AnimationProps[] = [
+export const timelineAnimations: AnimationProps[] = [
 	{
 		name: "idle",
 		frames: 6,
@@ -66,5 +66,14 @@ export const animations: AnimationProps[] = [
 		frames: 7,
 		speed: 10,
 		loopDelay: 0,
+	},
+];
+
+export const sittingAnimation: AnimationProps[] = [
+	{
+		name: "idle",
+		frames: 8,
+		speed: 22,
+		loopDelay: 4
 	},
 ];

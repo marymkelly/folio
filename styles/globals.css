@@ -1,5 +1,5 @@
 @import url("https://use.typekit.net/uft8xlx.css");
-@import url("https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Figtree:wght@600;700;800&family=Manrope:wght@400;700;800&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -26,6 +26,7 @@ body {
 	min-width: 360px;
 	min-height: 100vh;
 	color: #111111;
+	min-width: 320px;
 }
 
 a {

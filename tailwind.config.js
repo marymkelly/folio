@@ -38,10 +38,153 @@ module.exports = {
 				stolzl: "stolzl, sans-serif",
 				gravesend: "gravesend-sans, sans-serif",
 				gothic: "Didact Gothic, sans-serif",
+				figtree: "Figtree, sans-serif",
+				manrope: "Manrope, sans-serif",
 			},
 			screens: {
 				"3xl": "1728px",
 			},
+			keyframes: {
+				tailfade: {
+					"0%, 82%": { opacity: "1" },
+					"100%": { opacity: "0" },
+				},
+			},
+			animation: {
+				tailfade: "tailfade 3s ease-in-out infinite",
+			},
+			typography: (theme) => ({
+				DEFAULT: {
+					css: {
+						fontFamily: "Manrope, sans-serif",
+						h1: {
+							fontFamily: "Figtree, sans-serif",
+							fontWeight: 800,
+							marginTop: "4rem",
+						},
+						h2: {
+							fontFamily: "Figtree, sans-serif",
+							fontWeight: 800,
+						},
+						h3: {
+							fontFamily: "Figtree, sans-serif",
+							fontWeight: 800,
+						},
+						h4: {
+							fontFamily: "Figtree, sans-serif",
+							fontWeight: 800,
+						},
+						h5: {
+							fontFamily: "Figtree, sans-serif",
+							fontWeight: 800,
+						},
+						// strong: {
+						// 	color: theme("colors.gray.800"),
+						// },
+						a: {
+							color: theme("colors.blue.500"),
+							"&:hover": {
+								color: theme("colors.blue.600"),
+							},
+						},
+						p: {
+							fontFamily: "Manrope, sans-serif",
+							letterSpacing: "0.017em",
+						},
+						ul: {
+							fontFamily: "Manrope, sans-serif",
+							letterSpacing: "0.017em",
+						},
+						ol: {
+							fontWeight: 400,
+							letterSpacing: "0.017em",
+							lineHeight: 1.6,
+							margin: "2rem 0",
+
+							li: {
+								margin: "1.5rem 0",
+
+								ul: {
+									margin: 0,
+
+									li: {
+										margin: 0,
+										marginTop: "0.5rem",
+										fontWeight: 400,
+									},
+								},
+							},
+						},
+					},
+				},
+				xl: {
+					css: {
+						fontFamily: "Manrope, sans-serif",
+						h1: {
+							fontFamily: "Figtree, sans-serif",
+							fontWeight: 800,
+							fontSize: "2.2em",
+							marginTop: "4rem",
+						},
+						h2: {
+							fontFamily: "Figtree, sans-serif",
+							fontWeight: 800,
+						},
+						h3: {
+							fontFamily: "Figtree, sans-serif",
+							fontWeight: 800,
+						},
+						h4: {
+							fontFamily: "Figtree, sans-serif",
+							fontWeight: 800,
+						},
+						h5: {
+							fontFamily: "Figtree, sans-serif",
+							fontWeight: 800,
+						},
+						// strong: {
+						// 	color: theme("colors.gray.800"),
+						// },
+						a: {
+							color: theme("colors.blue.500"),
+							"&:hover": {
+								color: theme("colors.blue.600"),
+							},
+						},
+						p: {
+							fontFamily: "Manrope, sans-serif",
+							fontSize: "17px",
+							letterSpacing: "0.017em",
+						},
+						ul: {
+							fontFamily: "Manrope, sans-serif",
+							fontSize: "17px",
+							letterSpacing: "0.017em",
+						},
+						ol: {
+							fontWeight: 400,
+							fontSize: "18px",
+							letterSpacing: "0.017em",
+							lineHeight: 1.6,
+							margin: "3rem 0",
+
+							li: {
+								margin: "1.5rem 0",
+
+								ul: {
+									margin: 0,
+
+									li: {
+										margin: 0,
+										marginTop: "0.5rem",
+										fontWeight: 400,
+									},
+								},
+							},
+						},
+					},
+				},
+			}),
 			translate: {
 				100: "100%",
 				200: "200%",
@@ -56,16 +199,7 @@ module.exports = {
 				1100: "1100%",
 				1200: "1200%",
 			},
-			keyframes: {
-				tailfade: {
-					"0%, 82%": { opacity: "1" },
-					"100%": { opacity: "0" },
-				},
-			},
-			animation: {
-				tailfade: "tailfade 3s ease-in-out infinite",
-			},
 		},
 	},
-	plugins: [require("./lib/plugins/text-stroke")],
+	plugins: [require("./lib/plugins/text-stroke"), require("@tailwindcss/typography")],
 };

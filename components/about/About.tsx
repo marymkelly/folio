@@ -2,8 +2,20 @@ import Image from "next/image";
 import ExperienceJourney from "./timeline/WalkJourney";
 import SkillsAndTools from "./SkillsTools";
 import FormalExperience from "./FormalExperience";
+import { useContext, useEffect } from "react";
+import ThemeContext from "../../context/ThemeCtx";
 
 export default function AboutPage() {
+	const themeCtx = useContext(ThemeContext);
+
+	useEffect(() => {
+		themeCtx.setIsFooterFixed(true);
+
+		return () => {
+			themeCtx.setIsFooterFixed(false);
+		};
+	}, []);
+
 	return (
 		<div className='relative h-full w-full flex flex-1 flex-wrap flex-col pb-6'>
 			<div className='w-full h-full min-h-screen flex-col lg:flex-row flex lg:self-center pb-12 md:pb-20 px-8 lg:px-0'>

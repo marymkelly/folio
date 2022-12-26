@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import { CanvasController } from "../../../lib/canvas";
+import { CanvasController } from "../../../lib/classes/canvas";
 import Image from "next/image";
 import { TimelineTick, TimelineEvent, timelineData } from "../../../lib/data/timeline";
-import { HorizonalYears } from "./VerticalYears";
+import { VerticalYears } from "./VerticalYears";
 import { Tickmark } from "./Tickmark";
 import { ArrowControls } from "./ArrowControls";
+import { timelineAnimations as animations } from "../../../lib/constants";
 
 export default function ExperienceJourney() {
 	const [ticks, setTicks] = useState<TimelineTick[]>([]);
@@ -67,7 +68,7 @@ export default function ExperienceJourney() {
 
 		if (!canvasControllerRef.current) {
 			ctx = canvasRef.current!.getContext("2d");
-			canvas = new CanvasController(canvasWidth, canvasHeight);
+			canvas = new CanvasController(canvasWidth, canvasHeight, "/images/sprites/Sprite_Board_Extended.png", animations);
 			canvas.timeline = timelineRef.current!;
 			canvas.timelineInformation = timelineBlurbRef.current!;
 			canvas.setPercent = (num: number) => {
@@ -177,7 +178,7 @@ export default function ExperienceJourney() {
 							? "text-custom-navy opacity-[10%]"
 							: "text-custom-black"
 					}`}>
-					My Journey
+					My Saga
 				</h3>
 				<p
 					className={`font-itc text-sm font-medium tracking-[0.021em] transition-all duration-500 delay-100 ${
@@ -229,7 +230,7 @@ export default function ExperienceJourney() {
 			</div>
 			<div className='w-full h-auto absolute bottom-[15%] mb-6'>
 				<div className='absolute h-full w-[15%] left-2 items-end justify-items-center flex flex-col text-8xl overflow-clip outline-text text-transparent'>
-					{years.length === 12 && <HorizonalYears percentage={percentage} activeTick={activeTick} ticks={ticks} years={years} />}
+					{years.length === 12 && <VerticalYears percentage={percentage} activeTick={activeTick} ticks={ticks} years={years} />}
 				</div>
 				<div className='relative flex flex-col items-end justify-items-end h-full w-full'>
 					<div className='sm:min-w-[520px] sm:max-w-[550px] sm:w-[65%] md:min-w-[700px] md:max-w-[800px] md:w-[75%] lg:w-[78%] lg:min-w-[800px] lg:max-w-[1000px] xl:w-[calc(85%-50px)] xl:pl-[25px] xl:pr-[25px] xl:max-w-none self-end flex justify-between h-auto absolute flex-1 top-[207px] z-10'>

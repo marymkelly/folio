@@ -169,19 +169,3 @@ export const timelineData: TimelineEvent[] = [
 		},
 	},
 ];
-
-export const translateClass: { [key: string]: string } = {
-	"0": "-translate-y-0",
-	"100": "-translate-y-100",
-	"200": "-translate-y-200",
-	"300": "-translate-y-300",
-	"400": "-translate-y-400",
-	"500": "-translate-y-500",
-	"600": "-translate-y-600",
-	"700": "-translate-y-700",
-	"800": "-translate-y-800",
-	"900": "-translate-y-900",
-	"1000": "-translate-y-1000",
-	"1100": "-translate-y-1100",
-	"1200": "-translate-y-1200",
-};

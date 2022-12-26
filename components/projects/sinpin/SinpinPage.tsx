@@ -1,6 +1,8 @@
 import ProjectPageHeader from "../ProjectHeader";
 import ProjectPageOverview from "./SinpinOverview";
 import { ImageSection, InfoPoint, FeaturePoint } from "../ProjectSections";
+import { useContext, useEffect } from "react";
+import ThemeContext from "../../../context/ThemeCtx";
 
 export default function SinPinPage() {
 	const projectData = {
@@ -12,6 +14,15 @@ export default function SinPinPage() {
 		overviewClasses: "bg-project-sinpin-red-fade",
 		colorClasses: "bg-project-sinpin-red-logo",
 	};
+
+	const themeCtx = useContext(ThemeContext);
+
+	useEffect(() => {
+		themeCtx.setFooterColorClass("bg-[#E9151D]");
+		return () => {
+			themeCtx.setFooterColorClass("bg-transparent");
+		};
+	}, []);
 
 	return (
 		<>
@@ -121,7 +132,7 @@ export default function SinPinPage() {
 			/>
 			<ImageSection
 				path='/images/projects/sinpin/sidebars.gif'
-				classes='bg-project-sinpin-red-logo h-[75vh] md:min-h-[400px] lg:h-[800px] w-full mt-16 mb-2 py-24 items-center justify-center'
+				classes='bg-project-sinpin-red-logo h-[75vh] md:min-h-[400px] lg:h-[800px] w-full mt-16 py-24 items-center justify-center'
 			/>
 		</>
 	);

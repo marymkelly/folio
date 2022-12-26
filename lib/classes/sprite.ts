@@ -1,4 +1,5 @@
-import { animations } from "../constants";
+import { timelineAnimations as animations } from "../constants";
+import { CanvasController } from "./canvas";
 
 export interface AnimationProps {
 	name: string;
@@ -43,7 +44,7 @@ export interface SpriteController {
 }
 
 export class SpriteController {
-	constructor(animator: any) {
+	constructor(animator: CanvasController, spriteSrc: string, animations: AnimationProps[]) {
 		this.animator = animator;
 		this.height = 400;
 		this.width = 400;
@@ -55,7 +56,7 @@ export class SpriteController {
 		this.spriteWidth = 600;
 		this.spriteHeight = 600;
 		this.spriteSheet = new Image();
-		this.src = "/images/Sprite_Board_Extended.png";
+		this.src = spriteSrc;
 		this.gameFrame = 0;
 		this.maxFrames = 120;
 		this.delayFrame = 0;
@@ -92,6 +93,8 @@ export class SpriteController {
 
 	draw(ctx: any) {
 		if (this.animator.clearCanvas) {
+			this.x = 0;
+			this.gameFrame = 0;
 			ctx!.clearRect(0, 0, this.width, this.height);
 		} else {
 			if (!this.currentAnimation) this.setAnimation("idle", 0);
@@ -127,61 +130,69 @@ export class SpriteController {
 			return transitionStartFrame;
 		}
 
-		if (this.animator.lastKey === "PArrowLeft") {
-			document.getElementById("left-arrow-container")!.classList.add("pressed");
-			document.getElementById("right-arrow-container")!.classList.remove("pressed");
+		if (Object.keys(this.animations).length > 1) {
+			if (this.animator.lastKey === "PArrowLeft") {
+				document.getElementById("left-arrow-container")!.classList.add("pressed");
+				document.getElementById("right-arrow-container")!.classList.remove("pressed");
 
-			if (this.currentAnimation === "idle" || this.currentAnimation.startsWith("crossarms") || this.currentAnimation === "walk_right") {
-				this.speedX = 0;
-				this.setAnimation("pivot_left", 0);
-				return;
+				if (this.currentAnimation === "idle" || this.currentAnimation.startsWith("crossarms") || this.currentAnimation === "walk_right") {
+					this.speedX = 0;
+					this.setAnimation("pivot_left", 0);
+					return;
+				}
+
+				if (this.currentAnimation === "walk_left" && this.speedX !== -2.4) this.speedX = -2.4;
 			}
 
-			if (this.currentAnimation === "walk_left" && this.speedX !== -2.4) this.speedX = -2.4;
-		}
+			if (this.animator.lastKey === "PArrowRight") {
+				document.getElementById("right-arrow-container")!.classList.add("pressed");
+				document.getElementById("left-arrow-container")!.classList.remove("pressed");
 
-		if (this.animator.lastKey === "PArrowRight") {
-			document.getElementById("right-arrow-container")!.classList.add("pressed");
-			document.getElementById("left-arrow-container")!.classList.remove("pressed");
+				if (this.currentAnimation === "idle" || this.currentAnimation.startsWith("crossarms") || this.currentAnimation === "walk_left") {
+					this.speedX = 0;
+					this.setAnimation("pivot_right", 0);
+					return;
+				}
 
-			if (this.currentAnimation === "idle" || this.currentAnimation.startsWith("crossarms") || this.currentAnimation === "walk_left") {
-				this.speedX = 0;
-				this.setAnimation("pivot_right", 0);
-				return;
+				if (this.currentAnimation === "walk_right" && this.speedX !== 2.4) this.speedX = 2.4;
 			}
 
-			if (this.currentAnimation === "walk_right" && this.speedX !== 2.4) this.speedX = 2.4;
-		}
+			if (this.animator.lastKey === "RArrowLeft") {
+				if (this.currentAnimation === "walk_left" || this.currentAnimation.startsWith("pivot")) {
+					this.speedX = 0;
+					let startFrame = getPivotToIdleStart(this);
+					this.setAnimation("crossarms_left", startFrame);
+				}
 
-		if (this.animator.lastKey === "RArrowLeft") {
-			if (this.currentAnimation === "walk_left" || this.currentAnimation.startsWith("pivot")) {
-				this.speedX = 0;
-				let startFrame = getPivotToIdleStart(this);
-				this.setAnimation("crossarms_left", startFrame);
+				document.getElementById("left-arrow-container")!.classList.remove("pressed");
 			}
 
-			document.getElementById("left-arrow-container")!.classList.remove("pressed");
-		}
+			if (this.animator.lastKey === "RArrowRight") {
+				if (this.currentAnimation === "walk_right" || this.currentAnimation.startsWith("pivot")) {
+					this.speedX = 0;
+					let startFrame = getPivotToIdleStart(this);
+					this.setAnimation("crossarms_right", startFrame);
+				}
 
-		if (this.animator.lastKey === "RArrowRight") {
-			if (this.currentAnimation === "walk_right" || this.currentAnimation.startsWith("pivot")) {
-				this.speedX = 0;
-				let startFrame = getPivotToIdleStart(this);
-				this.setAnimation("crossarms_right", startFrame);
+				document.getElementById("right-arrow-container")!.classList.remove("pressed");
 			}
 
-			document.getElementById("right-arrow-container")!.classList.remove("pressed");
-		}
+			if (this.animator.currentKeys.length === 0) {
+				if (this.animator.lastKey) {
+					document.getElementById("right-arrow-container")!.classList.remove("pressed");
+					document.getElementById("left-arrow-container")!.classList.remove("pressed");
+				}
 
-		if (this.animator.currentKeys.length === 0) {
-			if (!this.currentAnimation.startsWith("portal") && !this.currentAnimation.startsWith("crossarms") && this.currentAnimation !== "idle") {
-				this.speedX = 0;
-				this.setAnimation("idle", 0);
-				this.animator.lastKey = "";
+				if (
+					!this.currentAnimation.startsWith("portal") &&
+					!this.currentAnimation.startsWith("crossarms") &&
+					this.currentAnimation !== "idle"
+				) {
+					this.speedX = 0;
+					this.setAnimation("idle", 0);
+					this.animator.lastKey = "";
+				}
 			}
-
-			document.getElementById("right-arrow-container")!.classList.remove("pressed");
-			document.getElementById("left-arrow-container")!.classList.remove("pressed");
 		}
 
 		if (this.delaying) {
@@ -219,6 +230,7 @@ export class SpriteController {
 						this.currentAnimation === "portal_exit_left"
 							? this.setAnimation("crossarms_left", 0)
 							: this.setAnimation("crossarms_right", 0);
+					} else {
 					}
 				}
 			} else {
@@ -251,7 +263,9 @@ export class SpriteController {
 			}
 		}
 
-		this.animator.timeline.style.width = `${timelinePercent}%`;
-		this.animator.setPercent(timelinePercent);
+		if (this.animator.timeline) {
+			this.animator.timeline.style.width = `${timelinePercent}%`;
+			this.animator.setPercent(timelinePercent);
+		}
 	}
 }
