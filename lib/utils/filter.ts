@@ -32,7 +32,7 @@ export function filter<T extends FilterableObject>(query: string, matches: Array
 					}
 				}
 
-				const matchScore = multiwordName ? highestSubmatch : matchedLetters / query.length;
+				const matchScore = (multiwordName ? highestSubmatch : matchedLetters) / query.length;
 
 				if (query.length >= 4) {
 					return query.length >= 4 && matchScore >= 0.7;

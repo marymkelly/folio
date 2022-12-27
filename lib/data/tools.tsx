@@ -1,4 +1,48 @@
+import React from "react";
 import { Image } from "./timeline";
+import AfterEffectsIcon from "../../components/about/tools/after-effects";
+import BalsamiqIcon from "../../components/about/tools/balsamiq";
+import ConfluenceIcon from "../../components/about/tools/confluence";
+import AsanaIcon from "../../components/about/tools/asana";
+import BootstrapIcon from "../../components/about/tools/bootstrap";
+import CPlusPlusIcon from "../../components/about/tools/cplusplus";
+import CssIcon from "../../components/about/tools/css-3";
+import FirebaseIcon from "../../components/about/tools/firebase";
+import FigmaIcon from "../../components/about/tools/figma";
+import GithubIcon from "../../components/about/tools/github";
+import GaeIcon from "../../components/about/tools/gae";
+import GoogleIcon from "../../components/about/tools/google";
+import HtmlIcon from "../../components/about/tools/html";
+import IllustratorIcon from "../../components/about/tools/illustrator";
+import JsIcon2 from "../../components/about/tools/javascript-2";
+import InvisionIcon from "../../components/about/tools/invision";
+import JestIcon from "../../components/about/tools/jest";
+import JiraIcon from "../../components/about/tools/jira";
+import MuiIcon from "../../components/about/tools/material-ui";
+import MayaIcon from "../../components/about/tools/maya";
+import MsOfficeIcon from "../../components/about/tools/microsoft-office";
+import MiroIcon from "../../components/about/tools/miro";
+import MongoIcon from "../../components/about/tools/mongodb";
+import MySqlIcon from "../../components/about/tools/mysql";
+import NextIcon from "../../components/about/tools/nextjs";
+import NodeIcon from "../../components/about/tools/node";
+import PhotoshopIcon from "../../components/about/tools/photoshop";
+import PostgreIcon from "../../components/about/tools/postgresql";
+import PostmanIcon from "../../components/about/tools/postman";
+import PrismaIcon from "../../components/about/tools/prisma";
+import ReactIcon from "../../components/about/tools/react";
+import ReduxIcon from "../../components/about/tools/redux";
+import SassIcon from "../../components/about/tools/sass";
+import SketchIcon from "../../components/about/tools/sketch";
+import SublimeIcon from "../../components/about/tools/sublime-text";
+import TailwindIcon from "../../components/about/tools/tailwind";
+import TrelloIcon from "../../components/about/tools/trello";
+import TypescriptIcon from "../../components/about/tools/typescript";
+import UnityIcon from "../../components/about/tools/unity";
+import VsCodeIcon from "../../components/about/tools/vscode";
+import XdIcon from "../../components/about/tools/xd";
+import ZeplinIcon from "../../components/about/tools/zeplin";
+import GraphQlIcon from "../../components/about/tools/graphql";
 
 interface Technologies {
 	items: TechItem[];
@@ -10,6 +54,7 @@ export interface TechItem {
 	category: string;
 	type: string[];
 	image?: Image;
+	component: Function;
 }
 
 export interface SkillItem {
@@ -42,6 +87,7 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: AfterEffectsIcon,
 	},
 	{
 		name: "Asana",
@@ -55,6 +101,7 @@ const tech: TechItem[] = [
 				width: 60,
 			},
 		},
+		component: AsanaIcon,
 	},
 	{
 		name: "Balsamiq",
@@ -68,10 +115,11 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: BalsamiqIcon,
 	},
 	{
 		name: "Bootstrap",
-		category: "Code",
+		category: "Dev",
 		type: ["CSS", "Framework"],
 		image: {
 			src: "/images/about/tech/bootstrap.svg",
@@ -81,10 +129,11 @@ const tech: TechItem[] = [
 				width: 56,
 			},
 		},
+		component: BootstrapIcon,
 	},
 	{
 		name: "C++",
-		category: "Code",
+		category: "Dev",
 		type: ["Language"],
 		image: {
 			src: "/images/about/tech/cplusplus.svg",
@@ -94,6 +143,7 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: CPlusPlusIcon,
 	},
 	{
 		name: "Confluence",
@@ -107,10 +157,11 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: ConfluenceIcon,
 	},
 	{
 		name: "CSS",
-		category: "Code",
+		category: "Dev",
 		type: ["Language"],
 		image: {
 			src: "/images/about/tech/css-3.svg",
@@ -120,6 +171,7 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: CssIcon,
 	},
 	{
 		name: "Figma",
@@ -133,10 +185,11 @@ const tech: TechItem[] = [
 				width: 38,
 			},
 		},
+		component: FigmaIcon,
 	},
 	{
 		name: "Firebase",
-		category: "Code",
+		category: "Dev",
 		type: ["Application"],
 		image: {
 			src: "/images/about/tech/firebase.svg",
@@ -146,10 +199,11 @@ const tech: TechItem[] = [
 				width: 42,
 			},
 		},
+		component: FirebaseIcon,
 	},
 	{
 		name: "Github",
-		category: "Code",
+		category: "Dev",
 		type: ["DevOps", "Project Management", "CI"],
 		image: {
 			src: "/images/about/tech/github.svg",
@@ -159,10 +213,11 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: GithubIcon,
 	},
 	{
 		name: "Google App Engine",
-		category: "Code",
+		category: "Dev",
 		type: ["Application"],
 		image: {
 			src: "/images/about/tech/gae.svg",
@@ -172,6 +227,7 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: GaeIcon,
 	},
 	{
 		name: "Google Workspace",
@@ -185,10 +241,11 @@ const tech: TechItem[] = [
 				width: 46,
 			},
 		},
+		component: GoogleIcon,
 	},
 	{
 		name: "GraphQL",
-		category: "Code",
+		category: "Dev",
 		type: ["Language", "Database", "Query"],
 		image: {
 			src: "/images/about/tech/graphql.svg",
@@ -198,10 +255,11 @@ const tech: TechItem[] = [
 				width: 54,
 			},
 		},
+		component: GraphQlIcon,
 	},
 	{
 		name: "HTML",
-		category: "Code",
+		category: "Dev",
 		type: ["Language"],
 		image: {
 			src: "/images/about/tech/html.svg",
@@ -211,6 +269,7 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: HtmlIcon,
 	},
 	{
 		name: "Adobe Illustrator",
@@ -224,6 +283,7 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: IllustratorIcon,
 	},
 	{
 		name: "InVision",
@@ -237,10 +297,11 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: InvisionIcon,
 	},
 	{
 		name: "JavaScript",
-		category: "Code",
+		category: "Dev",
 		type: ["Language"],
 		image: {
 			src: "/images/about/tech/javascript-2.svg",
@@ -250,10 +311,11 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: JsIcon2,
 	},
 	{
 		name: "Jest",
-		category: "Code",
+		category: "Dev",
 		type: ["Framework", "Testing"],
 		image: {
 			src: "/images/about/tech/jest.svg",
@@ -263,6 +325,7 @@ const tech: TechItem[] = [
 				width: 44,
 			},
 		},
+		component: JestIcon,
 	},
 	{
 		name: "Jira",
@@ -276,10 +339,11 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: JiraIcon,
 	},
 	{
 		name: "Material UI",
-		category: "Code",
+		category: "Dev",
 		type: ["Library", "CSS"],
 		image: {
 			src: "/images/about/tech/material-ui.svg",
@@ -289,6 +353,7 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: MuiIcon,
 	},
 	{
 		name: "Maya",
@@ -302,6 +367,7 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: MayaIcon,
 	},
 	{
 		name: "Microsoft Office",
@@ -315,6 +381,7 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: MsOfficeIcon,
 	},
 	{
 		name: "Miro",
@@ -328,10 +395,11 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: MiroIcon,
 	},
 	{
 		name: "MongoDB",
-		category: "Code",
+		category: "Dev",
 		type: ["Database"],
 		image: {
 			src: "/images/about/tech/mongodb.svg",
@@ -341,10 +409,11 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: MongoIcon,
 	},
 	{
 		name: "MySQL",
-		category: "Code",
+		category: "Dev",
 		type: ["Database"],
 		image: {
 			src: "/images/about/tech/mysql.svg",
@@ -354,10 +423,11 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: MySqlIcon,
 	},
 	{
 		name: "NextJS",
-		category: "Code",
+		category: "Dev",
 		type: ["Framework", "React"],
 		image: {
 			src: "/images/about/tech/nextjs.svg",
@@ -367,10 +437,11 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: NextIcon,
 	},
 	{
 		name: "Node.js",
-		category: "Code",
+		category: "Dev",
 		type: ["Platform", "Engine"],
 		image: {
 			src: "/images/about/tech/node.svg",
@@ -380,6 +451,7 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: NodeIcon,
 	},
 	{
 		name: "Adobe Photoshop",
@@ -393,10 +465,11 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: PhotoshopIcon,
 	},
 	{
 		name: "PostgreSQL",
-		category: "Code",
+		category: "Dev",
 		type: ["Database"],
 		image: {
 			src: "/images/about/tech/postgresql.svg",
@@ -406,10 +479,11 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: PostgreIcon,
 	},
 	{
 		name: "Postman",
-		category: "Code",
+		category: "Dev",
 		type: ["Platform", "API"],
 		image: {
 			src: "/images/about/tech/postman.svg",
@@ -419,10 +493,11 @@ const tech: TechItem[] = [
 				width: 54,
 			},
 		},
+		component: PostmanIcon,
 	},
 	{
 		name: "Prisma",
-		category: "Code",
+		category: "Dev",
 		type: ["Database", "ORM"],
 		image: {
 			src: "/images/about/tech/prisma.svg",
@@ -432,10 +507,11 @@ const tech: TechItem[] = [
 				width: 40,
 			},
 		},
+		component: PrismaIcon,
 	},
 	{
 		name: "React",
-		category: "Code",
+		category: "Dev",
 		type: ["Library", "JavaScript"],
 		image: {
 			src: "/images/about/tech/react.svg",
@@ -445,10 +521,11 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: ReactIcon,
 	},
 	{
 		name: "Redux",
-		category: "Code",
+		category: "Dev",
 		type: ["Library", "JavaScript"],
 		image: {
 			src: "/images/about/tech/redux.svg",
@@ -458,10 +535,11 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: ReduxIcon,
 	},
 	{
 		name: "Sass/SCSS",
-		category: "Code",
+		category: "Dev",
 		type: ["Language", "CSS"],
 		image: {
 			src: "/images/about/tech/sass.svg",
@@ -471,6 +549,7 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: SassIcon,
 	},
 	{
 		name: "Sketch",
@@ -484,10 +563,11 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: SketchIcon,
 	},
 	{
 		name: "Sublime Text",
-		category: "Code",
+		category: "Dev",
 		type: ["Editor"],
 		image: {
 			src: "/images/about/tech/sublime-text.svg",
@@ -497,10 +577,11 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: SublimeIcon,
 	},
 	{
 		name: "Tailwind CSS",
-		category: "Code",
+		category: "Dev",
 		type: ["Framework", "CSS"],
 		image: {
 			src: "/images/about/tech/tailwind.svg",
@@ -510,6 +591,7 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: TailwindIcon,
 	},
 	{
 		name: "Trello",
@@ -523,10 +605,11 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: TrelloIcon,
 	},
 	{
 		name: "TypeScript",
-		category: "Code",
+		category: "Dev",
 		type: ["Language", "JavaScript"],
 		image: {
 			src: "/images/about/tech/typescript.svg",
@@ -536,10 +619,11 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: TypescriptIcon,
 	},
 	{
 		name: "Unity",
-		category: "Code",
+		category: "Dev",
 		type: ["Platform", "Game", "Engine"],
 		image: {
 			src: "/images/about/tech/unity.svg",
@@ -549,10 +633,11 @@ const tech: TechItem[] = [
 				width: 54,
 			},
 		},
+		component: UnityIcon,
 	},
 	{
 		name: "VSCode",
-		category: "Code",
+		category: "Dev",
 		type: ["Editor"],
 		image: {
 			src: "/images/about/tech/vscode.svg",
@@ -562,6 +647,7 @@ const tech: TechItem[] = [
 				width: 46,
 			},
 		},
+		component: VsCodeIcon,
 	},
 	{
 		name: "Adobe XD",
@@ -575,6 +661,7 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: XdIcon,
 	},
 	{
 		name: "Zeplin",
@@ -588,6 +675,7 @@ const tech: TechItem[] = [
 				width: 50,
 			},
 		},
+		component: ZeplinIcon,
 	},
 ];
 

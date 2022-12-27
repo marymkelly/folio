@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import SvgDots from "../Dots";
 import { CanvasController } from "../../lib/classes/canvas";
 import { sittingAnimation as animations } from "../../lib/constants";
+import { update } from "../../lib/utils/animation";
 
 function getRandomInt(min: number, max: number): number {
 	min = Math.ceil(min);
@@ -36,26 +37,33 @@ export default function MainHeader() {
 
 	// INIT
 	useEffect(() => {
-		let ctx: any;
-		let canvas: any;
+		let ctx: CanvasRenderingContext2D | null;
+		let canvas: CanvasController;
 
 		canvasRef.current!.width = canvasDimensions.width;
 		canvasRef.current!.height = canvasDimensions.height;
 
 		if (!canvasControllerRef.current) {
 			ctx = canvasRef.current!.getContext("2d");
-			canvas = new CanvasController(canvasDimensions.width, canvasDimensions.height, "/images/sprites/Sitting_Sprite_Board_Extended.png", animations);
-
+			canvas = new CanvasController(
+				canvasDimensions.width,
+				canvasDimensions.height,
+				"/images/sprites/Sitting_Sprite_Board_Extended.png",
+				animations
+			);
+			canvas.update = update.home;
 			canvasControllerRef.current = canvas;
 			animate();
 		}
 
 		function animate(timestamp?: number) {
-			if (timestamp !== canvasControllerRef.current!.lastAnimation) {
-				ctx!.clearRect(0, 0, canvasDimensions.width, canvasDimensions.height);
-				canvas.render(ctx, timestamp);
+			if (canvasControllerRef.current) {
+				if (timestamp !== canvasControllerRef.current!.lastAnimation) {
+					ctx!.clearRect(0, 0, canvasDimensions.width, canvasDimensions.height);
+					canvas.render(ctx!, timestamp);
+				}
+				requestAnimationFrame(animate);
 			}
-			requestAnimationFrame(animate);
 		}
 	}, []);
 

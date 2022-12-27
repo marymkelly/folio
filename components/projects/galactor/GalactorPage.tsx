@@ -1,4 +1,5 @@
 import React, { Context, useContext, useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import ThemeCtx, { ThemeContextInterface } from "../../../context/ThemeCtx";
 import Button from "../../common/Button";
@@ -12,10 +13,13 @@ interface ProjectPageProps {
 	technologies?: string | string[];
 	textClasses?: string;
 	overviewClasses?: string;
+	url?: { live?: string; github?: string; design?: string };
+	repository?: string;
 }
 
 export default function GalactorPage<T extends ProjectPageProps>(props: T): JSX.Element {
-	const themeCtx: any = useContext(ThemeCtx);
+	const router = useRouter();
+	const themeCtx: ThemeContextInterface = useContext(ThemeCtx);
 	const overviewCategories = ["dates", "platforms", "role", "technologies"];
 
 	useEffect(() => {
@@ -29,6 +33,7 @@ export default function GalactorPage<T extends ProjectPageProps>(props: T): JSX.
 			themeCtx.setBackgroundIsDark(false);
 		};
 	}, []);
+
 	return (
 		<div className='w-full flex flex-col items-center bg-[#092636] text-white'>
 			<div className='flex w-full max-w-[1200px] h-auto py-20 px-4 lg:h-screen flex-col'>
@@ -86,8 +91,8 @@ export default function GalactorPage<T extends ProjectPageProps>(props: T): JSX.
 												{key === "dates" ? (props.dates?.search(/[-]/) === -1 ? "Date" : key) : key}
 											</label>
 											<p className='font-light font-stolzl leading-7'>
-												{typeof props[key as keyof ProjectPageProps] === "string"
-													? props[key as keyof ProjectPageProps]
+												{typeof props[key as keyof Omit<ProjectPageProps, "url">] === "string"
+													? props[key as keyof Omit<ProjectPageProps, "url">]
 													: props[key as keyof ProjectPageProps]?.toString().split(",").join(", ")}
 											</p>
 										</div>
@@ -129,7 +134,9 @@ export default function GalactorPage<T extends ProjectPageProps>(props: T): JSX.
 							It is highly recognizable and easy to understand (versus something like 3D outer space)
 						</li>
 						<li className='w-11/12 -ml-4'>It is a modern, intractable element (with a cool aesthetic) that users can engage with. </li>
-						<li className='w-11/12 -ml-4 lg:ml-0'>It aids in building user confidence that the stars that are showing are indeed nearby them. </li>
+						<li className='w-11/12 -ml-4 lg:ml-0'>
+							It aids in building user confidence that the stars that are showing are indeed nearby them.{" "}
+						</li>
 					</ul>
 				</div>
 				<div className='flex flex-col lg:px-8 lg:pr-0 md:px-4'>
@@ -195,11 +202,22 @@ export default function GalactorPage<T extends ProjectPageProps>(props: T): JSX.
 				</div>
 				<div className='flex flex-col w-full lg:flex-row mb-20'>
 					<Button
+						onClick={() => {
+							if (router && props?.url?.live) {
+								router.push(props.url.live);
+							}
+						}}
 						label='Visit live site'
 						showArrow={true}
 						className='bg-logo-blue max-w-[250px] mr-16 hover:text-opacity-80 hover:brightness-[.9] text-white py-2.5 px-6 inline-flex flex-auto font-stolzl text-lg mb-4 lg:mb-0'
 					/>
+
 					<Button
+						onClick={() => {
+							if (router && props?.url?.github) {
+								router.push(props.url.github);
+							}
+						}}
 						label='Github'
 						icon={() => <GithubIcon className='text-white w-6 h-6 mr-3 group-hover:text-opacity-80' />}
 						showArrow={true}

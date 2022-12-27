@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
 import { CanvasController } from "../../../lib/classes/canvas";
 import Image from "next/image";
 import { TimelineTick, TimelineEvent, timelineData } from "../../../lib/data/timeline";
@@ -6,8 +7,10 @@ import { VerticalYears } from "./VerticalYears";
 import { Tickmark } from "./Tickmark";
 import { ArrowControls } from "./ArrowControls";
 import { timelineAnimations as animations } from "../../../lib/constants";
+import { update, input } from "../../../lib/utils/animation";
 
 export default function ExperienceJourney() {
+	const router = useRouter();
 	const [ticks, setTicks] = useState<TimelineTick[]>([]);
 	const [years, setYears] = useState<number[]>([]);
 	const [percentage, setPercentage] = useState<number>(0);
@@ -58,8 +61,8 @@ export default function ExperienceJourney() {
 		let canvasHeight = 400;
 		let canvasWidth = Math.floor(window.visualViewport!.width * 2 * 0.85);
 
-		let ctx: any;
-		let canvas: any;
+		let ctx: CanvasRenderingContext2D | null;
+		let canvas: CanvasController;
 
 		canvasRef.current!.width = canvasWidth;
 		canvasRef.current!.height = canvasHeight;
@@ -69,6 +72,8 @@ export default function ExperienceJourney() {
 		if (!canvasControllerRef.current) {
 			ctx = canvasRef.current!.getContext("2d");
 			canvas = new CanvasController(canvasWidth, canvasHeight, "/images/sprites/Sprite_Board_Extended.png", animations);
+			canvas.listeners = input.saga(window);
+			canvas.update = update.saga;
 			canvas.timeline = timelineRef.current!;
 			canvas.timelineInformation = timelineBlurbRef.current!;
 			canvas.setPercent = (num: number) => {
@@ -83,7 +88,7 @@ export default function ExperienceJourney() {
 		function animate(timestamp?: number) {
 			if (timestamp !== canvasControllerRef.current!.lastAnimation) {
 				ctx!.clearRect(0, 0, Math.floor(window.visualViewport!.width * 2 * 0.85), canvasDimensions.height);
-				canvas.render(ctx, timestamp);
+				canvas.render(ctx!, timestamp);
 			}
 			requestAnimationFrame(animate);
 		}
@@ -100,10 +105,19 @@ export default function ExperienceJourney() {
 			}
 		}
 
+		const handleRouteChange = () => {
+			if (canvasControllerRef.current) {
+				canvasControllerRef.current!.remove();
+			}
+		};
+
+		router.events.on("routeChangeStart", handleRouteChange);
+
 		window.addEventListener("resize", resizeCanvas);
 
 		return () => {
 			window.removeEventListener("resize", resizeCanvas);
+			router.events.off("routeChangeStart", handleRouteChange);
 		};
 	}, []);
 
@@ -229,7 +243,7 @@ export default function ExperienceJourney() {
 				<p className='text-xs mt-3 text-custom-gray-blue/75'>Use Left and Right Arrow Keys Navigate</p>
 			</div>
 			<div className='w-full h-auto absolute bottom-[15%] mb-6'>
-				<div className='absolute h-full w-[15%] left-2 items-end justify-items-center flex flex-col text-8xl overflow-clip outline-text text-transparent'>
+				<div className='absolute h-full w-[15%] left-12 xl:left-9 2xl:left-2 items-end justify-items-center flex flex-col text-8xl overflow-y-clip outline-text text-transparent'>
 					{years.length === 12 && <VerticalYears percentage={percentage} activeTick={activeTick} ticks={ticks} years={years} />}
 				</div>
 				<div className='relative flex flex-col items-end justify-items-end h-full w-full'>

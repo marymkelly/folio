@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import BulletPoint from "../common/BulletPoint";
+import { useIsRefInBounds } from "../../lib/hooks/hooks";
+import { LegacyRef } from "react";
 
 interface PreviewProps {
 	[key: string]: any;
@@ -26,8 +28,9 @@ interface PreviewProps {
 }
 
 export default function ProjectPreviewTwo<T extends PreviewProps>(props: T) {
-	let boxCategories: string[] = ["industry", "platforms", "role"];
+	const boxCategories: string[] = ["industry", "platforms", "role"];
 	const router = useRouter();
+	const [projectRef, inBounds] = useIsRefInBounds();
 
 	const cardColors: { [key: string]: string } = {
 		"#CF0008": "bg-[#CF0008]",
@@ -39,31 +42,40 @@ export default function ProjectPreviewTwo<T extends PreviewProps>(props: T) {
 	};
 
 	return (
-		<div
-			onClick={() => {
-				router.push(props.href);
-			}}
-			className='w-full h-full group flex flex-col items-center justify-center mb-20 hover:cursor-pointer'>
+		<div className='w-full h-full max-h-[800px] flex flex-col items-center justify-center mb-20'>
 			<div
-				className={`flex flex-col lg:flex-row w-full lg:w-10/12 lg:brightness-[.7] hover:brightness-100 h-[800px] ${
+				ref={projectRef as LegacyRef<HTMLDivElement>}
+				onClick={() => {
+					router.push(props.href);
+				}}
+				className={`group flex flex-col lg:flex-row w-11/12 sm:w-10/12 sm:max-w-[720px] lg:max-w-none hover:cursor-pointer hover:brightness-105 h-[800px] ${
 					cardColors[props.background]
-				} overflow-hidden transition-all duration-500 justify-center p-0 pt-20 lg:p-24 lg:pr-0 relative`}>
-				<div className={`text-white w-full ${props.divide === "7/5" ? "lg:w-7/12" : "lg:w-6/12"} flex flex-col h-full`}>
-					<h2 className='font-gravesend font-bold text-6xl lg:text-[88px] tracking-[0.012em] leading-none'>{props.name}</h2>
-					<div className='flex items-center whitespace-nowrap mt-10 font-stolzl font-medium tracking-wide text-base w-full lg:text-[22px] '>
-						<p className='lg:ml-2.5'>{props.type}</p>
-						<BulletPoint className='mx-2 lg:mx-4' />
+				} ${
+					inBounds ? "brightness-100" : "brightness-[.5] lg:brightness-[.7] "
+				} [&.in-bounds]:lg:brightness-70 overflow-hidden transition-all duration-500 justify-center px-4 py-16 md:pb-24 lg:p-24 lg:pr-0 relative`}>
+				<div className={`text-white w-full ${props.divide === "7/5" ? "lg:w-7/12" : "lg:w-6/12"} mb-2 sm:mb-8 md:mb-0 flex flex-col h-full`}>
+					<h2 className='px-6 md:mt-4 md:px-12 xl:mt-2 lg:mt-0 lg:px-0 font-gravesend font-bold text-5xl sm:text-6xl md:text-7xl lg:text-[76px] 2xl:text-[88px] tracking-[0.012em] leading-none whitespace-normal'>
+						{props.name}
+					</h2>
+					<div className='px-6 md:px-12 lg:px-0 flex md:items-center md:whitespace-nowrap mt-6 lg:mt-10 font-stolzl font-medium tracking-wide text-sm sm:text-base w-full lg:text-xl xl:text-[22px] '>
+						<p className='lg:ml-2.5 whitespace-nowrap'>{props.type}</p>
+						<BulletPoint className='mx-3 lg:mx-4' />
 						<p>{props.dates}</p>
 					</div>
-					<div className={`${cardColors[props.overlay]} mt-20 w-full lg:w-10/12 h-auto flex flex-col lg:ml-0.5 lg:px-10 py-9`}>
+					<div
+						className={`${
+							cardColors[props.overlay]
+						} break-words w-11/12 md:w-10/12 lg:w-11/12 self-center lg:self-start mt-12 md:mb-4 lg:mt-20 2xl:w-10/12 h-auto flex flex-col lg:ml-0.5 px-4 xl:px-8 py-6 lg:py-9 lg:pb-8`}>
 						{boxCategories
 							.map((key: string, i) => {
 								return Object.keys(props).includes(key) ? (
 									<div
 										key={`category-${i}`}
-										className='font-stolzl text-lg lg:text-[20px] flex lg:items-center pl-6 mb-6 last:mb-1.5'>
-										<label className='tracking-wider lg:min-w-[150px] mr-8 lg:mr-0 capitalize'>{key}</label>
-										<p className='font-light'>{typeof props[key] === "string" ? props[key] : props[key].join(", ")}</p>
+										className='font-stolzl md:text-lg xl:text-[20px] flex lg:items-center pl-5 2xl:pl-6 mb-6 last:mb-1.5'>
+										<label className='tracking-wider xl:min-w-[150px] mr-8 xl:mr-0 capitalize'>{key}</label>
+										<p className='font-light break-words'>
+											{typeof props[key] === "string" ? props[key] : props[key].join(", ")}
+										</p>
 									</div>
 								) : undefined;
 							})
@@ -71,14 +83,15 @@ export default function ProjectPreviewTwo<T extends PreviewProps>(props: T) {
 					</div>
 				</div>
 				<div
-					className={`flex flex-col lg:flex-row w-full ${
+					className={`flex flex-col lg:flex-row h-full min-h-[200px] w-full ${
 						props.divide === "7/5" ? "lg:w-5/12" : "lg:w-6/12"
 					} h-full lg:-mt-8 lg:scale-95 lg:translate-x-10 lg:group-hover:translate-x-2 group-hover:scale-100 transition-all duration-500 lg:group-hover:-mt-6 relative`}>
-					<div className='w-full h-auto flex'>
+					<div className='w-full h-full flex'>
 						<Image
 							src={props.image.src}
 							alt={props.image.src}
-							className={`rounded-l-2xl object-contain lg:object-cover object-left ${props.image?.classNames}`}
+							className={`rounded-l-2xl object-contain lg:object-cover lg:object-left ${props.image?.classNames}`}
+							sizes='100vw'
 							fill
 						/>
 					</div>

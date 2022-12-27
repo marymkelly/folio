@@ -90,7 +90,7 @@ export const projects: ProjectProps[] = [
 					width: 2260,
 					height: 1316,
 				},
-				classNames: "mt-6",
+				classNames: "mt-6 px-6 md:px-0",
 			},
 		},
 	},
@@ -119,8 +119,12 @@ export const projects: ProjectProps[] = [
 					width: 1104,
 					height: 640,
 				},
-				classNames: "border-slate-200 lg:border-[4px] mt-6",
+				classNames: "border-slate-200 lg:border-[4px] mt-6 px-6 md:px-0",
 			},
+		},
+		url: {
+			live: "https://galactor-v3.web.app/",
+			github: "https://github.com/marymkelly/galactor-v3",
 		},
 	},
 	{
@@ -148,7 +152,7 @@ export const projects: ProjectProps[] = [
 					width: 1604,
 					height: 1595,
 				},
-				classNames: "mt-36",
+				classNames: "mt-8 md:mt-36",
 			},
 		},
 		url: {

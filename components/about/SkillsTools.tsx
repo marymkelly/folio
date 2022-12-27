@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useState } from "react";
 import { technologies, skills } from "../../lib/data/tools";
 import { filter } from "../../lib/utils/filter";
@@ -17,7 +16,6 @@ export default function SkillsAndTools() {
 				<div className='w-full flex-col md:flex-row md:w-10/12 px-8 flex justify-between relative'>
 					{skills.map((skillArea, i) => {
 						skillArea.skills.sort();
-
 						return (
 							<div key={`skill-area-${i}`} className={`mb-10 font-stolzl ${skillArea.classes}`}>
 								<h5
@@ -26,7 +24,7 @@ export default function SkillsAndTools() {
 								</h5>
 								<ul
 									className={`text-slate-100 md:mt-4 lg:mt-0 text-sm lg:text-base list-none ${
-										skillArea.category.startsWith("Business") && "columns-2"
+										skillArea.category.startsWith("Business") ? "columns-2" : "columns-1"
 									}`}>
 									{skillArea.skills.map((item, j) => (
 										<li key={`skill-${j}`} className='font-extralight tracking-wide leading-6 lg:leading-8'>
@@ -51,38 +49,51 @@ export default function SkillsAndTools() {
 							}}
 							type='text'
 							placeholder='Search'
-							className='z-10 h-9 w-60 ml-6 align-middle pb-0.5 bg-custom-gray-blue/25 placeholder:text-custom-gray-blue/50 focus-within:placeholder:text-custom-gray-blue/75 text-sm rounded focus:outline-none focus:ring-1 focus:outline-[1.5px] focus:outline-custom-teal/50 focus:outline-offset-0 indent-2 focus:ring-custom-teal' />
+							className='z-10 h-9 w-60 ml-6 mr-4 align-middle pb-0.5 text-white bg-custom-gray-blue/25 placeholder:text-custom-gray-blue/50 focus-within:placeholder:text-custom-gray-blue/75 text-sm rounded focus:outline-none focus:ring-1 focus:outline-[1.5px] focus:outline-custom-teal/50 focus:outline-offset-0 indent-2 focus:ring-custom-teal'
+						/>
+
+						{["All", ...Object.keys(technologies.categories)].sort().map((item) => (
+							<div
+								key={`tool-category-${item}`}
+								className={`inline-flex items-center mx-2 rounded-full px-4 md:px-3.5 py-1 border ${
+									selectedToolCategory === item ? "border-transparent bg-custom-teal" : "bg-transparent border-custom-gray-blue/60"
+								}`}
+								onClick={() => {
+									setToolCategory(item);
+								}}>
+								<p
+									className={`font-itc tracking-wider text-xs lg:text-sm whitespace-nowrap ${
+										selectedToolCategory === item ? "text-custom-dark-navy font-semibold" : "font-light text-custom-gray-blue/60"
+									}`}>
+									{item}
+								</p>
+							</div>
+						))}
 					</div>
 
-					<div className='pt-3 pl-4 2xl:pl-6 ml-6 mr-2 flex flex-wrap h-[400px] lg:h-auto overflow-scroll md:min-h-[386px] justify-start max-w-[1440px] bg-custom-gray-blue/10'>
-						{filteredTools.length > 0 &&
-							filteredTools
-								.filter((item) => {
-									return !["Language"].some((entry) => {
-										return item.type.includes(entry);
-									});
-								})
-								.map((item, i) => {
-									return (
-										<div
-											key={`tech-item-${i}`}
-											className={`m-1 pt-1.5 pb-2 ${
-												item.category === selectedToolCategory || selectedToolCategory === "All" ? "flex" : "hidden"
-											} flex-col items-center justify-center max-w-[100px] w-[90px] h-[100px]`}>
-											<div className='p-1 flex items-center justify-center w-[60px] h-[60px]'>
-												<Image
-													src={item.image!.src}
-													alt={item.image!.alt}
-													width={item.image!.dimensions.width * 0.7}
-													height={item.image!.dimensions.height * 0.7}
-												/>
-											</div>
-											<p className='text-[10px] text-custom-gray-blue font-stolzl font-light text-center pt-2 leading-tight h-8 align-top justify-items-start mt-0'>
-												{item.name}
-											</p>
+					<div className='pt-3 pl-2 sm:pl-4 2xl:pl-6 ml-6 mr-2 flex flex-wrap flex-auto h-[400px] lg:h-auto overflow-scroll md:min-h-[386px] lg:min-h-[120px] justify-start min-w-[311px] max-w-[1440px] bg-custom-gray-blue/10'>
+						{filteredTools.length > 0 ? (
+							filteredTools.map((item, i) => {
+								return (
+									<div
+										key={`tech-item-${i}`}
+										className={`m-1 pt-1.5 pb-2 ${
+											item.category === selectedToolCategory || selectedToolCategory === "All" ? "flex" : "hidden"
+										} flex-col items-center justify-between max-w-[100px] w-[90px] h-[100px] relative`}>
+										<div className='p-1 flex items-center justify-center w-[50px] h-[50px] relative'>
+											<item.component className='h-full w-full' />
 										</div>
-									);
-								})}
+										<p className='text-[10px] min-h-[34px] text-custom-gray-blue font-stolzl font-light text-center pt-2 leading-tight align-top justify-items-start mt-0'>
+											{item.name}
+										</p>
+									</div>
+								);
+							})
+						) : (
+							<div className='w-full h-full text-sm flex justify-center self-center mb-4 text-custom-gray-blue/75'>
+								<p>No Matches</p>
+							</div>
+						)}
 					</div>
 				</div>
 			</div>

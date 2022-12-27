@@ -29,6 +29,7 @@ export default function AboutPage() {
 						width={371}
 						height={706}
 						className='w-[250px] lg:w-[371px] h-auto'
+						priority
 					/>
 				</div>
 				<div className='w-full mt-auto lg:w-auto flex-1 h-full lg:h-screen flex flex-col justify-items-center justify-center items-center lg:pr-20 text-custom-black'>
@@ -60,7 +61,7 @@ export default function AboutPage() {
 					</div>
 				</div>
 			</div>
-			<div className='relative h-full w-full inline-flex flex-col'>
+			<div className='relative h-full w-full hidden lg:inline-flex flex-col'>
 				<ExperienceJourney />
 			</div>
 			<FormalExperience />

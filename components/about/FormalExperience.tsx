@@ -52,9 +52,9 @@ export default function FormalExperience() {
 
 							<div className='flex w-full justify-between'>
 								{clients.map((client, i) => (
-									<div key={`client-${i}`} className='max-w-[105px] flex flex-col items-center'>
-										<div>
-											<client.component className={`text-custom-black w-[${client.width}px] h-[${client.height}px]`} />
+									<div key={`client-${i}`} className='max-w-[71px] md:max-w-[105px] flex flex-col items-center w-full'>
+										<div className='flex flex-col w-[60px] h-auto'>
+											<client.component className={`text-custom-black w-full h-auto flex hm`} />
 										</div>
 										<p className='pb-2 pt-3 text-xs font-gothic hidden md:flex'>{client.name}</p>
 									</div>

@@ -23,6 +23,7 @@ export default function MainPage() {
 							background={p.preview?.colors.background!}
 							overlay={p.preview?.colors.overlay!}
 							image={p.preview?.image!}
+							repository={p.url?.github}
 							url={p.url?.live}
 							dates={getPreviewDateString(p.dates)}
 							divide={p.preview?.divide}
