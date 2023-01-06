@@ -6,7 +6,7 @@ import { getPreviewDateString } from "../../lib/data/projects";
 
 export default function RecentWorks() {
 	return (
-		<div id="recent-works" className='relative pb-36 pt-44 mt-8 sm:mt-20 flex flex-col'>
+		<div id='recent-works' className='relative pb-36 pt-44 mt-8 sm:mt-20 flex flex-col'>
 			<div className='absolute -top-20 md:-top-40 left-0 w-full flex flex-col md:-ml-5 mb-2 font-gravesend font-bold leading-none mt-8 tracking-[-0.02em] text-stroke text-stroke-[1.5px] text-stroke-custom-gray-blue opacity-[18%] text-transparent text-[100px] sm:text-[120px] md:text-[210px]'>
 				<h1 className=''>Recent</h1>
 				<h1 className='flex -mt-4 md:-mt-16 -mr-48 sm:-mr-28 md:-mr-64 lg:-mr-8 md:self-end md:justify-self-end'>Works</h1>
@@ -33,7 +33,8 @@ export default function RecentWorks() {
 				through this{" "}
 				<a
 					href='https://portfolio-v2.marykelly.tech'
-					target="_blank"
+					target='_blank'
+					rel='noreferrer'
 					className='group peer font-stolzl font-light md:font-medium tracking-[0.015em] ml-px hover:brightness-95 text-logo-teal'>
 					<span className='decoration-[1.5px] underline underline-offset-4'>previous version of my portfolio site</span>
 					<span className="font-itc group-hover:before:content-['→'] group-hover:text-inherit text-custom-black group-hover:ml-1" />

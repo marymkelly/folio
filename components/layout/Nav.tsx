@@ -155,16 +155,16 @@ function MobileNav<T extends MobileNavProps>({ clicked, setClick, router }: T) {
 							<EnvelopeIcon className='w-8 h-8 fill-custom-dark-navy' />
 						</div>
 					</Link>
-					<Link target='_blank' href='https://github.com/marymkelly'>
+					<Link target='_blank' rel='noreferrer' href='https://github.com/marymkelly'>
 						<GithubIcon className='w-10 h-10' />
 					</Link>
-					<Link target='_blank' href='https://www.linkedin.com/in/mary-kelly-5040b6ab/'>
+					<Link target='_blank' rel='noreferrer' href='https://www.linkedin.com/in/mary-kelly-5040b6ab/'>
 						<LinkedinIcon className='w-10 h-10' />
 					</Link>
 				</div>
 
 				<div className='flex items-center mt-12'>
-					<Link href='/resume' target='_blank' className='font-stolzl text-base text-custom-gray-blue'>
+					<Link href='/resume' target='_blank' rel='noreferrer' className='font-stolzl text-base text-custom-gray-blue'>
 						Resume
 					</Link>
 				</div>
@@ -287,15 +287,20 @@ export default function Nav<T extends NavProps>(props: T) {
 				<Link
 					href='/resume'
 					target='_blank'
+					rel='noreferrer'
 					className={`cursor-pointer text-[14px] flex hover hover:text-logo-teal justify-end items-center p-2 mt-6 bg-cyan-100/0 min-w-[80px] ml-4 ${
 						router.asPath?.startsWith("/resume") ? "font-medium text-custom-teal" : "text-custom-gray-blue/75"
 					}`}>
 					Resume
 				</Link>
-				<Link target='_blank' className='w-full flex justify-end pr-2 mt-2.5' href='https://github.com/marymkelly'>
+				<Link target='_blank' rel='noreferrer' className='w-full flex justify-end pr-2 mt-2.5' href='https://github.com/marymkelly'>
 					<GithubIcon className='w-[26px] h-[26px] text-custom-gray-blue/40 hover:text-logo-blue/75' />
 				</Link>
-				<Link target='_blank' className='w-full flex justify-end pr-2 mt-4' href='https://www.linkedin.com/in/mary-kelly-5040b6ab/'>
+				<Link
+					target='_blank'
+					rel='noreferrer'
+					className='w-full flex justify-end pr-2 mt-4'
+					href='https://www.linkedin.com/in/mary-kelly-5040b6ab/'>
 					<LinkedinIcon className='w-[26px] h-[26px] text-custom-gray-blue/40 hover:text-logo-blue/75' />
 				</Link>
 			</div>

@@ -18,6 +18,7 @@ export default function Contact() {
 						<Link
 							href='mailto:mary@marykelly.tech'
 							target="_blank"
+							rel="noreferrer"
 							className='text-custom-black dark:text-slate-300/80 dark:tracking-wide font-stolzl text-base sm:text-xl hover:text-custom-orange hover:underline hover:underline-offset-[8px]'>
 							mary@marykelly.tech
 						</Link>
@@ -27,6 +28,7 @@ export default function Contact() {
 						<Link
 							href='https://github.com/marymkelly'
 							target="_blank"
+							rel="noreferrer"
 							className='text-custom-black dark:text-slate-300/80 dark:tracking-wide font-stolzl text-base sm:text-xl hover:text-custom-orange hover:underline hover:underline-offset-[8px]'>
 							github.com/marymkelly
 						</Link>
@@ -35,6 +37,7 @@ export default function Contact() {
 						<Link
 							href='https://www.linkedin.com/in/mary-kelly-5040b6ab/'
 							target="_blank"
+							rel="noreferrer"
 							className='font-stolzl text-base sm:text-xl mr-5 text-custom-gray-blue underline underline-offset-[8px] hover:text-custom-orange'>
 							LinkedIn
 						</Link>
