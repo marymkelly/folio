@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState, useRef, LegacyRef, useContext } from "react";
+import ThemeContext from "../../context/ThemeCtx";
 import { technologies, skills } from "../../lib/data/tools";
 import { filter } from "../../lib/utils/filter";
 
@@ -6,9 +7,27 @@ export default function SkillsAndTools() {
 	const [selectedToolCategory, setToolCategory] = useState<string>("All");
 	const [query, setQuery] = useState<string>("");
 	const filteredTools = filter(query, technologies.items);
+	const skillsRef = useRef<HTMLDivElement>();
+	const themeCtx = useContext(ThemeContext);
+
+	useEffect(() => {
+		themeCtx.setDarkElements([skillsRef.current]);
+
+		function handleResize() {
+			if (window.visualViewport!.width < 768) {
+				setToolCategory("All");
+			}
+		}
+
+		window.addEventListener("resize", handleResize);
+
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	}, []);
 
 	return (
-		<div className='relative h-full w-full flex flex-col px-4 lg:px-0 pb-6 bg-custom-dark-navy'>
+		<div ref={skillsRef as LegacyRef<HTMLDivElement>} id="skills-tools" className='relative h-full w-full flex flex-col px-4 lg:px-0 pb-6 bg-custom-dark-navy'>
 			<div className='flex flex-col md:-ml-5 mb-2 font-gravesend font-bold leading-none mt-6 md:mt-16 tracking-[-0.02em] text-stroke text-stroke-[1.5px] text-stroke-custom-white opacity-[12%] text-transparent text-[120px] sm:text-[150px] md:text-[210px]'>
 				<h1 className='whitespace-pre-line lg:whitespace-normal 2xl:whitespace-pre'>Skills</h1>
 			</div>
@@ -55,7 +74,7 @@ export default function SkillsAndTools() {
 						{["All", ...Object.keys(technologies.categories)].sort().map((item) => (
 							<div
 								key={`tool-category-${item}`}
-								className={`inline-flex items-center mx-2 rounded-full px-4 md:px-3.5 py-1 border ${
+								className={`hidden md:inline-flex items-center mx-2 rounded-full px-4 md:px-3.5 py-1 border ${
 									selectedToolCategory === item ? "border-transparent bg-custom-teal" : "bg-transparent border-custom-gray-blue/60"
 								}`}
 								onClick={() => {

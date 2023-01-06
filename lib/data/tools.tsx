@@ -684,7 +684,7 @@ export const technologies = new Technologies(tech);
 export const skills: SkillItem[] = [
 	{
 		category: "General Skills",
-		skills: ["Problem solving", "Collaboration", "communication", "Logical Thinking", "Creative Thinking", "Adaptability", "Listening"],
+		skills: ["Problem Solving", "Collaboration", "Communication", "Logical Thinking", "Creative Thinking", "Adaptability", "Listening"],
 		classes: "max-w-[180px]",
 	},
 	{

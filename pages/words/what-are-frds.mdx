@@ -1,6 +1,7 @@
 import MdxLayout from "../../components/layout/MdxLayout.tsx";
+import { articles } from "../../lib/data/projects.ts";
 
-# What is a Functional Requirements Document?
+# What is a Functional Requirements Document (FRD)?
 
 During my time as a business analyst, for a custom software development company primarily providing solutions in the web and mobile application space, in addition to any design assets, I often wrote Functional Requirements Documents (FRD) as deliverables, for clients who acquired services in design and analysis. During those projects, screens covering most, if not all, major features of a project’s identified scope would be planned and designed, which averaged anywhere between 20-45 screens (sometimes less, sometimes more). This may sound great because you will be able to see what the product will look like. **So what is the documentation for?**
 
@@ -38,4 +39,4 @@ This is beneficial in:
 
 ![FRD Page Example](/images/projects/parrot/frd.png "Example Page")
 
-export default ({ children }) => <MdxLayout>{children}</MdxLayout>;
+export default ({ children }) => <MdxLayout {...articles.find((entry) => entry.href === "/words/what-are-frds")}>{children}</MdxLayout>;

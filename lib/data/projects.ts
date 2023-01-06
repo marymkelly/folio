@@ -1,4 +1,9 @@
 interface DateMY {
+	month: string | number;
+	year: number;
+}
+
+interface DateRangeMY {
 	start: {
 		month: string;
 		year: number;
@@ -51,7 +56,7 @@ export interface ProjectProps {
 	};
 }
 
-export function getPreviewDateString<T extends DateMY>(dates: T): string {
+export function getPreviewDateString<T extends DateRangeMY>(dates: T): string {
 	if (dates?.end && dates.end?.year && dates.end.year === dates.start.year) {
 		return dates.start.month === dates.end.month
 			? `${dates.end.month} ${dates.end.year}`
@@ -84,7 +89,6 @@ export const projects: ProjectProps[] = [
 			},
 			image: {
 				src: "/images/projects/sinpin/intro.png",
-				// src: '/images/preview/sinpin-preview-image2x.png',
 				alt: "Sinpin Dashboard Screenshot",
 				dimensions: {
 					width: 2260,
@@ -98,7 +102,7 @@ export const projects: ProjectProps[] = [
 		id: "galactor",
 		name: "Galactor",
 		role: ["Developer", "Designer"],
-		type: "Version Update",
+		type: "ReactJS",
 		platforms: "Web",
 		technologies: ["React.js", "Node.js", "Tailwind CSS", "Globe.gl", "Three.js", "Aladin API", "Skymap API", "Google Maps"],
 		dates: {
@@ -123,7 +127,7 @@ export const projects: ProjectProps[] = [
 			},
 		},
 		url: {
-			live: "https://galactor-v3.web.app/",
+			live: "https://galactor.marykelly.tech",
 			github: "https://github.com/marymkelly/galactor-v3",
 		},
 	},
@@ -158,5 +162,32 @@ export const projects: ProjectProps[] = [
 		url: {
 			live: "https://apps.apple.com/us/app/parrot-social-media/id1581330910",
 		},
+	},
+];
+
+export interface Article {
+	title: string;
+	author?: string;
+	date?: DateMY;
+	href: string;
+}
+export const articles: Article[] = [
+	{
+		title: "What is a Funtional Requirements Document (FRD)?",
+		author: "Mary Kelly",
+		date: {
+			month: "November",
+			year: 2022,
+		},
+		href: "/words/what-are-frds",
+	},
+	{
+		title: "What is a Work Breakdown Structure (WBS)?",
+		author: "Mary Kelly",
+		date: {
+			month: "October",
+			year: 2022,
+		},
+		href: "/words/what-is-a-wbs",
 	},
 ];

@@ -185,14 +185,14 @@ export default function ExperienceJourney() {
 
 	return (
 		<div className=' lg:flex min-h-[800px] w-full flex-col flex-1 relative bg-[#5eadcc] bg-opacity-[10%]'>
-			<div className='w-6/12 lg:w-[30%] absolute ml-24 mt-24'>
+			<div className='w-6/12 lg:w-[30%] absolute ml-24 mt-16'>
 				<h3
 					className={`font-itc font-bold md:whitespace-nowrap text-7xl tracking-wide mb-8 transition-all duration-500 delay-100 ${
 						canvasControllerRef?.current?.sprite && canvasControllerRef?.current?.sprite.x > 50
 							? "text-custom-navy opacity-[10%]"
 							: "text-custom-black"
 					}`}>
-					My Saga
+					My Journey
 				</h3>
 				<p
 					className={`font-itc text-sm font-medium tracking-[0.021em] transition-all duration-500 delay-100 ${

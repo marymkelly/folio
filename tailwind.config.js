@@ -49,9 +49,16 @@ module.exports = {
 					"0%, 82%": { opacity: "1" },
 					"100%": { opacity: "0" },
 				},
+				navbloom: {
+					"0%": { padding: "4px 8px", marginTop: "20px" },
+					"50%": { padding: "8px", marginTop: "12px" },
+					"100%": { padding: "4px 8px", marginTop: "4px" },
+				},
 			},
 			animation: {
 				tailfade: "tailfade 3s ease-in-out infinite",
+				navbloom: "navbloom 1s linear 1",
+				navbloomReverse: "navbloom 1s linear 1 reverse"
 			},
 			typography: (theme) => ({
 				DEFAULT: {

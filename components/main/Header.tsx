@@ -84,7 +84,7 @@ export default function MainHeader() {
 	}, [hitTimer]);
 
 	return (
-		<header className='relative 2xl:pl-[2%] 3xl:pl-[18%] flex h-full w-full min-h-screen justify-center 3xl:justify-start items-center align-center'>
+		<header id="landing" className='relative 2xl:pl-[2%] 3xl:pl-[18%] flex h-full w-full min-h-screen justify-center 3xl:justify-start items-center align-center'>
 			<section className='flex flex-col lg:flex-row lg:-mr-[3%] 2xl:-mr-[4%] 3xl:-mr-0 z-40 -mt-40 lg:mt-0'>
 				<div className='flex flex-col'>
 					<h3 className='text-7xl lg:text-[60px] 2xl:text-[90px] text-custom-navy dark:text-slate-300/70 font-itc font-medium pl-1.5'>

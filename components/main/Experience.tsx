@@ -1,85 +1,44 @@
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import IconLabel from "../common/IconLabel";
-import { ClipboardDocumentCheckIcon, CodeBracketSquareIcon, PencilSquareIcon, RectangleGroupIcon, UserGroupIcon } from "@heroicons/react/24/outline";
-import HistoryItem, { ExperienceHistory as ExperienceHistoryItem } from "./ExperienceEntry";
 import Button from "../common/Button";
 import DotGroup from "../Dots";
 
-type ExperienceArea = [area: string, icon: Function];
-
 export default function ExperienceOverview() {
-	const experienceAreas: ExperienceArea[] = [
-		["Business Analysis", ClipboardDocumentCheckIcon],
-		["Software Development", CodeBracketSquareIcon],
-		["UI / UX Design", RectangleGroupIcon],
-		["Digital Arts & Science", PencilSquareIcon],
-		["Sociology", UserGroupIcon],
-	];
+	const [isMobile, setIsMobile] = useState(false);
 
-	const recentExperience: Exclude<ExperienceHistoryItem, "className">[] = [
-		{ title: "Lead Software Developer", organization: "Sin Pin / Look International Inc.", startDate: "Apr 2022" },
-		{ title: "Bachelor of Arts, Digital Arts & Sciences", organization: "University of Florida", startDate: "Aug 2021" },
-	];
+	useEffect(() => {
+		function handleResize() {
+			if (window.visualViewport!.width < 768) {
+				setIsMobile(true);
+			} else {
+				setIsMobile(false);
+			}
+		}
+		window.addEventListener("resize", handleResize);
+
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	}, []);
 
 	return (
 		<div className='pb-32 2xl:pb-36 md:pt-8 px-10 md:px-28 lg:pl-[10%] xl:pl-[18%] min-w-[360px] w-full h-full flex flex-col'>
 			<div className='mb-12 md:mb-20'>
-				<h2 className='section-header--main'>Experience</h2>
-				<p className="font-['Didact_Gothic'] pl-0.5 lg:pl-1 text-base md:text-lg lg:text-xl leading-[1.75] lg:leading-loose tracking-wide xl:max-w-[1105px]">
-					In my quest to contribute towards improving the human-computer experience, I have gained a diverse background related to software
-					development, which I pull from and apply as needed today, when defining, designing, or developing solutions. Educationally, I have
-					a background in sociology, and am currently pursuing a second undergraduate degree in digital arts and sciences.
+				<h2 className='section-header--main max-w-[1200px] leading-normal'>
+					I am the <span className='font-medium'>Lead Software Developer & Product Designer</span> at Sin Pin
+				</h2>
+				<p className="font-['Didact_Gothic'] text-custom-black pl-0.5 lg:pl-1 text-base md:text-lg lg:text-xl leading-[1.75] lg:leading-loose tracking-wide xl:max-w-[1105px]">
+					A long time ago in a galaxy far, far away.... wait, wrong story. Rather, just over a handful of years ago in a town that is rather
+					far away (from me now), I discovered my interest in software development, design, and the field of human-computer interaction.
+					Since that time, it has been my mission to become a <span className='line-through'>jedi</span> creative master and a force for
+					good in the struggle against the evils of bad user experience and design in the digital universe.
 				</p>
 			</div>
-			<div className='max-w-[1200px] flex flex-col h-auto mb-16 md:mb-36'>
-				<div className='flex flex-col md:flex-row h-auto  mb-24'>
-					<div className='min-w-[100px] w-2/12 pt-3 pl-0.5'>
-						<h3 className='font-itc text-lg tracking-[.037em] text-custom-navy dark:text-slate-300 pt-0.5 mb-8 md:mb-0'>Areas</h3>
-					</div>
-					<div className='grid grid-flow-row-dense md:grid-flow-col-dense grid-cols-1 md:grid-cols-2 md:grid-rows-3 w-full h-auto md:w-10/12'>
-						{experienceAreas.map((area: ExperienceArea, i: number): JSX.Element => {
-							const [name, Icon] = area;
-
-							return (
-								<div key={`expArea-${i}`} className='col-span-1'>
-									<IconLabel
-										label={name}
-										className='md:px-8 py-3 mb-2.5 3xl:mb-4 font-gravesend text-lg tracking-wide'
-										icon={<Icon className='h-8 w-8 min-w-[32px] min-h-[32px] text-custom-teal stroke-1' />}
-									/>
-								</div>
-							);
-						})}
-					</div>
-				</div>
-				<div className='flex flex-col md:flex-row h-auto'>
-					<div className='min-w-[100px] w-2/12 pt-1 pl-0.5'>
-						<h3 className='font-itc text-lg tracking-[.037em] text-custom-navy dark:text-slate-300 xl:pt-0.5 mb-8 md:mb-0'>Current</h3>
-					</div>
-					<div className='grid grid-flow-row-dense md:grid-flow-col-dense grid-cols-1 md:grid-cols-2 md:grid-rows-1 w-full h-auto md:w-10/12'>
-						{recentExperience.map((entry: ExperienceHistoryItem, i: number): JSX.Element => {
-							const { organization, title, startDate, endDate } = entry;
-
-							return (
-								<div key={`historyItem-${i}`} className='col-span-1'>
-									<HistoryItem
-										title={title}
-										organization={organization}
-										className='font-stolzl text-xl lg:text-2xl md:pl-8 mb-[54px] md:mb-0 tracking-[-.018em]'
-										startDate={startDate}
-										endDate={endDate}
-									/>
-								</div>
-							);
-						})}
-					</div>
-				</div>
-			</div>
 			<div className='relative'>
-				<div className='w-[480px] h-[138px] absolute -mt-6 -ml-[16%] z-[-1] dark:opacity-10'>
+				<div className='w-[480px] h-[138px] absolute -mt-8 -ml-[16%] z-[-1] dark:opacity-10'>
 					<DotGroup id='more-experience-dots' density={3.25} size={3} />
 				</div>
-				<Link href="/about">
+				<Link href={isMobile ? "/about#formal-experience" : "/about#saga"}>
 					<Button
 						label='Learn more about my experience'
 						showArrow={true}

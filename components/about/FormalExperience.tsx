@@ -4,7 +4,7 @@ import { experience, education, clients } from "../../lib/data/experience";
 
 export default function FormalExperience() {
 	return (
-		<div className='relative h-full w-full flex flex-col bg-custom-gray-blue/[0%]'>
+		<div id="formal-experience" className='relative h-full w-full flex flex-col bg-custom-gray-blue/[0%]'>
 			<div className='absolute w-full flex flex-col md:-ml-5 mb-2 font-gravesend font-bold leading-none mt-8 tracking-[-0.02em] text-stroke text-stroke-[1.5px] text-stroke-custom-gray-blue opacity-[14%] text-transparent text-[100px] sm:text-[120px] md:text-[180px]'>
 				<h1 className=''>Formal</h1>
 				<h1 className='flex -mt-4 md:-mt-12 -mr-48 sm:-mr-28 md:-mr-64 lg:-mr-8 self-end justify-self-end'>Experience</h1>
@@ -52,9 +52,9 @@ export default function FormalExperience() {
 
 							<div className='flex w-full justify-between'>
 								{clients.map((client, i) => (
-									<div key={`client-${i}`} className='max-w-[71px] md:max-w-[105px] flex flex-col items-center w-full'>
+									<div key={`client-${i}`} className='first-of-type:-ml-2 mr-4 [&:nth-child(2)]:mr-7 max-w-[71px] md:first-of-type:ml-0 [&:nth-child(2)]:md:-mr-2  [&:nth-child(2)]:lg:mr-0 md:mr-0  md:max-w-[105px] flex flex-col md:items-center md:text-center w-full'>
 										<div className='flex flex-col w-[60px] h-auto'>
-											<client.component className={`text-custom-black w-full h-auto flex hm`} />
+											<client.component className={`text-custom-black w-full h-auto flex`} />
 										</div>
 										<p className='pb-2 pt-3 text-xs font-gothic hidden md:flex'>{client.name}</p>
 									</div>

@@ -1,7 +1,8 @@
 import MdxLayout from "../../components/layout/MdxLayout.tsx";
 import WbsImageGroup from "../../components/words/WbsImageGroup.tsx";
+import { articles } from "../../lib/data/projects.ts";
 
-# What is a Work Breakdown Structure?
+# What is a Work Breakdown Structure (WBS)?
 
 As a Business Analyst for a custom software development company for four years, I commonly created documents called “WBS'' which were important during the planning and definition of a client’s software development project. While many people have never heard of this concept, it is something that can be useful for a variety of applications, both outside, but particularly inside, the software industry.
 
@@ -32,4 +33,4 @@ So much like a shopping list, the effort of drafting a form of work breakdown st
 
 While not always necessary, Work Breakdown Structures can be a good tool to know about for the right instances. I hope that this was informative and that it is helpful in the event you find yourself using WBS at some point in the future!
 
-export default ({ children }) => <MdxLayout>{children}</MdxLayout>;
+export default ({ children }) => <MdxLayout {...articles.find((entry) => entry.href === "/words/what-is-a-wbs")}>{children}</MdxLayout>;

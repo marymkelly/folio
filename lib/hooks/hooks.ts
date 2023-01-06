@@ -13,7 +13,6 @@ export function useIsRefInBounds(): [RefObject<HTMLDivElement | null>, boolean] 
 
 				const viewHeight = window.innerHeight;
 				const viewFifth = window.innerHeight / 5;
-                console.log('view height', viewHeight,  viewFifth)
 
 				if ((top < viewFifth && bottom < viewFifth) || (top > viewHeight - viewFifth && bottom > viewHeight - viewFifth)) {
 					if (inBounds) setInBounds(false);
