@@ -18,7 +18,7 @@ export default function Layout(props: Props): JSX.Element {
 						}`}>
 						<PageHead />
 						<Nav isDark={pageCtx.backgroundIsDark} />
-						<main className='flex flex-col w-full flex-auto h-auto overflow-x-clip pt-20'>{props.children}</main>
+						<main className='flex flex-col w-full flex-auto h-auto overflow-x-clip'>{props.children}</main>
 						<Footer isFixed={pageCtx.footerFixed} color={pageCtx.footerColorClass} />
 					</div>
 				)}

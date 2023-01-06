@@ -5,17 +5,9 @@ import { Article } from "../../lib/data/projects";
 
 interface MdxProps extends Article {
 	children: JSX.Element;
-	// meta?: {
-	// 	title: string;
-	// 	author?: string;
-	// 	date?: string;
-	// 	comment?: string;
-	// 	css?: string;
-	// };
 }
 
 export default function MdxLayout<T extends MdxProps>({ children, title }: T) {
-	console.log("CHILDREN", children);
 	const articleIndex = articles.findIndex((article) => article.title === title);
 	const prevArticle = articleIndex === 0 ? articles[articles.length - 1] : articles[articleIndex - 1];
 	const nextArticle = articleIndex + 1 === articles.length ? articles[0] : articles[articleIndex + 1];
@@ -35,7 +27,10 @@ export default function MdxLayout<T extends MdxProps>({ children, title }: T) {
 						</Link>
 					</div>
 				)}
-				<div className={`w-full flex flex-col my-8 sm:my-12 ${articles.length > 2 ? "xs:w-6/12 xs:pl-5 xl:pl-8" : "xs:w-10/12 sm:w-8/12 xl:w-7/12"}`}>
+				<div
+					className={`w-full flex flex-col my-8 sm:my-12 ${
+						articles.length > 2 ? "xs:w-6/12 xs:pl-5 xl:pl-8" : "xs:w-10/12 sm:w-8/12 xl:w-7/12"
+					}`}>
 					<p className='font-semibold tracking-[0.018em] mb-1 text-slate-400'>Next Article</p>
 					<Link
 						href={nextArticle.href}

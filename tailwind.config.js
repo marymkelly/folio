@@ -46,8 +46,9 @@ module.exports = {
 			},
 			keyframes: {
 				tailfade: {
-					"0%, 82%": { opacity: "1" },
-					"100%": { opacity: "0" },
+					"0%, 5%": { opacity: "0" },
+					"5%, 85%": { opacity: "1" },
+					"95%, 100%": { opacity: "0" },
 				},
 				navbloom: {
 					"0%": { padding: "4px 8px", marginTop: "20px" },
@@ -56,7 +57,7 @@ module.exports = {
 				},
 			},
 			animation: {
-				tailfade: "tailfade 3s ease-in-out infinite",
+				tailfade: "tailfade 3s ease-out infinite",
 				navbloom: "navbloom 1s linear 1",
 				navbloomReverse: "navbloom 1s linear 1 reverse"
 			},

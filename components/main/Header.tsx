@@ -13,7 +13,8 @@ function getRandomInt(min: number, max: number): number {
 export default function MainHeader() {
 	const adjArray = [
 		["Software", "Developer"],
-		// ["Business", "Analyst"],
+		["Business", "Analyst"],
+		["Designer"],
 		["Product", "Designer"],
 		["Digital", "Solutionist"],
 		["Problem", "Solver"],
@@ -28,9 +29,7 @@ export default function MainHeader() {
 	useEffect(() => {
 		if (window) {
 			if (!hitTimer) {
-				setTimeout(() => {
-					setHitTimer(true);
-				}, 3000);
+				setHitTimer(true);
 			}
 		}
 	}, []);
@@ -78,14 +77,16 @@ export default function MainHeader() {
 			setHitTimer(false);
 			setTimeout(() => {
 				setHitTimer(true);
+				setAdjIndex(newIndex);
 			}, 3000);
-			setAdjIndex(newIndex);
 		}
 	}, [hitTimer]);
 
 	return (
-		<header id="landing" className='relative 2xl:pl-[2%] 3xl:pl-[18%] flex h-full w-full min-h-screen justify-center 3xl:justify-start items-center align-center'>
-			<section className='flex flex-col lg:flex-row lg:-mr-[3%] 2xl:-mr-[4%] 3xl:-mr-0 z-40 -mt-40 lg:mt-0'>
+		<header
+			id='landing'
+			className='relative 2xl:pl-[2%] 3xl:pl-[18%] flex h-full w-full min-h-[90vh] justify-center 3xl:justify-start items-center align-center'>
+			<section className='flex flex-col lg:flex-row lg:-mr-[3%] 2xl:-mr-[4%] 3xl:-mr-0 z-40 -mt-40 lg:-mt-20'>
 				<div className='flex flex-col'>
 					<h3 className='text-7xl lg:text-[60px] 2xl:text-[90px] text-custom-navy dark:text-slate-300/70 font-itc font-medium pl-1.5'>
 						Hello! <span className='text-custom-gray-blue dark:text-slate-500'>I&apos;m</span>
@@ -94,12 +95,23 @@ export default function MainHeader() {
 					<div className='lg:border-[4px] 2xl:border-[5px] border-custom-orange w-[97px] lg:ml-[8px] 2xl:ml-[10px] lg:mt-8 2xl:mt-9 hidden lg:block' />
 				</div>
 				<div className='lg:border-[3px] 2xl:border-[4px] border-custom-navy mt-1.5 mb-16 2xl:mt-3 2xl:mb-[60px] lg:mx-16 2xl:mx-20 hidden lg:block' />
-				<div className='flex lg:flex-col mt-3.5 lg:mt-0 border lg:border-none border-custom-orange justify-center lg:justify-start py-1 lg:py-0 ml-1.5 lg:ml-0'>
+				<div className='flex lg:hidden lg:flex-col mt-3.5 lg:mt-0 border lg:border-none border-custom-orange justify-center lg:justify-start py-1 lg:py-0 ml-1.5 lg:ml-0'>
 					<p className='animate-tailfade text-[28px] lg:text-[65px] 2xl:text-[100px] tracking-wider lg:tracking-normal font-itc font-light lg:font-medium text-custom-orange lg:leading-none lg:-mt-1 mr-3 lg:mr-0'>
 						{adjArray[adjIndex][0]}
 					</p>
 					<p className='animate-tailfade text-[28px] leading-normal lg:text-[85px] 2xl:text-[130px] tracking-wider lg:tracking-normal font-itc font-light lg:font-medium text-custom-orange 2xl:leading-snug'>
 						{adjArray[adjIndex][1]}
+					</p>
+				</div>
+				<div className='hidden lg:flex lg:flex-col mt-3.5 lg:-mt-2 border lg:border-none border-custom-orange justify-center lg:justify-start py-1 lg:py-0 ml-1.5 lg:ml-0'>
+					<p className='text-[28px] leading-snug lg:text-[60px] tracking-wider lg:tracking-normal font-itc font-light lg:font-medium text-custom-orange mr-3 lg:mr-0'>
+						Designer,
+					</p>
+					<p className='text-[28px] leading-snug lg:text-[60px] tracking-wider lg:tracking-normal font-itc font-light lg:font-medium text-custom-orange'>
+						Developer,
+					</p>
+					<p className='text-[28px] leading-snug lg:text-[60px] tracking-wider lg:tracking-normal font-itc font-light lg:font-medium text-custom-orange'>
+						Problem Solver
 					</p>
 				</div>
 			</section>
