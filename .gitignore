@@ -42,3 +42,5 @@ firebase.json
 .gitattributes
 .github
 .firebase
+
+/functions

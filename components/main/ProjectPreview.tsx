@@ -87,13 +87,15 @@ export default function ProjectPreviewTwo<T extends PreviewProps>(props: T) {
 					className={`flex flex-col lg:flex-row h-auto min-h-[200px] w-full ${
 						props.divide === "7/5" ? "lg:w-5/12" : "lg:w-6/12"
 					} mt-8 lg:-mt-8 lg:scale-95 lg:translate-x-10 lg:group-hover:translate-x-2 group-hover:scale-100 transition-all duration-500 lg:group-hover:-mt-6 relative`}>
-					<div className='w-full h-auto flex'>
+					<div className='w-full h-auto min-h-[200px] flex relative'>
 						<Image
 							src={props.image.src}
 							alt={props.image.src}
 							className={`rounded-l-2xl object-contain lg:object-cover lg:object-left ${props.image?.classNames}`}
-							sizes='100vw'
+							sizes='(max-width: 768px) 100vw 100vh,
+							(max-width: 1200px) 100vw 100vh'
 							fill
+							priority={inBounds ? true : false}
 						/>
 					</div>
 				</div>

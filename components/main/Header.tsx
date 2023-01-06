@@ -86,7 +86,7 @@ export default function MainHeader() {
 		<header
 			id='landing'
 			className='relative 2xl:pl-[2%] 3xl:pl-[18%] flex h-full w-full min-h-[90vh] justify-center 3xl:justify-start items-center align-center'>
-			<section className='flex flex-col lg:flex-row lg:-mr-[3%] 2xl:-mr-[4%] 3xl:-mr-0 z-40 -mt-40 lg:-mt-20'>
+			<section className='flex flex-col lg:flex-row lg:-mr-[3%] 2xl:-mr-[4%] 3xl:-mr-0 z-40 -mt-40 lg:mt-0'>
 				<div className='flex flex-col'>
 					<h3 className='text-7xl lg:text-[60px] 2xl:text-[90px] text-custom-navy dark:text-slate-300/70 font-itc font-medium pl-1.5'>
 						Hello! <span className='text-custom-gray-blue dark:text-slate-500'>I&apos;m</span>

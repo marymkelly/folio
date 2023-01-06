@@ -121,7 +121,7 @@ interface MobileNavProps {
 function MobileNav<T extends MobileNavProps>({ clicked, setClick, router }: T) {
 	return (
 		<div
-			className={`top-0 left-0 pb-16 w-full h-full flex flex-1 flex-col items-center justify-end bg-custom-dark-navy fixed z-[200] transition-transform duration-300 ${
+			className={`sm:hidden top-0 left-0 pb-16 w-full h-full flex flex-1 flex-col items-center justify-end bg-custom-dark-navy fixed z-[200] transition-transform duration-300 ${
 				clicked ? "translate-y-0" : "-translate-y-full"
 			}`}>
 			<div className='font-itc p-12 w-full h-4/6 space-y-6 flex flex-col justify-center items-center justify-items-center'>

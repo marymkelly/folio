@@ -21,8 +21,6 @@
 		top: 20px;
 		right: 20px;
 		z-index: 55;
-		//background-color: rgba(255, 255, 255, 0.2);
-		//border: 1px solid #5f7681;
 		border-radius: 50%;
 
 		@apply bg-cyan-500/90 border-cyan-600 fill-white shadow-md shadow-cyan-900/30;
@@ -32,7 +30,6 @@
 		height: 1.75px;
 		width: 17px;
 		border-radius: 1px;
-		//background-color: #333333;
 		position: absolute;
 		left: 20px;
 		top: 30px;
