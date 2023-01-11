@@ -9,7 +9,7 @@ export default function Contact() {
 				<h1 className='absolute whitespace-pre-line lg:whitespace-normal 2xl:whitespace-pre'>Contact</h1>
 			</div>
 			<div className='mb-12 w-full xl:mx-0 max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1400px] flex flex-col'>
-				<h2 className='font-itc font-normal lg:font-medium text-4xl md:text-5xl 2xl:text-[56px] text-custom-black dark:text-white mb-[52px] lg:mb-24'>
+				<h2 className='font-itc font-normal lg:font-medium text-4xl md:text-5xl 2xl:text-[56px] text-custom-black  mb-[52px] lg:mb-24'>
 					Drop me a line!
 				</h2>
 				<div className='flex flex-col space-y-5 lg:space-y-0 ml-0.5 lg:flex-row lg:items-center lg:justify-between max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1400px] w-full'>
@@ -19,7 +19,7 @@ export default function Contact() {
 							href='mailto:mary@marykelly.tech'
 							target="_blank"
 							rel="noreferrer"
-							className='text-custom-black dark:text-slate-300/80 dark:tracking-wide font-stolzl text-base sm:text-xl hover:text-custom-orange hover:underline hover:underline-offset-[8px]'>
+							className='text-custom-black dark:tracking-wide font-stolzl text-base sm:text-xl hover:text-custom-orange hover:underline hover:underline-offset-[8px]'>
 							mary@marykelly.tech
 						</Link>
 					</div>
@@ -29,7 +29,7 @@ export default function Contact() {
 							href='https://github.com/marymkelly'
 							target="_blank"
 							rel="noreferrer"
-							className='text-custom-black dark:text-slate-300/80 dark:tracking-wide font-stolzl text-base sm:text-xl hover:text-custom-orange hover:underline hover:underline-offset-[8px]'>
+							className='text-custom-black dark:tracking-wide font-stolzl text-base sm:text-xl hover:text-custom-orange hover:underline hover:underline-offset-[8px]'>
 							github.com/marymkelly
 						</Link>
 					</div>

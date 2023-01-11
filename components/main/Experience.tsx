@@ -42,7 +42,7 @@ export default function ExperienceOverview() {
 					<Button
 						label='Learn more about my experience'
 						showArrow={true}
-						className='text-custom-orange dark:text-slate-300 text-opacity-70 hover:text-opacity-90 border-custom-orange dark:border-slate-400 border-opacity-60 hover:border-opacity-75 bg-white hover:bg-[#FFF8F3] dark:bg-custom-dark-navy bg-opacity-80 border-2 px-7 py-3.5 font-itc font-normal text-lg tracking-wide z-40'
+						className='text-custom-orange text-opacity-70 hover:text-opacity-90 border-custom-orange dark:border-slate-400 border-opacity-60 hover:border-opacity-75 bg-white hover:bg-[#FFF8F3] dark:bg-custom-dark-navy bg-opacity-80 border-2 px-7 py-3.5 font-itc font-normal text-lg tracking-wide z-40'
 					/>
 				</Link>
 			</div>

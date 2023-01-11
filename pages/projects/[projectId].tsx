@@ -31,15 +31,15 @@ export default function Projects(props: { projectId: string }) {
 	return (
 		<>
 			<Component {...props} {...projects[projectIndex]} dates={getPreviewDateString(projects[projectIndex]!.dates)} />
-			<div className={`w-full flex pb-20 ${themeCtx.footerColorClass}`}>
-				<Link href={prevProject.href} className={`w-6/12 px-12 items-center flex flex-col`}>
-					<div className={`w-8/12 pl-[72px] py-12 self-end ${prevProject.preview ? cardColors[prevProject.preview.colors.overlay] : ""} `}>
+			<div className={`w-full flex-col md:flex-row flex pb-20 ${themeCtx.footerColorClass}`}>
+				<Link href={prevProject.href} className={`w-full md:w-6/12 px-12 mb-12 md:mb-0 items-center flex flex-col`}>
+					<div className={`w-full md:w-8/12 md:pl-[72px] pl-8 py-12 self-end ${prevProject.preview ? cardColors[prevProject.preview.colors.overlay] : ""} `}>
 						<p className='text-xl'>Previous Project</p>
 						<h3 className='text-3xl capitalize font-gravesend'>{prevProject.name}</h3>
 					</div>
 				</Link>
-				<Link href={nextProject.href} className={`w-6/12 px-12 flex flex-col`}>
-					<div className={`w-8/12 pl-[72px] py-12 ${nextProject.preview ? cardColors[nextProject.preview.colors.overlay] : ""}`}>
+				<Link href={nextProject.href} className={`w-full md:w-6/12 px-12 flex flex-col`}>
+					<div className={`w-full md:w-8/12 md:pl-[72px] pl-8 py-12 ${nextProject.preview ? cardColors[nextProject.preview.colors.overlay] : ""}`}>
 						<p className='text-xl'>Next Project</p>
 						<h3 className='text-3xl capitalize font-gravesend'>{nextProject.name}</h3>
 					</div>

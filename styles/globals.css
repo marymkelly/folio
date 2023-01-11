@@ -6,7 +6,7 @@
 
 @layer components {
 	.section-header--main {
-		@apply font-itc font-light text-4xl md:text-5xl lg:text-6xl text-custom-black dark:text-white mb-[52px] lg:mb-10;
+		@apply font-itc font-light text-4xl md:text-5xl lg:text-6xl text-custom-black mb-[52px] lg:mb-10;
 	}
 
 	.outline-text {
@@ -92,14 +92,4 @@ a {
 
 * {
 	box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-	html {
-		color-scheme: dark;
-	}
-	body {
-		color: white;
-		background: #022e46;
-	}
 }

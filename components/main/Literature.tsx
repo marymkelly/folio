@@ -11,7 +11,7 @@ export default function Literature() {
 					<h1 className='absolute -top-5 whitespace-pre-line lg:whitespace-normal 2xl:whitespace-pre'>Words</h1>
 				</div>
 				<div className='mb-16 w-full'>
-					<h2 className='font-itc font-normal tracking-wide lg:font-medium text-4xl md:text-5xl 2xl:text-[56px] text-custom-black dark:text-white mb-10 md:mb-[52px] lg:mb-10'>
+					<h2 className='font-itc font-normal tracking-wide lg:font-medium text-4xl md:text-5xl 2xl:text-[56px] text-custom-black mb-10 md:mb-[52px] lg:mb-10'>
 						Hot off the keypress
 					</h2>
 					<p className="font-['Didact_Gothic'] pl-0.5 lg:pl-1 text-base md:text-lg lg:text-xl leading-[1.75] lg:leading-loose tracking-wide xl:max-w-[1105px] lg:mb-4">

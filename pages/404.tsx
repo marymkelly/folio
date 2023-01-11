@@ -23,7 +23,7 @@ export default function Error404Page() {
 						<Button
 							label='Return Home'
 							showArrow={false}
-							className='inline-flex whitespace-nowrap text-[#ff7948] mt-20 dark:text-slate-300 text-opacity-100 hover:text-opacity-90 border-[#ff7948] dark:border-slate-400 border-opacity-80 hover:border-opacity-75 hover:bg-[#f9ece1]/20 dark:bg-custom-dark-navy bg-opacity-80 border-2 px-10 py-3.5 font-itc font-normal text-lg tracking-wide z-40'
+							className='inline-flex whitespace-nowrap text-[#ff7948] mt-20 text-opacity-100 hover:text-opacity-90 border-[#ff7948] dark:border-slate-400 border-opacity-80 hover:border-opacity-75 hover:bg-[#f9ece1]/20 dark:bg-custom-dark-navy bg-opacity-80 border-2 px-10 py-3.5 font-itc font-normal text-lg tracking-wide z-40'
 						/>
 					</Link>
 				</h2>

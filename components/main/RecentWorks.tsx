@@ -45,7 +45,7 @@ export default function RecentWorks() {
 			{/* <Button
 		label='View more projects'
 		showArrow={false}
-		className='hidden inline-flex w-fit text-logo-teal mx-[18%] mt-12 dark:text-slate-300 text-opacity-100 hover:text-opacity-90 border-logo-teal dark:border-slate-400 border-opacity-80 hover:border-opacity-75 bg-white hover:bg-[#defcff] dark:bg-custom-dark-navy bg-opacity-80 border-2 px-7 py-3.5 font-itc font-normal text-lg tracking-wide z-40'
+		className='hidden inline-flex w-fit text-logo-teal mx-[18%] mt-12 text-opacity-100 hover:text-opacity-90 border-logo-teal dark:border-slate-400 border-opacity-80 hover:border-opacity-75 bg-white hover:bg-[#defcff] dark:bg-custom-dark-navy bg-opacity-80 border-2 px-7 py-3.5 font-itc font-normal text-lg tracking-wide z-40'
 	/> */}
 		</div>
 	);
