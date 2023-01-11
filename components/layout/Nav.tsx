@@ -125,27 +125,11 @@ function MobileNav<T extends MobileNavProps>({ clicked, setClick, router }: T) {
 				clicked ? "translate-y-0" : "-translate-y-full"
 			}`}>
 			<div className='font-itc p-12 w-full h-4/6 space-y-6 flex flex-col justify-center items-center justify-items-center'>
-				<Link href='/'>
-					<h3
-						onClick={() =>
-							setTimeout(() => {
-								setClick(!clicked);
-							}, 300)
-						}
-						className={`text-3xl py-4 ${router.asPath === "/" ? "text-logo-teal font-medium " : "text-white "}`}>
-						Home
-					</h3>
+				<Link href='/' className={`z-[300] text-3xl py-4 ${router.asPath === "/" ? "text-logo-teal font-medium " : "text-white "}`}>
+					Home
 				</Link>
-				<Link href='/about'>
-					<h3
-						onClick={() =>
-							setTimeout(() => {
-								setClick(!clicked);
-							}, 300)
-						}
-						className={`text-3xl py-4 ${router.asPath === "/about" ? "text-logo-teal font-medium " : "text-white"}`}>
-						About
-					</h3>
+				<Link href='/about' className={`z-[300] text-3xl py-4 ${router.asPath === "/about" ? "text-logo-teal font-medium " : "text-white"}`}>
+					About
 				</Link>
 			</div>
 			<div className='flex flex-col w-full h-1/6 items-center'>
@@ -181,6 +165,19 @@ export default function Nav<T extends NavProps>(props: T) {
 	const [subtab, setSubtab] = useState<string | undefined>();
 	const [clicked, setClick] = useState<boolean>(false);
 
+	useEffect(() => {
+		const handleRouteChange = () => {
+			if (window.visualViewport!.width < 640) {
+				setClick(false);
+			}
+		};
+
+		router.events.on("routeChangeComplete", handleRouteChange);
+
+		return () => {
+			router.events.off("routeChangeComplete", handleRouteChange);
+		};
+	}, []);
 	useEffect(() => {
 		function handleResize() {
 			if (window.visualViewport!.width > 640) {
