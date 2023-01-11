@@ -94,6 +94,8 @@ export default function ProjectPreviewTwo<T extends PreviewProps>(props: T) {
 							className={`rounded-l-2xl object-contain lg:object-cover lg:object-left ${props.image?.classNames}`}
 							sizes='(max-width: 768px) 100vw 100vh,
 							(max-width: 1200px) 100vw 100vh'
+							placeholder='blur'
+							blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vg8AAlEBZ0IDjCQAAAAASUVORK5CYII='
 							fill
 							priority={inBounds ? true : false}
 						/>

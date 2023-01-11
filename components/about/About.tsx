@@ -20,7 +20,7 @@ export default function AboutPage() {
 	return (
 		<div id="about" className='relative h-full w-full flex flex-1 flex-wrap flex-col pb-12'>
 			<div className='w-full h-full min-h-screen flex-col lg:flex-row flex lg:self-center pb-12 md:pb-20 px-8 lg:px-0'>
-				<h1 className='-z-10 -top-10 absolute font-gravesend font-bold tracking-[0.015em] text-stroke text-stroke-[1.5px] text-stroke-custom-gray-blue opacity-[15%] leading-none text-transparent lg:mt-0 text-[100px] xs:text-[150px] md:text-[200px] lg:text-[300px]'>
+				<h1 className='-z-10 top-10 md:-top-10 lg:-top-4 absolute font-gravesend font-bold tracking-[0.015em] text-stroke text-stroke-[1.5px] text-stroke-custom-gray-blue opacity-[15%] leading-none text-transparent lg:mt-0 text-[100px] xs:text-[150px] md:text-[200px] lg:text-[300px]'>
 					About
 				</h1>
 				<div className='mt-36 lg:mt-auto w-full lg:w-[40%] lg:h-screen flex flex-col justify-center items-center'>
@@ -29,6 +29,8 @@ export default function AboutPage() {
 						alt='Photo of Mary Kelly'
 						width={371}
 						height={706}
+						placeholder="blur"
+						blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vg8AAlEBZ0IDjCQAAAAASUVORK5CYII="
 						className='w-[250px] lg:w-[371px] h-auto'
 						priority
 					/>
