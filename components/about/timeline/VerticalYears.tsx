@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import { TimelineTick } from "../../../lib/data/timeline";
 
-export function VerticalYears(props: { percentage: number; activeTick: number; ticks: TimelineTick[]; years: number[] }): JSX.Element {
+export function VerticalYears(props: {
+	percentage: number;
+	activeTick: number;
+	ticks: TimelineTick[];
+	years: number[];
+	pivotPoint: number;
+}): JSX.Element {
 	const [percentTranslate, setPercentTranslate] = useState<number>(0);
 
 	const translateClass: { [key: string]: string } = {
@@ -18,11 +24,15 @@ export function VerticalYears(props: { percentage: number; activeTick: number; t
 		1000: "-translate-y-1000",
 		1100: "-translate-y-1100",
 		1200: "-translate-y-1200",
+		1300: "-translate-y-1300",
+		1400: "-translate-y-1400",
+		1500: "-translate-y-1500",
 	};
 
 	useEffect(() => {
 		if (props.activeTick !== undefined) {
-			let offset = Math.abs(props.activeTick * 100);
+			let activeTick = props.activeTick <= 1 ? props.activeTick : props.activeTick - 1;
+			let offset = Math.abs(activeTick * 100);
 
 			if (percentTranslate !== offset) {
 				setPercentTranslate(offset);
@@ -31,9 +41,15 @@ export function VerticalYears(props: { percentage: number; activeTick: number; t
 	}, [props.activeTick, props.ticks, percentTranslate]);
 
 	return (
-		<div className={`h-full transition-all duration-300 ${translateClass[percentTranslate.toString()]}`}>
+		<div
+			className={`h-full transition-all duration-300 ${
+				translateClass[percentTranslate.toString()]
+			}`}>
 			{props.years.map((year, i) => (
-				<div key={`year-${i}`} id={`year-${i}`} className={`h-full min-h-[234px] flex justify-center items-center`}>
+				<div
+					key={`year-${i}`}
+					id={`year-${i}`}
+					className={`flex h-full min-h-[234px] items-center justify-center`}>
 					<p className='-mt-1.5'>{year}</p>
 				</div>
 			))}

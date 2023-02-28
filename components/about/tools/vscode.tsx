@@ -1,8 +1,19 @@
 import React from "react";
-export default function VsCodeIcon<T extends { className: string}>(props: T): JSX.Element {
+export default function VsCodeIcon<T extends { className: string }>(props: T): JSX.Element {
 	return (
-		<svg className={props.className} viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'>
-			<mask id='mask0' mask-type='alpha' maskUnits='userSpaceOnUse' x='0' y='0' width='100' height='100'>
+		<svg
+			className={props.className}
+			viewBox='0 0 100 100'
+			fill='none'
+			xmlns='http://www.w3.org/2000/svg'>
+			<mask
+				id='mask0'
+				mask-type='alpha'
+				maskUnits='userSpaceOnUse'
+				x='0'
+				y='0'
+				width='100'
+				height='100'>
 				<path
 					fillRule='evenodd'
 					clipRule='evenodd'
@@ -46,12 +57,24 @@ export default function VsCodeIcon<T extends { className: string}>(props: T): JS
 					filterUnits='userSpaceOnUse'
 					colorInterpolationFilters='sRGB'>
 					<feFlood floodOpacity='0' result='BackgroundImageFix' />
-					<feColorMatrix in='SourceAlpha' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0' />
+					<feColorMatrix
+						in='SourceAlpha'
+						type='matrix'
+						values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'
+					/>
 					<feOffset />
 					<feGaussianBlur stdDeviation='4.16667' />
-					<feColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0' />
+					<feColorMatrix
+						type='matrix'
+						values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0'
+					/>
 					<feBlend mode='overlay' in2='BackgroundImageFix' result='effect1_dropShadow' />
-					<feBlend mode='normal' in='SourceGraphic' in2='effect1_dropShadow' result='shape' />
+					<feBlend
+						mode='normal'
+						in='SourceGraphic'
+						in2='effect1_dropShadow'
+						result='shape'
+					/>
 				</filter>
 				<filter
 					id='filter1_d'
@@ -62,14 +85,32 @@ export default function VsCodeIcon<T extends { className: string}>(props: T): JS
 					filterUnits='userSpaceOnUse'
 					colorInterpolationFilters='sRGB'>
 					<feFlood floodOpacity='0' result='BackgroundImageFix' />
-					<feColorMatrix in='SourceAlpha' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0' />
+					<feColorMatrix
+						in='SourceAlpha'
+						type='matrix'
+						values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'
+					/>
 					<feOffset />
 					<feGaussianBlur stdDeviation='4.16667' />
-					<feColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0' />
+					<feColorMatrix
+						type='matrix'
+						values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0'
+					/>
 					<feBlend mode='overlay' in2='BackgroundImageFix' result='effect1_dropShadow' />
-					<feBlend mode='normal' in='SourceGraphic' in2='effect1_dropShadow' result='shape' />
+					<feBlend
+						mode='normal'
+						in='SourceGraphic'
+						in2='effect1_dropShadow'
+						result='shape'
+					/>
 				</filter>
-				<linearGradient id='paint0_linear' x1='49.9392' y1='0.257812' x2='49.9392' y2='99.7423' gradientUnits='userSpaceOnUse'>
+				<linearGradient
+					id='paint0_linear'
+					x1='49.9392'
+					y1='0.257812'
+					x2='49.9392'
+					y2='99.7423'
+					gradientUnits='userSpaceOnUse'>
 					<stop stopColor='white' />
 					<stop offset='1' stopColor='white' stopOpacity='0' />
 				</linearGradient>

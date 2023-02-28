@@ -6,8 +6,21 @@ interface SvgLogoProps {
 
 export default function MonsterEnergyLogo<T extends SvgLogoProps>(props: T) {
 	return (
-		<svg width='168' height='160' viewBox='0 0 168 160' fill='none' xmlns='http://www.w3.org/2000/svg' className={props.className}>
-			<mask id='path-1-outside-1_563_482' maskUnits='userSpaceOnUse' x='29.5801' y='13.002' width='97' height='136' fill='currentColor'>
+		<svg
+			width='168'
+			height='160'
+			viewBox='0 0 168 160'
+			fill='none'
+			xmlns='http://www.w3.org/2000/svg'
+			className={props.className}>
+			<mask
+				id='path-1-outside-1_563_482'
+				maskUnits='userSpaceOnUse'
+				x='29.5801'
+				y='13.002'
+				width='97'
+				height='136'
+				fill='currentColor'>
 				<rect fill='white' x='29.5801' y='13.002' width='97' height='136' />
 				<path
 					fillRule='evenodd'

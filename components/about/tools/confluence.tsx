@@ -1,13 +1,30 @@
 import React from "react";
-export default function ConfluenceIcon<T extends { className: string}>(props: T): JSX.Element {
+export default function ConfluenceIcon<T extends { className: string }>(props: T): JSX.Element {
 	return (
-		<svg className={props.className} width='256px' height='246px' viewBox='0 0 256 246' version='1.1' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMidYMid'>
+		<svg
+			className={props.className}
+			width='256px'
+			height='246px'
+			viewBox='0 0 256 246'
+			version='1.1'
+			xmlns='http://www.w3.org/2000/svg'
+			preserveAspectRatio='xMidYMid'>
 			<defs>
-				<linearGradient x1='99.140087%' y1='112.708084%' x2='33.8589812%' y2='37.7549606%' id='linearGradient-1'>
+				<linearGradient
+					x1='99.140087%'
+					y1='112.708084%'
+					x2='33.8589812%'
+					y2='37.7549606%'
+					id='linearGradient-1'>
 					<stop stopColor='#0052CC' offset='18%'></stop>
 					<stop stopColor='#2684FF' offset='100%'></stop>
 				</linearGradient>
-				<linearGradient x1='0.92569163%' y1='-12.5823074%' x2='66.1800713%' y2='62.3057471%' id='linearGradient-2'>
+				<linearGradient
+					x1='0.92569163%'
+					y1='-12.5823074%'
+					x2='66.1800713%'
+					y2='62.3057471%'
+					id='linearGradient-2'>
 					<stop stopColor='#0052CC' offset='18%'></stop>
 					<stop stopColor='#2684FF' offset='100%'></stop>
 				</linearGradient>

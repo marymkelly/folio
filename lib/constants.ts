@@ -74,6 +74,6 @@ export const sittingAnimation: AnimationProps[] = [
 		name: "idle",
 		frames: 8,
 		speed: 22,
-		loopDelay: 4
+		loopDelay: 4,
 	},
 ];

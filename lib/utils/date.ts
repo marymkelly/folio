@@ -78,7 +78,10 @@ const CompleteMonths: { [month: string]: MonthIdentifiers } = {
 	},
 };
 
-export function convertMonth<T extends string | number, U extends keyof MonthIdentifiers>(curr: T, conv: U) {
+export function convertMonth<T extends string | number, U extends keyof MonthIdentifiers>(
+	curr: T,
+	conv: U
+) {
 	let conversion: string | number = curr;
 	let match = false;
 
@@ -102,7 +105,11 @@ export function convertMonth<T extends string | number, U extends keyof MonthIde
 	return conversion;
 }
 
-export function formatDateStrMonths<T extends string, U extends keyof MonthIdentifiers>(curr: T, conv: U, delimit: string = " ") {
+export function formatDateStrMonths<T extends string, U extends keyof MonthIdentifiers>(
+	curr: T,
+	conv: U,
+	delimit: string = " "
+) {
 	let dateString = curr.split(delimit);
 
 	function convert(num: number): string {
@@ -110,7 +117,10 @@ export function formatDateStrMonths<T extends string, U extends keyof MonthIdent
 		let converted: string | number = " ";
 		let isNum = Number.isInteger(Number.parseInt(substr));
 
-		converted += (isNum && substr.length > 2) || substr.length < 3 ? substr : convertMonth(substr, conv) ?? "";
+		converted +=
+			(isNum && substr.length > 2) || substr.length < 3
+				? substr
+				: convertMonth(substr, conv) ?? "";
 		if (num === 0) return converted.toString();
 		return convert(num - 1) + converted.toString();
 	}

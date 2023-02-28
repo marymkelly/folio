@@ -1,7 +1,11 @@
 import React from "react";
-export default function AfterEffectsIcon<T extends { className: string}>(props: T): JSX.Element {
+export default function AfterEffectsIcon<T extends { className: string }>(props: T): JSX.Element {
 	return (
-		<svg className={props.className} version='1.1' viewBox='0 0 240 234' xmlns='http://www.w3.org/2000/svg'>
+		<svg
+			className={props.className}
+			version='1.1'
+			viewBox='0 0 240 234'
+			xmlns='http://www.w3.org/2000/svg'>
 			<g id='vlpa'>
 				<g id='vlpb'>
 					<g id='vlpc'>

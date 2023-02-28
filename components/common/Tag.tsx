@@ -7,8 +7,11 @@ interface Props {
 
 export default function Tag(props: Props) {
 	return (
-		<div className={`inline-flex items-center border border-custom-gray-blue rounded-md md:rounded-lg py-0.5 px-1.5 mx-1.5 ${props.className}`}>
-			<p className='font-itc text-xs lg:text-sm font-light text-custom-gray-blue tracking-wider whitespace-nowrap'>{props.label}</p>
+		<div
+			className={`mx-1.5 inline-flex items-center rounded-md border border-custom-gray-blue py-0.5 px-1.5 md:rounded-lg ${props.className}`}>
+			<p className='whitespace-nowrap font-itc text-xs font-light tracking-wider text-custom-gray-blue lg:text-sm'>
+				{props.label}
+			</p>
 		</div>
 	);
 }

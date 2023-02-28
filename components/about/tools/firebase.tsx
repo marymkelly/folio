@@ -1,14 +1,34 @@
 import React from "react";
-export default function FirebaseIcon<T extends { className: string}>(props: T): JSX.Element {
+export default function FirebaseIcon<T extends { className: string }>(props: T): JSX.Element {
 	return (
-		<svg className={props.className} width='256px' height='351px' viewBox='0 0 256 351' version='1.1' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMidYMid'>
+		<svg
+			className={props.className}
+			width='256px'
+			height='351px'
+			viewBox='0 0 256 351'
+			version='1.1'
+			xmlns='http://www.w3.org/2000/svg'
+			preserveAspectRatio='xMidYMid'>
 			<defs>
 				<path
 					d='M1.25273437,280.731641 L2.85834533,277.600858 L102.211177,89.0833546 L58.0613266,5.6082033 C54.3920011,-1.28304578 45.0741245,0.473674398 43.8699203,8.18789086 L1.25273437,280.731641 Z'
 					id='path-1'></path>
-				<filter x='-50%' y='-50%' width='200%' height='200%' filterUnits='objectBoundingBox' id='filter-2'>
-					<feGaussianBlur stdDeviation='17.5' in='SourceAlpha' result='shadowBlurInner1'></feGaussianBlur>
-					<feOffset dx='0' dy='0' in='shadowBlurInner1' result='shadowOffsetInner1'></feOffset>
+				<filter
+					x='-50%'
+					y='-50%'
+					width='200%'
+					height='200%'
+					filterUnits='objectBoundingBox'
+					id='filter-2'>
+					<feGaussianBlur
+						stdDeviation='17.5'
+						in='SourceAlpha'
+						result='shadowBlurInner1'></feGaussianBlur>
+					<feOffset
+						dx='0'
+						dy='0'
+						in='shadowBlurInner1'
+						result='shadowOffsetInner1'></feOffset>
 					<feComposite
 						in='shadowOffsetInner1'
 						in2='SourceAlpha'
@@ -16,14 +36,30 @@ export default function FirebaseIcon<T extends { className: string}>(props: T): 
 						k2='-1'
 						k3='1'
 						result='shadowInnerInner1'></feComposite>
-					<feColorMatrix values='0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.06 0' type='matrix' in='shadowInnerInner1'></feColorMatrix>
+					<feColorMatrix
+						values='0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.06 0'
+						type='matrix'
+						in='shadowInnerInner1'></feColorMatrix>
 				</filter>
 				<path
 					d='M134.417103,148.974235 L166.455722,116.161738 L134.417104,55.1546874 C131.374828,49.3635911 123.983911,48.7568362 120.973828,54.5646483 L103.26875,88.6738296 L102.739423,90.4175473 L134.417103,148.974235 Z'
 					id='path-3'></path>
-				<filter x='-50%' y='-50%' width='200%' height='200%' filterUnits='objectBoundingBox' id='filter-4'>
-					<feGaussianBlur stdDeviation='3.5' in='SourceAlpha' result='shadowBlurInner1'></feGaussianBlur>
-					<feOffset dx='1' dy='-9' in='shadowBlurInner1' result='shadowOffsetInner1'></feOffset>
+				<filter
+					x='-50%'
+					y='-50%'
+					width='200%'
+					height='200%'
+					filterUnits='objectBoundingBox'
+					id='filter-4'>
+					<feGaussianBlur
+						stdDeviation='3.5'
+						in='SourceAlpha'
+						result='shadowBlurInner1'></feGaussianBlur>
+					<feOffset
+						dx='1'
+						dy='-9'
+						in='shadowBlurInner1'
+						result='shadowOffsetInner1'></feOffset>
 					<feComposite
 						in='shadowOffsetInner1'
 						in2='SourceAlpha'
@@ -31,7 +67,10 @@ export default function FirebaseIcon<T extends { className: string}>(props: T): 
 						k2='-1'
 						k3='1'
 						result='shadowInnerInner1'></feComposite>
-					<feColorMatrix values='0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.09 0' type='matrix' in='shadowInnerInner1'></feColorMatrix>
+					<feColorMatrix
+						values='0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.09 0'
+						type='matrix'
+						in='shadowInnerInner1'></feColorMatrix>
 				</filter>
 			</defs>
 			<g>

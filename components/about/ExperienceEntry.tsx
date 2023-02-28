@@ -11,19 +11,21 @@ interface ExperienceItemProps {
 
 export default function ExperienceItemGroup<T extends ExperienceItemProps>(props: T) {
 	return (
-		<div className='w-full flex justify-between mb-[45px]'>
+		<div className='mb-[45px] flex w-full justify-between'>
 			<div className='flex flex-col font-itc'>
-				<h3 className='font-bold text-xl tracking-[.02em]'>
+				<h3 className='text-xl font-bold tracking-[.02em]'>
 					{props.title}
 					{props.subtitle && (
 						<>
-							,<span className='text-base font-normal ml-2'>{props.subtitle}</span>
+							,<span className='ml-2 text-base font-normal'>{props.subtitle}</span>
 						</>
 					)}
 				</h3>
-				<h5 className='font-light text-base tracking-[0.035em] mt-2.5'>{props.organization}</h5>
+				<h5 className='mt-2.5 text-base font-light tracking-[0.035em]'>
+					{props.organization}
+				</h5>
 			</div>
-			<div className='font-stolzl text-right text-base whitespace-nowrap md:whitespace-normal md:text-lg text-custom-navy/50'>
+			<div className='whitespace-nowrap text-right font-stolzl text-base text-custom-navy/50 md:whitespace-normal md:text-lg'>
 				{props.startDate}
 				{props?.endDate && props.endDate !== props.startDate && ` - ${props.endDate}`}
 			</div>

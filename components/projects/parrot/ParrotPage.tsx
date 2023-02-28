@@ -16,15 +16,18 @@ export default function ParrotProjectPage() {
 	return (
 		<>
 			<ProjectPageHeader {...projectData} />
-			<ProjectPageOverview textClasses='text-project-parrot-green-text' overviewClasses='bg-project-parrot-green-fade' />
+			<ProjectPageOverview
+				textClasses='text-project-parrot-green-text'
+				overviewClasses='bg-project-parrot-green-fade'
+			/>
 			<ImageSection
 				path='/images/projects/parrot/intro.png'
 				classes='bg-project-parrot-green-logo h-[75vh] min-h-[600px] lg:h-[800px] w-full mb-10 pt-8 flex items-center justify-center'
 				imgClasses='object-contain-cover md:object-contain'
 			/>
-			<div className='w-full flex justify-center'>
-				<div className='mb-4 w-full max-w-[1100px] mt-20 px-16 lg:px-0'>
-					<h1 className='font-itc text-5xl mb-4'>Process</h1>
+			<div className='flex w-full justify-center'>
+				<div className='mb-4 mt-20 w-full max-w-[1100px] px-16 lg:px-0'>
+					<h1 className='mb-4 font-itc text-5xl'>Process</h1>
 				</div>
 			</div>
 			<InfoPoint
@@ -47,7 +50,11 @@ export default function ParrotProjectPage() {
 				classes='h-[50vh] md:[75vh] min-h-[400px] lg:h-[800px] max-w-[1100px] w-full flex self-center items-center justify-center px-8 lg:px-0'
 				caption='Example of WBS'
 			/>
-			<InfoPoint textClasses='text-project-parrot-green-text' title='Wireframes' text='I designed all of the wireframes for the project.' />
+			<InfoPoint
+				textClasses='text-project-parrot-green-text'
+				title='Wireframes'
+				text='I designed all of the wireframes for the project.'
+			/>
 			<ImageSection
 				path='/images/projects/parrot/wireframes.png'
 				classes='bg-project-parrot-green-logo h-[75vh] md:min-h-[400px] lg:h-[800px] w-full mt-16 mb-10 py-24 items-center justify-center'
@@ -66,7 +73,7 @@ export default function ParrotProjectPage() {
 				title='Design & Branding'
 				text="Parrot provided swatches of a mint green color as examples for the primary color of their branding. It was important for the design to appeal to Parrot's target demographic of teens and young adults and have a sense of sophistication."
 			/>
-			<p className='font-stolzl font-light text-2xl mt-12 mb-2 lg:w-[1100px] self-center px-16 lg:px-0'>
+			<p className='mt-12 mb-2 self-center px-16 font-stolzl text-2xl font-light lg:w-[1100px] lg:px-0'>
 				Therefore, the design direction chosen was a clean, modern look.
 			</p>
 			<ImageSection
@@ -114,23 +121,27 @@ export default function ParrotProjectPage() {
 				path='/images/projects/parrot/frd.png'
 				classes='h-[475px] md:min-h-[400px] w-full mt-16 mb-10 items-center justify-center'
 			/>
-			<div className='w-full flex justify-center'>
-				<div className='w-full max-w-[1100px] mt-20 mb-12 px-16 lg:px-0'>
-					<h1 className='font-itc text-5xl mb-4'>Reflection</h1>
+			<div className='flex w-full justify-center'>
+				<div className='mt-20 mb-12 w-full max-w-[1100px] px-16 lg:px-0'>
+					<h1 className='mb-4 font-itc text-5xl'>Reflection</h1>
 				</div>
 			</div>
-			<div className='flex flex-col w-full items-center'>
-				<div className='max-w-[1100px] flex flex-col items-start w-full pb-40 px-16 lg:px-0'>
-					<p className='font-gothic font-light text-lg tracking-[0.02em] leading-10 mb-8'>
-						Something I learned from this project was that sometimes it&apos;s better not to reinvent the wheel. One of the concerns at
-						the start of the project was being “different enough” from other social media platforms. Ultimately, the core feature concept
-						for this project was unique enough in itself, so then the question was, how do we deliver it to the users?
+			<div className='flex w-full flex-col items-center'>
+				<div className='flex w-full max-w-[1100px] flex-col items-start px-16 pb-40 lg:px-0'>
+					<p className='mb-8 font-gothic text-lg font-light leading-10 tracking-[0.02em]'>
+						Something I learned from this project was that sometimes it&apos;s better
+						not to reinvent the wheel. One of the concerns at the start of the project
+						was being “different enough” from other social media platforms. Ultimately,
+						the core feature concept for this project was unique enough in itself, so
+						then the question was, how do we deliver it to the users?
 					</p>
-					<p className='font-gothic font-light text-lg tracking-[0.02em] leading-10'>
-						When designing wireframes, my primary concern was making app intuitive for the user, so I chose to pull inspiration from
-						existing social media applications and adapted it for functionality needed. This decision seemed to be positively reinforced
-						by the full-color designs, which have a fresh look but have elements of familiarity, making it easy for the user to navigate
-						correctly based on assumption.
+					<p className='font-gothic text-lg font-light leading-10 tracking-[0.02em]'>
+						When designing wireframes, my primary concern was making app intuitive for
+						the user, so I chose to pull inspiration from existing social media
+						applications and adapted it for functionality needed. This decision seemed
+						to be positively reinforced by the full-color designs, which have a fresh
+						look but have elements of familiarity, making it easy for the user to
+						navigate correctly based on assumption.
 					</p>
 				</div>
 			</div>

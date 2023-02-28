@@ -6,7 +6,13 @@ interface SvgLogoProps {
 
 export default function GaleLogo<T extends SvgLogoProps>(props: T) {
 	return (
-		<svg width='167' height='160' viewBox='0 0 167 160' fill='none' xmlns='http://www.w3.org/2000/svg' className={props.className}>
+		<svg
+			width='167'
+			height='160'
+			viewBox='0 0 167 160'
+			fill='none'
+			xmlns='http://www.w3.org/2000/svg'
+			className={props.className}>
 			<g className='mix-blend-mode:luminosity' clipPath='url(#clip0_1574_25376)'>
 				<path
 					d='M48.8771 66.4002C42.2657 65.8243 36.138 65.0871 30.7014 64.1887C17.2481 61.9657 9.23145 58.8558 9.23145 55.8841C9.23145 52.9124 17.2481 49.8024 30.7014 47.5679C32.8323 47.2109 35.0668 46.8883 37.3935 46.5889C34.56 50.3668 32.8899 55.0663 32.8899 60.1458V62.6107C32.8899 62.6107 32.9129 62.6798 32.9474 62.6913C37.5893 63.9929 42.9222 65.2829 48.8771 66.4002Z'

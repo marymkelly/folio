@@ -1,4 +1,4 @@
-import { TimelineTick } from "../data/timeline";
+import { TimelineCalculationData, TimelineTick } from "../data/timeline";
 import { SpriteController, AnimationProps } from "./sprite";
 
 export interface InputHandler {
@@ -16,6 +16,7 @@ export interface CanvasController {
 	sprite: SpriteController;
 	timeline?: HTMLDivElement;
 	timelineInformation?: HTMLDivElement;
+	calculationData: TimelineCalculationData;
 	setPercent: Function;
 }
 

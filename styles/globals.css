@@ -6,7 +6,7 @@
 
 @layer components {
 	.section-header--main {
-		@apply font-itc font-light text-4xl md:text-5xl lg:text-6xl text-custom-black mb-[52px] lg:mb-10;
+		@apply mb-[52px] font-itc text-4xl font-light text-custom-black md:text-5xl lg:mb-10 lg:text-6xl;
 	}
 
 	.outline-text {
@@ -23,7 +23,7 @@
 		z-index: 55;
 		border-radius: 50%;
 
-		@apply bg-cyan-500/90 border-cyan-600 fill-white shadow-md shadow-cyan-900/30;
+		@apply border-cyan-600 bg-cyan-500/90 fill-white shadow-md shadow-cyan-900/30;
 	}
 
 	.nav-symbol {
@@ -75,8 +75,8 @@ html,
 body {
 	padding: 0;
 	margin: 0;
-	font-family: "Didact Gothic", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-		Helvetica Neue, sans-serif;
+	font-family: "Didact Gothic", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 	width: 100%;
 	height: 100%;
 	min-width: 360px;
@@ -92,4 +92,12 @@ a {
 
 * {
 	box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+	html,
+	body,
+	#__next {
+		background-color: white;
+	}
 }

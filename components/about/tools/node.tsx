@@ -1,9 +1,19 @@
 import React from "react";
-export default function NodeIcon<T extends { className: string}>(props: T): JSX.Element {
+export default function NodeIcon<T extends { className: string }>(props: T): JSX.Element {
 	return (
-		<svg className={props.className} id='Layer_2' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 94.44 107.49'>
+		<svg
+			className={props.className}
+			id='Layer_2'
+			xmlns='http://www.w3.org/2000/svg'
+			viewBox='0 0 94.44 107.49'>
 			<defs>
-				<linearGradient id='linear-gradient' x1='64.35' y1='18.79' x2='26.28' y2='96.44' gradientUnits='userSpaceOnUse'>
+				<linearGradient
+					id='linear-gradient'
+					x1='64.35'
+					y1='18.79'
+					x2='26.28'
+					y2='96.44'
+					gradientUnits='userSpaceOnUse'>
 					<stop offset='0' stopColor='#3f873f' />
 					<stop offset='.33' stopColor='#3e8a3d' />
 					<stop offset='.64' stopColor='#3e9537' />
@@ -17,20 +27,46 @@ export default function NodeIcon<T extends { className: string}>(props: T): JSX.
 						fill='url(#linear-gradient)'
 					/>
 				</clipPath>
-				<linearGradient id='linear-gradient-2' x1='40.8' y1='59.43' x2='147.61' y2='-19.49' gradientUnits='userSpaceOnUse'>
+				<linearGradient
+					id='linear-gradient-2'
+					x1='40.8'
+					y1='59.43'
+					x2='147.61'
+					y2='-19.49'
+					gradientUnits='userSpaceOnUse'>
 					<stop offset='.14' stopColor='#3f873f' />
 					<stop offset='.4' stopColor='#519f44' />
 					<stop offset='.71' stopColor='#63b649' />
 					<stop offset='.91' stopColor='#6abf4b' />
 				</linearGradient>
-				<linearGradient id='linear-gradient-3' x1='-1.49' y1='53.73' x2='95.93' y2='53.73' gradientUnits='userSpaceOnUse'>
+				<linearGradient
+					id='linear-gradient-3'
+					x1='-1.49'
+					y1='53.73'
+					x2='95.93'
+					y2='53.73'
+					gradientUnits='userSpaceOnUse'>
 					<stop offset='.09' stopColor='#6abf4b' />
 					<stop offset='.29' stopColor='#63b649' />
 					<stop offset='.6' stopColor='#519f44' />
 					<stop offset='.86' stopColor='#3f873f' />
 				</linearGradient>
-				<linearGradient id='linear-gradient-4' x1='-1.49' y1='94.11' x2='95.93' y2='94.11' href='#linear-gradient-3' />
-				<linearGradient id='linear-gradient-5' x1='110.12' y1='16.49' x2='50.04' y2='139.05' href='#linear-gradient' />
+				<linearGradient
+					id='linear-gradient-4'
+					x1='-1.49'
+					y1='94.11'
+					x2='95.93'
+					y2='94.11'
+					href='#linear-gradient-3'
+				/>
+				<linearGradient
+					id='linear-gradient-5'
+					x1='110.12'
+					y1='16.49'
+					x2='50.04'
+					y2='139.05'
+					href='#linear-gradient'
+				/>
 			</defs>
 			<g id='Layer_1-2'>
 				<g>

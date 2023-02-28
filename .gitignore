@@ -44,3 +44,6 @@ firebase.json
 .firebase
 
 /functions
+
+.prettierignore
+.prettierrc.json

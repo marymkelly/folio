@@ -1,7 +1,8 @@
 import React from "react";
-export default function SassIcon<T extends { className: string}>(props: T): JSX.Element {
+export default function SassIcon<T extends { className: string }>(props: T): JSX.Element {
 	return (
-		<svg className={props.className}
+		<svg
+			className={props.className}
 			version='1.1'
 			id='Layer_1'
 			xmlns='http://www.w3.org/2000/svg'

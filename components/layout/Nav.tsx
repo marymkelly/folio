@@ -80,7 +80,7 @@ class ScrollableRouteHandler {
 		this._router = router;
 	}
 
-	scrollTo<T extends U, U extends typeof this.routes[number]["href"]>(path: T) {
+	scrollTo<T extends U, U extends (typeof this.routes)[number]["href"]>(path: T) {
 		const valid: ScrollableRouteProps | undefined = this.routes.find((p) => p.href === path);
 
 		if (valid && valid.accessFrom.includes(this._router.asPath)) {
@@ -121,34 +121,49 @@ interface MobileNavProps {
 function MobileNav<T extends MobileNavProps>({ clicked, setClick, router }: T) {
 	return (
 		<div
-			className={`sm:hidden top-0 left-0 pb-16 w-full h-full flex flex-1 flex-col items-center justify-end bg-custom-dark-navy fixed z-[200] transition-transform duration-300 ${
+			className={`fixed top-0 left-0 z-[200] flex h-full w-full flex-1 flex-col items-center justify-end bg-custom-dark-navy pb-16 transition-transform duration-300 sm:hidden ${
 				clicked ? "translate-y-0" : "-translate-y-full"
 			}`}>
-			<div className='font-itc p-12 w-full h-4/6 space-y-6 flex flex-col justify-center items-center justify-items-center'>
-				<Link href='/' className={`z-[300] text-3xl py-4 ${router.asPath === "/" ? "text-logo-teal font-medium " : "text-white "}`}>
+			<div className='flex h-4/6 w-full flex-col items-center justify-center justify-items-center space-y-6 p-12 font-itc'>
+				<Link
+					href='/'
+					className={`z-[300] py-4 text-3xl ${
+						router.asPath === "/" ? "font-medium text-logo-teal " : "text-white "
+					}`}>
 					Home
 				</Link>
-				<Link href='/about' className={`z-[300] text-3xl py-4 ${router.asPath === "/about" ? "text-logo-teal font-medium " : "text-white"}`}>
+				<Link
+					href='/about'
+					className={`z-[300] py-4 text-3xl ${
+						router.asPath === "/about" ? "font-medium text-logo-teal " : "text-white"
+					}`}>
 					About
 				</Link>
 			</div>
-			<div className='flex flex-col w-full h-1/6 items-center'>
+			<div className='flex h-1/6 w-full flex-col items-center'>
 				<div className='flex w-8/12 justify-between text-custom-gray-blue'>
 					<Link href='mailto:mary@marykelly.tech'>
-						<div className='p-[5px] flex items-center justify-center rounded-full w-10 h-10 bg-custom-gray-blue'>
-							<EnvelopeIcon className='w-8 h-8 fill-custom-dark-navy' />
+						<div className='flex h-10 w-10 items-center justify-center rounded-full bg-custom-gray-blue p-[5px]'>
+							<EnvelopeIcon className='h-8 w-8 fill-custom-dark-navy' />
 						</div>
 					</Link>
 					<Link target='_blank' rel='noreferrer' href='https://github.com/marymkelly'>
-						<GithubIcon className='w-10 h-10' />
+						<GithubIcon className='h-10 w-10' />
 					</Link>
-					<Link target='_blank' rel='noreferrer' href='https://www.linkedin.com/in/mary-kelly-5040b6ab/'>
-						<LinkedinIcon className='w-10 h-10' />
+					<Link
+						target='_blank'
+						rel='noreferrer'
+						href='https://www.linkedin.com/in/mary-kelly-5040b6ab/'>
+						<LinkedinIcon className='h-10 w-10' />
 					</Link>
 				</div>
 
-				<div className='flex items-center mt-12'>
-					<Link href='/resume' target='_blank' rel='noreferrer' className='font-stolzl text-base text-custom-gray-blue'>
+				<div className='mt-12 flex items-center'>
+					<Link
+						href='/resume'
+						target='_blank'
+						rel='noreferrer'
+						className='font-stolzl text-base text-custom-gray-blue'>
 						Resume
 					</Link>
 				</div>
@@ -189,14 +204,21 @@ export default function Nav<T extends NavProps>(props: T) {
 			let x = window.visualViewport!.width * 0.875;
 			let y = navRef.current!.getBoundingClientRect().height!;
 			const elements = document.elementsFromPoint(x, y);
-			const sectionElements = document.elementsFromPoint(x, y + window.visualViewport!.height * 0.5);
+			const sectionElements = document.elementsFromPoint(
+				x,
+				y + window.visualViewport!.height * 0.5
+			);
 			const overDarkEls = themeCtx.darkElements.some((el) => elements.includes(el));
 
 			let currentTab = tabs.find((t) => t.href === router.asPath);
 			let elIds = route
 				.map((r) => {
 					if (currentTab?.sections.includes(r.href)) {
-						return { id: r.refId, href: r.href, el: document.getElementById(r.refId) };
+						return {
+							id: r.refId,
+							href: r.href,
+							el: document.getElementById(r.refId),
+						};
 					}
 				})
 				.filter((v) => v);
@@ -220,16 +242,16 @@ export default function Nav<T extends NavProps>(props: T) {
 	return (
 		<nav
 			ref={navRef as LegacyRef<HTMLElement>}
-			className={`z-[100] w-full text-sm font-itc font-light h-auto flex justify-between fixed top-0 py-2 pl-6 pr-6 ${
+			className={`fixed top-0 z-[100] flex h-auto w-full justify-between py-2 pl-6 pr-6 font-itc text-sm font-light ${
 				props.isDark ? "text-white" : "text-custom-black"
 			}`}>
-			<div className='flex no-flex min-w-[50px]'>
+			<div className='no-flex flex min-w-[50px]'>
 				<Link href='/'>
 					<Image src='/images/about/MK.svg' alt='MK Logo' height={50} width={50} />
 				</Link>
 			</div>
 			<div
-				className={`z-[500] nav-symbol-container sm:hidden hover:opacity-90 target:opacity-90 active:opacity-90 ${
+				className={`nav-symbol-container z-[500] target:opacity-90 hover:opacity-90 active:opacity-90 sm:hidden ${
 					clicked ? "opacity-90" : "opacity-60"
 				}`}
 				onClick={() => setClick(!clicked)}>
@@ -237,17 +259,26 @@ export default function Nav<T extends NavProps>(props: T) {
 				<div className={clicked ? "nav-symbol__top open" : "nav-symbol__top"}></div>
 			</div>
 			<MobileNav router={router} clicked={clicked} setClick={setClick} />
-			<div className={`h-full hidden sm:flex flex-col ${router.pathname === "/404" && "hidden sm:hidden"}`}>
+			<div
+				className={`hidden h-full flex-col sm:flex ${
+					router.pathname === "/404" && "hidden sm:hidden"
+				}`}>
 				{tabs.map((tab, i) => {
 					return (
 						<div
 							key={`tab-${tab.name}`}
-							className={`flex flex-col h-full ${router.asPath === tab.href ? "bg-custom-teal/[0%] rounded-md mb-2" : ""} pb-1`}>
+							className={`flex h-full flex-col ${
+								router.asPath === tab.href
+									? "mb-2 rounded-md bg-custom-teal/[0%]"
+									: ""
+							} pb-1`}>
 							{router.asPath !== tab.href ? (
 								<Link
 									href={tab.href}
-									className={`cursor-pointer flex h-full flex-col hover:text-logo-teal justify-end items-end p-2 mix-blend-color-difference bg-cyan-100/0 min-w-[50px] ml-4 ${
-										router.asPath === tab.href ? "font-medium text-custom-teal" : "text-custom-gray-blue"
+									className={`mix-blend-color-difference ml-4 flex h-full min-w-[50px] cursor-pointer flex-col items-end justify-end bg-cyan-100/0 p-2 hover:text-logo-teal ${
+										router.asPath === tab.href
+											? "font-medium text-custom-teal"
+											: "text-custom-gray-blue"
 									}`}>
 									{tab.name}
 								</Link>
@@ -256,13 +287,18 @@ export default function Nav<T extends NavProps>(props: T) {
 									onClick={() => {
 										scrollHandler.scrollTo(tab.href);
 									}}
-									className={`cursor-pointer flex h-auto hover:text-logo-teal justify-end items-end p-2 mix-blend-color-difference bg-cyan-100/0 min-w-[80px] ml-4 ${
-										router.asPath === tab.href ? "font-medium text-custom-teal" : "text-custom-gray-blue"
+									className={`mix-blend-color-difference ml-4 flex h-auto min-w-[80px] cursor-pointer items-end justify-end bg-cyan-100/0 p-2 hover:text-logo-teal ${
+										router.asPath === tab.href
+											? "font-medium text-custom-teal"
+											: "text-custom-gray-blue"
 									} `}>
 									{tab.name}
 								</a>
 							)}
-							<ul className={`flex-col items-end ${router.asPath === tab.href ? "inline-flex" : "hidden"} `}>
+							<ul
+								className={`flex-col items-end ${
+									router.asPath === tab.href ? "inline-flex" : "hidden"
+								} `}>
 								{tab.sections.map((s, j) => {
 									return (
 										<li
@@ -271,7 +307,9 @@ export default function Nav<T extends NavProps>(props: T) {
 												scrollHandler.scrollTo(s);
 											}}
 											className={`cursor-pointer px-2 py-1.5 text-[12.5px] ${
-												subtab === s ? "text-logo-blue hover:brightness-95" : "text-custom-gray-blue/60 hover:text-logo-blue"
+												subtab === s
+													? "text-logo-blue hover:brightness-95"
+													: "text-custom-gray-blue/60 hover:text-logo-blue"
 											} ${s === "/journey" ? "hidden lg:flex" : ""}`}>
 											{scrollHandler.routeName(s)}
 										</li>
@@ -285,20 +323,26 @@ export default function Nav<T extends NavProps>(props: T) {
 					href='/resume'
 					target='_blank'
 					rel='noreferrer'
-					className={`cursor-pointer text-[14px] flex hover hover:text-logo-teal justify-end items-center p-2 mt-6 bg-cyan-100/0 min-w-[80px] ml-4 ${
-						router.asPath?.startsWith("/resume") ? "font-medium text-custom-teal" : "text-custom-gray-blue/75"
+					className={`hover mt-6 ml-4 flex min-w-[80px] cursor-pointer items-center justify-end bg-cyan-100/0 p-2 text-[14px] hover:text-logo-teal ${
+						router.asPath?.startsWith("/resume")
+							? "font-medium text-custom-teal"
+							: "text-custom-gray-blue/75"
 					}`}>
 					Resume
-				</Link>
-				<Link target='_blank' rel='noreferrer' className='w-full flex justify-end pr-2 mt-2.5' href='https://github.com/marymkelly'>
-					<GithubIcon className='w-[26px] h-[26px] text-custom-gray-blue/40 hover:text-logo-blue/75' />
 				</Link>
 				<Link
 					target='_blank'
 					rel='noreferrer'
-					className='w-full flex justify-end pr-2 mt-4'
+					className='mt-2.5 flex w-full justify-end pr-2'
+					href='https://github.com/marymkelly'>
+					<GithubIcon className='h-[26px] w-[26px] text-custom-gray-blue/40 hover:text-logo-blue/75' />
+				</Link>
+				<Link
+					target='_blank'
+					rel='noreferrer'
+					className='mt-4 flex w-full justify-end pr-2'
 					href='https://www.linkedin.com/in/mary-kelly-5040b6ab/'>
-					<LinkedinIcon className='w-[26px] h-[26px] text-custom-gray-blue/40 hover:text-logo-blue/75' />
+					<LinkedinIcon className='h-[26px] w-[26px] text-custom-gray-blue/40 hover:text-logo-blue/75' />
 				</Link>
 			</div>
 		</nav>

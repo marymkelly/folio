@@ -68,7 +68,12 @@ class Technologies {
 		this.items = items;
 		this.categories = items.reduce((acc: any, curr) => {
 			return curr?.category
-				? { ...acc, [curr.category]: acc?.[curr?.category] ? new Set([...acc?.[curr?.category], ...curr.type]) : [...curr.type] }
+				? {
+						...acc,
+						[curr.category]: acc?.[curr?.category]
+							? new Set([...acc?.[curr?.category], ...curr.type])
+							: [...curr.type],
+				  }
 				: curr;
 		}, {});
 	}
@@ -684,7 +689,15 @@ export const technologies = new Technologies(tech);
 export const skills: SkillItem[] = [
 	{
 		category: "General Skills",
-		skills: ["Problem Solving", "Collaboration", "Communication", "Logical Thinking", "Creative Thinking", "Adaptability", "Listening"],
+		skills: [
+			"Problem Solving",
+			"Collaboration",
+			"Communication",
+			"Logical Thinking",
+			"Creative Thinking",
+			"Adaptability",
+			"Listening",
+		],
 		classes: "max-w-[180px]",
 	},
 	{
@@ -714,7 +727,15 @@ export const skills: SkillItem[] = [
 	},
 	{
 		category: "Digital Arts & Content Creation",
-		skills: ["Animation", "Graphic Design", "Illustration", "Photo Editing", "Video Production", "Print Production", "3D Modeling"],
+		skills: [
+			"Animation",
+			"Graphic Design",
+			"Illustration",
+			"Photo Editing",
+			"Video Production",
+			"Print Production",
+			"3D Modeling",
+		],
 		classes: "max-w-[200px] block",
 	},
 ];

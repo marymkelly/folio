@@ -26,11 +26,19 @@ interface EducationItem {
 
 const experience: ExperienceItem[] = [
 	{
+		role: "Software Developer",
+		company: "Principle Studios",
+		dates: {
+			start: 2023,
+			end: "Current",
+		},
+	},
+	{
 		role: "Lead Web Developer",
 		company: "Sin Pin",
 		dates: {
 			start: 2022,
-			end: "Current",
+			end: 2022,
 		},
 	},
 	{

@@ -1,7 +1,13 @@
 import React from "react";
-export default function MsOfficeIcon<T extends { className: string}>(props: T): JSX.Element {
+export default function MsOfficeIcon<T extends { className: string }>(props: T): JSX.Element {
 	return (
-		<svg className={props.className} width='64' height='64' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'>
+		<svg
+			className={props.className}
+			width='64'
+			height='64'
+			viewBox='0 0 64 64'
+			fill='none'
+			xmlns='http://www.w3.org/2000/svg'>
 			<g clipPath='url(#clip0_1697_53964)'>
 				<g className='mix-blend-multiply' opacity='0.2'>
 					<path
@@ -37,14 +43,26 @@ export default function MsOfficeIcon<T extends { className: string}>(props: T): 
 				/>
 			</g>
 			<defs>
-				<linearGradient id='paint0_linear_1697_53964' x1='45.2' y1='-1.42' x2='45.2' y2='57.8' gradientUnits='userSpaceOnUse'>
+				<linearGradient
+					id='paint0_linear_1697_53964'
+					x1='45.2'
+					y1='-1.42'
+					x2='45.2'
+					y2='57.8'
+					gradientUnits='userSpaceOnUse'>
 					<stop stopColor='#FFB900' />
 					<stop offset='0.17' stopColor='#EF8400' />
 					<stop offset='0.31' stopColor='#E25C01' />
 					<stop offset='0.43' stopColor='#DB4401' />
 					<stop offset='0.5' stopColor='#D83B01' />
 				</linearGradient>
-				<linearGradient id='paint1_linear_1697_53964' x1='34.52' y1='0.669814' x2='3.16001' y2='45.4498' gradientUnits='userSpaceOnUse'>
+				<linearGradient
+					id='paint1_linear_1697_53964'
+					x1='34.52'
+					y1='0.669814'
+					x2='3.16001'
+					y2='45.4498'
+					gradientUnits='userSpaceOnUse'>
 					<stop stopColor='#800600' />
 					<stop offset='0.6' stopColor='#C72127' />
 					<stop offset='0.73' stopColor='#C13959' />
@@ -52,15 +70,33 @@ export default function MsOfficeIcon<T extends { className: string}>(props: T): 
 					<stop offset='0.94' stopColor='#B95799' />
 					<stop offset='1' stopColor='#B85BA2' />
 				</linearGradient>
-				<linearGradient id='paint2_linear_1697_53964' x1='18.5' y1='55.63' x2='59.44' y2='55.63' gradientUnits='userSpaceOnUse'>
+				<linearGradient
+					id='paint2_linear_1697_53964'
+					x1='18.5'
+					y1='55.63'
+					x2='59.44'
+					y2='55.63'
+					gradientUnits='userSpaceOnUse'>
 					<stop stopColor='#F32B44' />
 					<stop offset='0.6' stopColor='#A4070A' />
 				</linearGradient>
-				<linearGradient id='paint3_linear_1697_53964' x1='35.16' y1='-0.240187' x2='28.52' y2='9.23981' gradientUnits='userSpaceOnUse'>
+				<linearGradient
+					id='paint3_linear_1697_53964'
+					x1='35.16'
+					y1='-0.240187'
+					x2='28.52'
+					y2='9.23981'
+					gradientUnits='userSpaceOnUse'>
 					<stop stopOpacity='0.4' />
 					<stop offset='1' stopOpacity='0' />
 				</linearGradient>
-				<linearGradient id='paint4_linear_1697_53964' x1='46.32' y1='56.55' x2='27.99' y2='54.95' gradientUnits='userSpaceOnUse'>
+				<linearGradient
+					id='paint4_linear_1697_53964'
+					x1='46.32'
+					y1='56.55'
+					x2='27.99'
+					y2='54.95'
+					gradientUnits='userSpaceOnUse'>
 					<stop stopOpacity='0.4' />
 					<stop offset='1' stopOpacity='0' />
 				</linearGradient>

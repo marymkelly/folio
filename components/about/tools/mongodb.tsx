@@ -1,7 +1,11 @@
 import React from "react";
-export default function MongoIcon<T extends { className: string}>(props: T): JSX.Element {
+export default function MongoIcon<T extends { className: string }>(props: T): JSX.Element {
 	return (
-		<svg className={props.className} id='Layer_2' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'>
+		<svg
+			className={props.className}
+			id='Layer_2'
+			xmlns='http://www.w3.org/2000/svg'
+			viewBox='0 0 256 256'>
 			<g id='Layer_1-2'>
 				<g>
 					<path

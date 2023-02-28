@@ -27,26 +27,37 @@ export default function SkillsAndTools() {
 	}, []);
 
 	return (
-		<div ref={skillsRef as LegacyRef<HTMLDivElement>} id="skills-tools" className='relative h-full w-full flex flex-col px-4 lg:px-0 pb-6 bg-custom-dark-navy'>
-			<div className='flex flex-col md:-ml-5 mb-2 font-gravesend font-bold leading-none mt-6 md:mt-16 tracking-[-0.02em] text-stroke text-stroke-[1.5px] text-stroke-custom-white opacity-[12%] text-transparent text-[120px] sm:text-[150px] md:text-[210px]'>
-				<h1 className='whitespace-pre-line lg:whitespace-normal 2xl:whitespace-pre'>Skills</h1>
+		<div
+			ref={skillsRef as LegacyRef<HTMLDivElement>}
+			id='skills-tools'
+			className='relative flex h-full w-full flex-col bg-custom-dark-navy px-4 pb-6 lg:px-0'>
+			<div className='text-stroke-custom-white mb-2 mt-6 flex flex-col font-gravesend text-[120px] font-bold leading-none tracking-[-0.02em] text-transparent opacity-[12%] text-stroke text-stroke-[1.5px] sm:text-[150px] md:-ml-5 md:mt-16 md:text-[210px]'>
+				<h1 className='whitespace-pre-line lg:whitespace-normal 2xl:whitespace-pre'>
+					Skills
+				</h1>
 			</div>
-			<div className='w-full flex justify-center pb-8 mb-12 -mt-16 md:-mt-24'>
-				<div className='w-full flex-col md:flex-row md:w-10/12 px-8 flex justify-between relative'>
+			<div className='mb-12 -mt-16 flex w-full justify-center pb-8 md:-mt-24'>
+				<div className='relative flex w-full flex-col justify-between px-8 md:w-10/12 md:flex-row'>
 					{skills.map((skillArea, i) => {
 						skillArea.skills.sort();
 						return (
-							<div key={`skill-area-${i}`} className={`mb-10 font-stolzl ${skillArea.classes}`}>
+							<div
+								key={`skill-area-${i}`}
+								className={`mb-10 font-stolzl ${skillArea.classes}`}>
 								<h5
-									className={`text-white tracking-wide lg:text-lg whitespace-nowrap md:whitespace-normal lg:mb-6 h-12 ${skillArea.classes}`}>
+									className={`h-12 whitespace-nowrap tracking-wide text-white md:whitespace-normal lg:mb-6 lg:text-lg ${skillArea.classes}`}>
 									{skillArea.category}
 								</h5>
 								<ul
-									className={`text-slate-100 md:mt-4 lg:mt-0 text-sm lg:text-base list-none ${
-										skillArea.category.startsWith("Business") ? "columns-2" : "columns-1"
+									className={`list-none text-sm text-slate-100 md:mt-4 lg:mt-0 lg:text-base ${
+										skillArea.category.startsWith("Business")
+											? "columns-2"
+											: "columns-1"
 									}`}>
 									{skillArea.skills.map((item, j) => (
-										<li key={`skill-${j}`} className='font-extralight tracking-wide leading-6 lg:leading-8'>
+										<li
+											key={`skill-${j}`}
+											className='font-extralight leading-6 tracking-wide lg:leading-8'>
 											{item}
 										</li>
 									))}
@@ -56,11 +67,11 @@ export default function SkillsAndTools() {
 					})}
 				</div>
 			</div>
-			<div className='flex flex-col self-end -ml-5 -mt-28 lg:-mt-20 mb-2 font-gravesend font-bold leading-none tracking-[-0.02em] text-stroke text-stroke-[1.5px] text-stroke-custom-white opacity-[12%] text-transparent text-[120px] sm:text-[150px] md:text-[210px]'>
+			<div className='text-stroke-custom-white -ml-5 -mt-28 mb-2 flex flex-col self-end font-gravesend text-[120px] font-bold leading-none tracking-[-0.02em] text-transparent opacity-[12%] text-stroke text-stroke-[1.5px] sm:text-[150px] md:text-[210px] lg:-mt-20'>
 				Tools
 			</div>
-			<div className='w-full flex flex-col items-center justify-end pr-4 lg:pr-0 -mt-12 md:-mt-32'>
-				<div className='w-full md:w-10/12 pb-16'>
+			<div className='-mt-12 flex w-full flex-col items-center justify-end pr-4 md:-mt-32 lg:pr-0'>
+				<div className='w-full pb-16 md:w-10/12'>
 					<div className='mb-4 flex items-center'>
 						<input
 							onChange={(e) => {
@@ -68,21 +79,25 @@ export default function SkillsAndTools() {
 							}}
 							type='text'
 							placeholder='Search'
-							className='z-10 h-9 w-60 ml-6 mr-4 align-middle pb-0.5 text-white bg-custom-gray-blue/25 placeholder:text-custom-gray-blue/50 focus-within:placeholder:text-custom-gray-blue/75 text-sm rounded focus:outline-none focus:ring-1 focus:outline-[1.5px] focus:outline-custom-teal/50 focus:outline-offset-0 indent-2 focus:ring-custom-teal'
+							className='z-10 ml-6 mr-4 h-9 w-60 rounded bg-custom-gray-blue/25 pb-0.5 indent-2 align-middle text-sm text-white placeholder:text-custom-gray-blue/50 focus-within:placeholder:text-custom-gray-blue/75 focus:outline-none focus:outline-[1.5px] focus:outline-offset-0 focus:outline-custom-teal/50 focus:ring-1 focus:ring-custom-teal'
 						/>
 
 						{["All", ...Object.keys(technologies.categories)].sort().map((item) => (
 							<div
 								key={`tool-category-${item}`}
-								className={`hidden md:inline-flex items-center mx-2 rounded-full px-4 md:px-3.5 py-1 border ${
-									selectedToolCategory === item ? "border-transparent bg-custom-teal" : "bg-transparent border-custom-gray-blue/60"
+								className={`mx-2 hidden items-center rounded-full border px-4 py-1 md:inline-flex md:px-3.5 ${
+									selectedToolCategory === item
+										? "border-transparent bg-custom-teal"
+										: "border-custom-gray-blue/60 bg-transparent"
 								}`}
 								onClick={() => {
 									setToolCategory(item);
 								}}>
 								<p
-									className={`font-itc tracking-wider text-xs lg:text-sm whitespace-nowrap ${
-										selectedToolCategory === item ? "text-custom-dark-navy font-semibold" : "font-light text-custom-gray-blue/60"
+									className={`whitespace-nowrap font-itc text-xs tracking-wider lg:text-sm ${
+										selectedToolCategory === item
+											? "font-semibold text-custom-dark-navy"
+											: "font-light text-custom-gray-blue/60"
 									}`}>
 									{item}
 								</p>
@@ -90,26 +105,29 @@ export default function SkillsAndTools() {
 						))}
 					</div>
 
-					<div className='pt-3 pl-2 sm:pl-4 2xl:pl-6 ml-6 mr-2 flex flex-wrap flex-auto h-[400px] lg:h-auto overflow-scroll md:min-h-[386px] lg:min-h-[120px] justify-start min-w-[311px] max-w-[1440px] bg-custom-gray-blue/10'>
+					<div className='ml-6 mr-2 flex h-[400px] min-w-[311px] max-w-[1440px] flex-auto flex-wrap justify-start overflow-scroll bg-custom-gray-blue/10 pt-3 pl-2 sm:pl-4 md:min-h-[386px] lg:h-auto lg:min-h-[120px] 2xl:pl-6'>
 						{filteredTools.length > 0 ? (
 							filteredTools.map((item, i) => {
 								return (
 									<div
 										key={`tech-item-${i}`}
 										className={`m-1 pt-1.5 pb-2 ${
-											item.category === selectedToolCategory || selectedToolCategory === "All" ? "flex" : "hidden"
-										} flex-col items-center justify-between max-w-[100px] w-[90px] h-[100px] relative`}>
-										<div className='p-1 flex items-center justify-center w-[50px] h-[50px] relative'>
+											item.category === selectedToolCategory ||
+											selectedToolCategory === "All"
+												? "flex"
+												: "hidden"
+										} relative h-[100px] w-[90px] max-w-[100px] flex-col items-center justify-between`}>
+										<div className='relative flex h-[50px] w-[50px] items-center justify-center p-1'>
 											<item.component className='h-full w-full' />
 										</div>
-										<p className='text-[10px] min-h-[34px] text-custom-gray-blue font-stolzl font-light text-center pt-2 leading-tight align-top justify-items-start mt-0'>
+										<p className='mt-0 min-h-[34px] justify-items-start pt-2 text-center align-top font-stolzl text-[10px] font-light leading-tight text-custom-gray-blue'>
 											{item.name}
 										</p>
 									</div>
 								);
 							})
 						) : (
-							<div className='w-full h-full text-sm flex justify-center self-center mb-4 text-custom-gray-blue/75'>
+							<div className='mb-4 flex h-full w-full justify-center self-center text-sm text-custom-gray-blue/75'>
 								<p>No Matches</p>
 							</div>
 						)}

@@ -27,14 +27,18 @@ export default function SinPinPage() {
 	return (
 		<>
 			<ProjectPageHeader {...projectData} />
-			<ProjectPageOverview textClasses='text-project-sinpin-red-text' overviewClasses='bg-project-sinpin-red-fade' />
+			<ProjectPageOverview
+				textClasses='text-project-sinpin-red-text'
+				overviewClasses='bg-project-sinpin-red-fade'
+			/>
 			<ImageSection
 				path='/images/projects/sinpin/intro.png'
 				classes='bg-project-sinpin-red-logo h-[50vh] min-h-[600px] lg:h-[800px] w-full mb-10 pt-8 py-12 flex items-center justify-center'
 			/>
-			<p className='font-stolzl font-light text-2xl mt-12 mb-2 lg:w-[1100px] self-center px-16 lg:px-0'>
-				With the existing platform affording three different account roles, the strategy that was decided upon early on, was to work from the
-				top down, starting with the administrative portal.
+			<p className='mt-12 mb-2 self-center px-16 font-stolzl text-2xl font-light lg:w-[1100px] lg:px-0'>
+				With the existing platform affording three different account roles, the strategy
+				that was decided upon early on, was to work from the top down, starting with the
+				administrative portal.
 			</p>
 			<InfoPoint
 				textClasses='text-project-sinpin-red-text'
@@ -68,18 +72,20 @@ export default function SinPinPage() {
 				path='/images/projects/sinpin/beforeAfterServices.png'
 				classes='bg-project-sinpin-red-logo h-[60vh] md:min-h-[400px] lg:h-[800px] w-full mb-10 lg:py-12 items-center justify-center'
 			/>
-			<p className='font-stolzl font-light text-2xl mt-12 mb-2 lg:w-[1100px] self-center px-16 lg:px-0'>
-				The redesign needed to bring a fresh, current face to the existing platform and have high legibility.
+			<p className='mt-12 mb-2 self-center px-16 font-stolzl text-2xl font-light lg:w-[1100px] lg:px-0'>
+				The redesign needed to bring a fresh, current face to the existing platform and have
+				high legibility.
 			</p>
-			<p className='font-gothic font-light text-lg tracking-[0.02em] lg:w-[1100px] pt-8 pb-12 leading-8 self-center px-16 lg:px-0'>
-				Due to this, I chose to keep the design clean and simple as to not confuse the viewer’s eye unncessarily.{" "}
+			<p className='self-center px-16 pt-8 pb-12 font-gothic text-lg font-light leading-8 tracking-[0.02em] lg:w-[1100px] lg:px-0'>
+				Due to this, I chose to keep the design clean and simple as to not confuse the
+				viewer’s eye unncessarily.{" "}
 			</p>
 			<InfoPoint
 				textClasses='text-project-sinpin-red-text'
 				title='Site Information & Architecture'
 				text='The rebuild of this platform opended a hugh opportunity for efficiency through restructuing the paths to access information. Previously, administrative users often would have to click six (6) or more times to get to their end goal. I have been able to reduce this for platform users, regardless of account type, to an average of two (2) or less clicks (or actions) to access their target area or content.'
 			/>
-			<p className='font-stolzl font-light text-2xl mt-12 mb-2 lg:w-[1100px] self-center px-16 lg:px-0'>
+			<p className='mt-12 mb-2 self-center px-16 font-stolzl text-2xl font-light lg:w-[1100px] lg:px-0'>
 				Speed and efficiency were priorities, both for user and software performance.
 			</p>
 			<InfoPoint

@@ -3,16 +3,28 @@ import { articles } from "../../lib/data/projects.ts";
 
 # What is a Functional Requirements Document (FRD)?
 
-During my time as a business analyst, for a custom software development company primarily providing solutions in the web and mobile application space, in addition to any design assets, I often wrote Functional Requirements Documents (FRD) as deliverables, for clients who acquired services in design and analysis. During those projects, screens covering most, if not all, major features of a project’s identified scope would be planned and designed, which averaged anywhere between 20-45 screens (sometimes less, sometimes more). This may sound great because you will be able to see what the product will look like. **So what is the documentation for?**
+During my time as a business analyst, for a custom software development company primarily providing
+solutions in the web and mobile application space, in addition to any design assets, I often wrote
+Functional Requirements Documents (FRD) as deliverables, for clients who acquired services in design
+and analysis. During those projects, screens covering most, if not all, major features of a
+project’s identified scope would be planned and designed, which averaged anywhere between 20-45
+screens (sometimes less, sometimes more). This may sound great because you will be able to see what
+the product will look like. **So what is the documentation for?**
 
-They say “a picture is worth a thousand words,” but I’d like to counter with, “not if you don’t understand what it is you are looking at.” Imagine having 20 screen designs laid out on a table in front of you without any further context and being asked to explain how they work. Would you be able to piece them together? Perhaps, navigationally. Would you know all the buttons or interactions? Probably not.
+They say “a picture is worth a thousand words,” but I’d like to counter with, “not if you don’t
+understand what it is you are looking at.” Imagine having 20 screen designs laid out on a table in
+front of you without any further context and being asked to explain how they work. Would you be able
+to piece them together? Perhaps, navigationally. Would you know all the buttons or interactions?
+Probably not.
 
 ##### The Functional Requirements Document (FRD) plays the important role of detailing how the envisioned solution should work.
 
-A quick note: _there are other types of requirements documents, such as business, and product, but their specifics and relevance will not be
-covered in this article._
+A quick note: _there are other types of requirements documents, such as business, and product, but
+their specifics and relevance will not be covered in this article._
 
-While there is no standard format for a FRD, they commonly provide a general overview, their information is commonly organized by function or functional area, and they include examples or references to related files or resources such:
+While there is no standard format for a FRD, they commonly provide a general overview, their
+information is commonly organized by function or functional area, and they include examples or
+references to related files or resources such:
 
 -   Work Breakdown Structures (WBS)
 -   Flow charts and diagrams
@@ -22,21 +34,40 @@ While there is no standard format for a FRD, they commonly provide a general ove
 
 _Examples provided under the context of providing solutions for custom software development_
 
-Much like Work Breakdown Structures (WBS) ([read more](https://marykelly.tech/words/what-is-a-wbs)), FRDs help clarify and unify a vision for the various teams and individuals who may be involved by providing a single, centralized reference of key information for everyone.
+Much like Work Breakdown Structures (WBS) ([read more](https://marykelly.tech/words/what-is-a-wbs)),
+FRDs help clarify and unify a vision for the various teams and individuals who may be involved by
+providing a single, centralized reference of key information for everyone.
 
 This is beneficial in:
 
 1.  Providing transparency and unity
-    -   The document acts as a source of truth for project requirements stakeholders can reference. This ensures an equal and open understanding of the scope between collaborators.
+    -   The document acts as a source of truth for project requirements stakeholders can reference.
+        This ensures an equal and open understanding of the scope between collaborators.
 2.  Reducing the margin of error and overall risk
-    -   Through ideation and analysis, various avenues are explored which can help anticipate potential complications and challenges, allowing for them to be solved ahead of time. Even if the problems are easy to resolve, if found in a later stage (like during development), they will cost, at least, some time (and therefore money), as it goes through different channels of communication to obtain confirmation on how to proceed with it.
+    -   Through ideation and analysis, various avenues are explored which can help anticipate
+        potential complications and challenges, allowing for them to be solved ahead of time. Even
+        if the problems are easy to resolve, if found in a later stage (like during development),
+        they will cost, at least, some time (and therefore money), as it goes through different
+        channels of communication to obtain confirmation on how to proceed with it.
 3.  Saving time and cost
-    -   Extending on the previous point, in addition to increasing predictability and minimizing unknowns, time and cost is saved through the clear understanding of how the solution should be implemented from the FRD, which lessens the need for clarification, allowing for less meetings and a more efficient process, which brings us to our next point.
+    -   Extending on the previous point, in addition to increasing predictability and minimizing
+        unknowns, time and cost is saved through the clear understanding of how the solution should
+        be implemented from the FRD, which lessens the need for clarification, allowing for less
+        meetings and a more efficient process, which brings us to our next point.
 4.  Helps expedite future pieces of the solution
-    -   This document can act like a manual or blueprint for the implementation of the project, which makes it easy to introduce new people to the project and catch them up to speed quickly and confidently.
+    -   This document can act like a manual or blueprint for the implementation of the project,
+        which makes it easy to introduce new people to the project and catch them up to speed
+        quickly and confidently.
 5.  Preserves reliable context
-    -   As time goes by, we tend to not always remember why we made certain choices. Sometimes we don’t have the answers because we weren’t there to begin with. A FRD is also like a “historical record” and can provide people, who may be involved in the future, a reference that accurately preserves the meaning and development of different facets of the project.
+    -   As time goes by, we tend to not always remember why we made certain choices. Sometimes we
+        don’t have the answers because we weren’t there to begin with. A FRD is also like a
+        “historical record” and can provide people, who may be involved in the future, a reference
+        that accurately preserves the meaning and development of different facets of the project.
 
 ![FRD Page Example](/images/projects/parrot/frd.png "Example Page")
 
-export default ({ children }) => <MdxLayout {...articles.find((entry) => entry.href === "/words/what-are-frds")}>{children}</MdxLayout>;
+export default ({ children }) => (
+	<MdxLayout {...articles.find((entry) => entry.href === "/words/what-are-frds")}>
+		{children}
+	</MdxLayout>
+);

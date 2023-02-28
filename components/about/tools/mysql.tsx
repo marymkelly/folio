@@ -1,7 +1,11 @@
 import React from "react";
-export default function MySqlIcon<T extends { className: string}>(props: T): JSX.Element {
+export default function MySqlIcon<T extends { className: string }>(props: T): JSX.Element {
 	return (
-		<svg className={props.className} id='Layer_2' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 134.12 91.08'>
+		<svg
+			className={props.className}
+			id='Layer_2'
+			xmlns='http://www.w3.org/2000/svg'
+			viewBox='0 0 134.12 91.08'>
 			<g id='Layer_1-2'>
 				<path
 					d='m32.24,82.98h-5.17c-.18-8.74-.69-16.95-1.51-24.64h-.05l-7.88,24.64h-3.94l-7.83-24.64h-.05c-.58,7.39-.95,15.6-1.1,24.64H0c.3-10.99,1.07-21.3,2.29-30.92h6.41l7.47,22.72h.05l7.51-22.72h6.14c1.34,11.27,2.14,21.57,2.38,30.92m22.44-22.81c-2.11,11.43-4.89,19.74-8.34,24.93-2.69,3.99-5.63,5.99-8.84,5.99-.85,0-1.91-.26-3.16-.77v-2.76c.61.09,1.33.14,2.15.14,1.5,0,2.7-.41,3.62-1.24,1.1-1.01,1.65-2.14,1.65-3.39,0-.86-.43-2.61-1.28-5.27l-5.68-17.64h5.08l4.08,13.19c.92,3,1.3,5.09,1.15,6.28,2.23-5.95,3.79-12.44,4.67-19.47h4.9Z'

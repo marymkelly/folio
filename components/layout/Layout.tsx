@@ -13,12 +13,14 @@ export default function Layout(props: Props): JSX.Element {
 			<ThemeContext.Consumer>
 				{(pageCtx: ThemeContextInterface) => (
 					<div
-						className={`min-w-[360px] min-h-screen h-full w-full flex flex-col flex-auto relative bg-[${pageCtx?.backgroundColor}] ${
-							pageCtx.backgroundIsDark ? "text-white" : "text-custom-black"
-						}`}>
+						className={`relative flex h-full min-h-screen w-full min-w-[360px] flex-auto flex-col bg-[${
+							pageCtx?.backgroundColor
+						}] ${pageCtx.backgroundIsDark ? "text-white" : "text-custom-black"}`}>
 						<PageHead />
 						<Nav isDark={pageCtx.backgroundIsDark} />
-						<main className='flex flex-col w-full flex-auto h-auto overflow-x-clip'>{props.children}</main>
+						<main className='flex h-auto w-full flex-auto flex-col overflow-x-clip'>
+							{props.children}
+						</main>
 						<Footer isFixed={pageCtx.footerFixed} color={pageCtx.footerColorClass} />
 					</div>
 				)}

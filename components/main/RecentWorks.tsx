@@ -6,10 +6,12 @@ import { getPreviewDateString } from "../../lib/data/projects";
 
 export default function RecentWorks() {
 	return (
-		<div id='recent-works' className='relative pb-36 pt-44 mt-8 sm:mt-20 flex flex-col'>
-			<div className='absolute -top-20 md:-top-40 left-0 w-full flex flex-col md:-ml-5 mb-2 font-gravesend font-bold leading-none mt-8 tracking-[-0.02em] text-stroke text-stroke-[1.5px] text-stroke-custom-gray-blue opacity-[18%] text-transparent text-[100px] sm:text-[120px] md:text-[210px]'>
+		<div id='recent-works' className='relative mt-8 flex flex-col pb-36 pt-44 sm:mt-20'>
+			<div className='absolute -top-20 left-0 mb-2 mt-8 flex w-full flex-col font-gravesend text-[100px] font-bold leading-none tracking-[-0.02em] text-transparent opacity-[18%] text-stroke-custom-gray-blue text-stroke text-stroke-[1.5px] sm:text-[120px] md:-top-40 md:-ml-5 md:text-[210px]'>
 				<h1 className=''>Recent</h1>
-				<h1 className='flex -mt-4 md:-mt-16 -mr-48 sm:-mr-28 md:-mr-64 lg:-mr-8 md:self-end md:justify-self-end'>Works</h1>
+				<h1 className='-mt-4 -mr-48 flex sm:-mr-28 md:-mt-16 md:-mr-64 md:self-end md:justify-self-end lg:-mr-8'>
+					Works
+				</h1>
 			</div>
 
 			{projects.map((p, i) => {
@@ -28,16 +30,18 @@ export default function RecentWorks() {
 				);
 			})}
 
-			<div className='bg-logo-teal/[10%] mt-4 md:mt-12 px-16 py-10 leading-10 font-light md:text-lg font-itc tracking-[.018em] self-center justify-self-center w-full max-w-[1000px] xl:max-w-[1100px] 2xl:max-w-[1200px]'>
-				While I am currently in the process of updating and adding additional projects to this site, other examples of my work are available
-				through this{" "}
+			<div className='mt-4 w-full max-w-[1000px] self-center justify-self-center bg-logo-teal/[10%] px-16 py-10 font-itc font-light leading-10 tracking-[.018em] md:mt-12 md:text-lg xl:max-w-[1100px] 2xl:max-w-[1200px]'>
+				While I am currently in the process of updating and adding additional projects to
+				this site, other examples of my work are available through this{" "}
 				<a
 					href='https://portfolio-v2.marykelly.tech'
 					target='_blank'
 					rel='noreferrer'
-					className='group peer font-stolzl font-light md:font-medium tracking-[0.015em] ml-px hover:brightness-95 text-logo-teal'>
-					<span className='decoration-[1.5px] underline underline-offset-4'>previous version of my portfolio site</span>
-					<span className="font-itc group-hover:before:content-['→'] group-hover:text-inherit text-custom-black group-hover:ml-1" />
+					className='group peer ml-px font-stolzl font-light tracking-[0.015em] text-logo-teal hover:brightness-95 md:font-medium'>
+					<span className='underline decoration-[1.5px] underline-offset-4'>
+						previous version of my portfolio site
+					</span>
+					<span className="font-itc text-custom-black group-hover:ml-1 group-hover:text-inherit group-hover:before:content-['→']" />
 				</a>
 				<span className='peer-hover:hidden'>.</span>
 			</div>

@@ -7,7 +7,8 @@ const nextConfig = {
 		return [
 			{
 				source: "/resume",
-				destination: "https://storage.googleapis.com/portsite-b008f.appspot.com/public/Mary_Kelly_Resume-2022.pdf",
+				destination:
+					"https://storage.googleapis.com/portsite-b008f.appspot.com/public/Mary_Kelly_Resume-2022.pdf",
 			},
 		];
 	},

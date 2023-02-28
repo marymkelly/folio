@@ -1,7 +1,14 @@
 import React from "react";
-export default function PhotoshopIcon<T extends { className: string}>(props: T): JSX.Element {
+export default function PhotoshopIcon<T extends { className: string }>(props: T): JSX.Element {
 	return (
-		<svg className={props.className} version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 240 234'>
+		<svg
+			className={props.className}
+			version='1.1'
+			id='Layer_1'
+			xmlns='http://www.w3.org/2000/svg'
+			x='0px'
+			y='0px'
+			viewBox='0 0 240 234'>
 			<g id='Layer_2_1_'>
 				<g id='Surfaces'>
 					<g id='Photo_Surface'>

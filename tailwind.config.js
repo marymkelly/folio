@@ -8,6 +8,7 @@ module.exports = {
 			xxs: "320px",
 			xs: "425px",
 			...defaultTheme.screens,
+			"3xl": "1728px",
 		},
 		extend: {
 			colors: {
@@ -33,16 +34,19 @@ module.exports = {
 				},
 			},
 			fontFamily: {
-				sans: ["Didact Gothic", "stolzl", "itc-avant-garde-gothic-pro", "gravesend-sans", ...defaultTheme.fontFamily.sans],
+				sans: [
+					"Didact Gothic",
+					"stolzl",
+					"itc-avant-garde-gothic-pro",
+					"gravesend-sans",
+					...defaultTheme.fontFamily.sans,
+				],
 				itc: "itc-avant-garde-gothic-pro, sans-serif",
 				stolzl: "stolzl, sans-serif",
 				gravesend: "gravesend-sans, sans-serif",
 				gothic: "Didact Gothic, sans-serif",
 				figtree: "Figtree, sans-serif",
 				manrope: "Manrope, sans-serif",
-			},
-			screens: {
-				"3xl": "1728px",
 			},
 			keyframes: {
 				tailfade: {
@@ -59,7 +63,7 @@ module.exports = {
 			animation: {
 				tailfade: "tailfade 3s ease-out infinite",
 				navbloom: "navbloom 1s linear 1",
-				navbloomReverse: "navbloom 1s linear 1 reverse"
+				navbloomReverse: "navbloom 1s linear 1 reverse",
 			},
 			typography: (theme) => ({
 				DEFAULT: {
@@ -206,6 +210,9 @@ module.exports = {
 				1000: "1000%",
 				1100: "1100%",
 				1200: "1200%",
+				1300: "1400%",
+				1400: "1300%",
+				1500: "1500%",
 			},
 		},
 	},

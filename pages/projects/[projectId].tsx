@@ -16,32 +16,56 @@ export default function Projects(props: { projectId: string }) {
 	const themeCtx = useContext(ThemeContext);
 	const Component: Function = projectPages[props.projectId];
 	const projectIndex = projects.findIndex((p) => p.id === props.projectId);
-	const prevProject = projectIndex === 0 ? projects[projects.length - 1] : projects[projectIndex - 1];
-	const nextProject = projectIndex + 1 === projects.length ? projects[0] : projects[projectIndex + 1];
+	const prevProject =
+		projectIndex === 0 ? projects[projects.length - 1] : projects[projectIndex - 1];
+	const nextProject =
+		projectIndex + 1 === projects.length ? projects[0] : projects[projectIndex + 1];
 
 	const cardColors: { [key: string]: string } = {
-		"#CF0008": "border-[3px] border-[#CF0008] text-[#CF0008] hover:bg-[#CF0008] hover:text-white hover:brightness-105 hover:cursor-pointer",
-		"#E51B22": "border-[3px] border-[#E51B22] text-[#E51B22] hover:bg-[#E51B22] hover:text-white hover:brightness-105 hover:cursor-pointer",
-		"#092636": "border-[3px] border-[#092636] text-[#092636] hover:bg-[#092636] hover:text-white hover:brightness-105 hover:cursor-pointer",
-		"#1C3E51": "border-[3px] border-[#1C3E51] text-[#1C3E51] hover:bg-[#1C3E51] hover:text-white hover:brightness-105 hover:cursor-pointer",
-		"#06D378": "border-[3px] border-[#06D378] text-[#06D378] hover:bg-[#06D378] hover:text-white hover:brightness-105 hover:cursor-pointer",
-		"#00C86F": "border-[3px] border-[#00C86F] text-[#00C86F] hover:bg-[#00C86F] hover:text-white hover:brightness-105 hover:cursor-pointer",
+		"#CF0008":
+			"border-[3px] border-[#CF0008] text-[#CF0008] hover:bg-[#CF0008] hover:text-white hover:brightness-105 hover:cursor-pointer",
+		"#E51B22":
+			"border-[3px] border-[#E51B22] text-[#E51B22] hover:bg-[#E51B22] hover:text-white hover:brightness-105 hover:cursor-pointer",
+		"#092636":
+			"border-[3px] border-[#092636] text-[#092636] hover:bg-[#092636] hover:text-white hover:brightness-105 hover:cursor-pointer",
+		"#1C3E51":
+			"border-[3px] border-[#1C3E51] text-[#1C3E51] hover:bg-[#1C3E51] hover:text-white hover:brightness-105 hover:cursor-pointer",
+		"#06D378":
+			"border-[3px] border-[#06D378] text-[#06D378] hover:bg-[#06D378] hover:text-white hover:brightness-105 hover:cursor-pointer",
+		"#00C86F":
+			"border-[3px] border-[#00C86F] text-[#00C86F] hover:bg-[#00C86F] hover:text-white hover:brightness-105 hover:cursor-pointer",
 	};
 
 	return (
 		<>
-			<Component {...props} {...projects[projectIndex]} dates={getPreviewDateString(projects[projectIndex]!.dates)} />
-			<div className={`w-full flex-col md:flex-row flex pb-20 ${themeCtx.footerColorClass}`}>
-				<Link href={prevProject.href} className={`w-full md:w-6/12 px-12 mb-12 md:mb-0 items-center flex flex-col`}>
-					<div className={`w-full md:w-8/12 md:pl-[72px] pl-8 py-12 self-end ${prevProject.preview ? cardColors[prevProject.preview.colors.overlay] : ""} `}>
+			<Component
+				{...props}
+				{...projects[projectIndex]}
+				dates={getPreviewDateString(projects[projectIndex]!.dates)}
+			/>
+			<div className={`flex w-full flex-col pb-20 md:flex-row ${themeCtx.footerColorClass}`}>
+				<Link
+					href={prevProject.href}
+					className={`mb-12 flex w-full flex-col items-center px-12 md:mb-0 md:w-6/12`}>
+					<div
+						className={`w-full self-end py-12 pl-8 md:w-8/12 md:pl-[72px] ${
+							prevProject.preview
+								? cardColors[prevProject.preview.colors.overlay]
+								: ""
+						} `}>
 						<p className='text-xl'>Previous Project</p>
-						<h3 className='text-3xl capitalize font-gravesend'>{prevProject.name}</h3>
+						<h3 className='font-gravesend text-3xl capitalize'>{prevProject.name}</h3>
 					</div>
 				</Link>
-				<Link href={nextProject.href} className={`w-full md:w-6/12 px-12 flex flex-col`}>
-					<div className={`w-full md:w-8/12 md:pl-[72px] pl-8 py-12 ${nextProject.preview ? cardColors[nextProject.preview.colors.overlay] : ""}`}>
+				<Link href={nextProject.href} className={`flex w-full flex-col px-12 md:w-6/12`}>
+					<div
+						className={`w-full py-12 pl-8 md:w-8/12 md:pl-[72px] ${
+							nextProject.preview
+								? cardColors[nextProject.preview.colors.overlay]
+								: ""
+						}`}>
 						<p className='text-xl'>Next Project</p>
-						<h3 className='text-3xl capitalize font-gravesend'>{nextProject.name}</h3>
+						<h3 className='font-gravesend text-3xl capitalize'>{nextProject.name}</h3>
 					</div>
 				</Link>
 			</div>
@@ -51,7 +75,11 @@ export default function Projects(props: { projectId: string }) {
 
 export async function getStaticPaths() {
 	return {
-		paths: [{ params: { projectId: "parrot-social" } }, { params: { projectId: "sinpin" } }, { params: { projectId: "galactor" } }],
+		paths: [
+			{ params: { projectId: "parrot-social" } },
+			{ params: { projectId: "sinpin" } },
+			{ params: { projectId: "galactor" } },
+		],
 		fallback: "blocking",
 	};
 }

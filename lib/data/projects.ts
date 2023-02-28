@@ -104,7 +104,16 @@ export const projects: ProjectProps[] = [
 		role: ["Developer", "Designer"],
 		type: "ReactJS",
 		platforms: "Web",
-		technologies: ["React.js", "Node.js", "Tailwind CSS", "Globe.gl", "Three.js", "Aladin API", "Skymap API", "Google Maps"],
+		technologies: [
+			"React.js",
+			"Node.js",
+			"Tailwind CSS",
+			"Globe.gl",
+			"Three.js",
+			"Aladin API",
+			"Skymap API",
+			"Google Maps",
+		],
 		dates: {
 			start: { month: "December", year: 2022 },
 			end: { month: "December", year: 2022 },

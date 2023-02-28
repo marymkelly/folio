@@ -24,6 +24,25 @@ export interface TimelineEvent {
 export interface TickmarkProps {
 	activeIndex: number;
 	setActiveTick: Function;
+	timelinePercent: number;
+	spacePercent: number;
+	pivotPoint: number;
+	totalLength: number;
+	spriteX: number;
+}
+
+export interface TimelineCalculationData {
+	startingYear: number;
+	endingYear: number;
+	totalNumYears: number;
+	prevIndex: number;
+	spaceAnnualTicksPercent: number;
+	offsetAnnualTicksPercent: number;
+	offsetTicksPercent: {
+		left: number;
+		right: number;
+	};
+	spriteTimelineX: number;
 }
 
 export const timelineData: TimelineEvent[] = [
@@ -47,7 +66,8 @@ export const timelineData: TimelineEvent[] = [
 	{
 		year: 2014,
 		title: "",
-		summary: "Took a web development class and extended coding knowledge in the direcion of web languages.",
+		summary:
+			"Took a web development class and extended coding knowledge in the direcion of web languages.",
 	},
 	{
 		year: 2014,
@@ -62,14 +82,15 @@ export const timelineData: TimelineEvent[] = [
 	},
 	{
 		year: 2014,
-		title: "Career Choice",
+		title: "Making a Career Choice",
 		summary:
 			"My experiences that semester revealed a genuine interest and led me to my resolve of pursuing a career path in software development and/or the field of human-computer interaction.",
 	},
 	{
 		year: 2015,
 		title: "First Web Development Job",
-		summary: "Stayed on with SOC as a web developer; a position extended to me near end of my internship",
+		summary:
+			"Stayed on with SOC as a web developer; a position extended to me near end of my internship",
 		image: {
 			src: "/images/timeline/SOC2-transparent.png",
 			alt: "Student Opportunity Center Updated Logo",
@@ -95,21 +116,21 @@ export const timelineData: TimelineEvent[] = [
 		image: {
 			src: "/images/timeline/maglab-transparent.png",
 			alt: "National High Magnet Laboratory Logo",
-			dimensions: { height: 59.2, width: 200 },
+			dimensions: { height: 55.9, width: 200 },
 			className: "h-auto",
 		},
 	},
 	{
 		year: 2016,
-		title: "Left Student Opportunity Center",
+		title: "Left the SOC",
 		summary:
-			"Even thought the company relocated late 2015 and I did not move with them, I continued working remote for them until eventually leaving late 2016.",
+			"I continued working remotely for the Student Opportunity Center after the company relocated late 2015 until eventually leaving late 2016.",
 	},
 	{
 		year: 2017,
 		title: "Time for a Move",
 		summary:
-			"After difficulty finding new opportunities to work in tech where I lived, I decided to move back to my hometown of Stuart, FL for a fresh start and to figure out how to advance towards my career goals.",
+			"After difficulty finding new work opportunities in tech where I lived, I decided to move back to my hometown of Stuart, FL for a fresh start and to figure out how to advance towards my career goals.",
 	},
 	{
 		year: 2017,
@@ -120,7 +141,8 @@ export const timelineData: TimelineEvent[] = [
 	{
 		year: 2018,
 		title: "Business Analysis Intern",
-		summary: "Began a business analysis internship with custom software development company, Mercury Development",
+		summary:
+			"Began a business analysis internship with custom software development company, Mercury Development",
 		image: {
 			src: "/images/timeline/mercury.png",
 			alt: "Mercury Development Logo",
@@ -160,11 +182,23 @@ export const timelineData: TimelineEvent[] = [
 		year: 2022,
 		title: "Lead Developer",
 		summary:
-			"After working for as a BA for four years, I decided to leave Mercury Development and accepted a new role working as the full-time lead developer for a telecomunications company, Sin Pin.",
+			"After working for as a BA for four years, I accepted a new role working as the full-time lead developer for a telecomunications company, Sin Pin.",
 		image: {
 			src: "/images/timeline/sinpin.png",
 			alt: "Sin Pin Logo",
 			dimensions: { height: 20, width: 150 },
+			className: "h-auto",
+		},
+	},
+	{
+		year: 2023,
+		title: "New Year, New Role",
+		summary:
+			"Started an exciting new opportunity with the team at Principle Studios as a Software Developer right after the new year.",
+		image: {
+			src: "/images/timeline/principle.jpg",
+			alt: "Principle Studio Logo",
+			dimensions: { height: 60, width: 100 },
 			className: "h-auto",
 		},
 	},

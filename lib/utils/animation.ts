@@ -16,7 +16,11 @@ export const update = {
 			document.getElementById("left-arrow-container")!.classList.add("pressed");
 			document.getElementById("right-arrow-container")!.classList.remove("pressed");
 
-			if (this.currentAnimation === "idle" || this.currentAnimation.startsWith("crossarms") || this.currentAnimation === "walk_right") {
+			if (
+				this.currentAnimation === "idle" ||
+				this.currentAnimation.startsWith("crossarms") ||
+				this.currentAnimation === "walk_right"
+			) {
 				this.speedX = 0;
 				this.setAnimation("pivot_left", 0);
 				return;
@@ -29,7 +33,11 @@ export const update = {
 			document.getElementById("right-arrow-container")!.classList.add("pressed");
 			document.getElementById("left-arrow-container")!.classList.remove("pressed");
 
-			if (this.currentAnimation === "idle" || this.currentAnimation.startsWith("crossarms") || this.currentAnimation === "walk_left") {
+			if (
+				this.currentAnimation === "idle" ||
+				this.currentAnimation.startsWith("crossarms") ||
+				this.currentAnimation === "walk_left"
+			) {
 				this.speedX = 0;
 				this.setAnimation("pivot_right", 0);
 				return;
@@ -39,7 +47,10 @@ export const update = {
 		}
 
 		if (this.animator.lastKey === "RArrowLeft") {
-			if (this.currentAnimation === "walk_left" || this.currentAnimation.startsWith("pivot")) {
+			if (
+				this.currentAnimation === "walk_left" ||
+				this.currentAnimation.startsWith("pivot")
+			) {
 				this.speedX = 0;
 				let startFrame = getPivotToIdleStart(this);
 				this.setAnimation("crossarms_left", startFrame);
@@ -49,7 +60,10 @@ export const update = {
 		}
 
 		if (this.animator.lastKey === "RArrowRight") {
-			if (this.currentAnimation === "walk_right" || this.currentAnimation.startsWith("pivot")) {
+			if (
+				this.currentAnimation === "walk_right" ||
+				this.currentAnimation.startsWith("pivot")
+			) {
 				this.speedX = 0;
 				let startFrame = getPivotToIdleStart(this);
 				this.setAnimation("crossarms_right", startFrame);
@@ -64,7 +78,11 @@ export const update = {
 				document.getElementById("left-arrow-container")!.classList.remove("pressed");
 			}
 
-			if (!this.currentAnimation.startsWith("portal") && !this.currentAnimation.startsWith("crossarms") && this.currentAnimation !== "idle") {
+			if (
+				!this.currentAnimation.startsWith("portal") &&
+				!this.currentAnimation.startsWith("crossarms") &&
+				this.currentAnimation !== "idle"
+			) {
 				this.speedX = 0;
 				this.setAnimation("idle", 0);
 				this.animator.lastKey = "";
@@ -88,15 +106,25 @@ export const update = {
 						this.animator.lastKey = "";
 					} else if (this.currentAnimation.startsWith("pivot")) {
 						this.speedX = this.currentAnimation === "pivot_left" ? -2.4 : 2.4;
-						this.currentAnimation === "pivot_left" ? this.setAnimation("walk_left", 0) : this.setAnimation("walk_right", 0);
+						this.currentAnimation === "pivot_left"
+							? this.setAnimation("walk_left", 0)
+							: this.setAnimation("walk_right", 0);
 					} else if (this.currentAnimation.startsWith("portal_entry")) {
 						this.speedX = 0;
 						const activeTick = this.animator.activeTick;
-						const percentAdjustment = activeTick.index + 1 > 7 ? 1 : 2;
+
 						this.x =
 							activeTick.index === 0
 								? 0
-								: ((activeTick.percent - percentAdjustment) / 100) * (this.animator.width - (activeTick.index === 11 ? 225 : 300));
+								: activeTick.index ===
+								  this.animator.calculationData.totalNumYears + 1
+								? 95
+								: (activeTick.percent / 100) *
+								  (this.animator.width -
+										(activeTick.index ===
+										this.animator.calculationData.totalNumYears
+											? this.width / 2
+											: (3 * this.width) / 4));
 
 						this.currentAnimation === "portal_entry_right"
 							? this.setAnimation("portal_exit_right", 0)
@@ -122,19 +150,19 @@ export const update = {
 
 		if (this.x < 0) {
 			this.x = 0;
-		} else if (this.x > this.animator.width - this.width + 50) {
-			this.x = Math.floor(this.animator.width - this.width + 50);
+		} else if (this.x > this.animator.width - (3 * this.width) / 4) {
+			this.x = Math.floor(this.animator.width - (3 * this.width) / 4);
 		}
 
 		let timelinePercent = this.x;
 
 		if (timelinePercent < 50) {
 			timelinePercent = 0;
-		} else if (timelinePercent > this.animator.width - 300) {
+		} else if (timelinePercent > this.animator.width - (3 * this.width) / 4) {
 			timelinePercent = 100;
 		} else {
-			timelinePercent = (this.x / (this.animator.width - 300)) * 100;
-			if (this.x > this.animator.width - 375) {
+			timelinePercent = (this.x / (this.animator.width - (3 * this.width) / 4)) * 100;
+			if (this.x > this.animator.width - (3 * this.width) / 4) {
 				timelinePercent = 100;
 			}
 		}
@@ -165,7 +193,9 @@ export const update = {
 	},
 };
 
-export const input: { saga: <T extends Window | HTMLElement>(el: T) => InputListener[] } = {
+export const input: {
+	saga: <T extends Window | HTMLElement>(el: T) => InputListener[];
+} = {
 	saga: (element) => {
 		const events: InputListener[] = [
 			{
@@ -177,11 +207,17 @@ export const input: { saga: <T extends Window | HTMLElement>(el: T) => InputList
 							this.animator.currentKeys.push(e.key);
 						}
 
-						if (this.animator.lastKey !== "P" + e.key && this.animator.currentKeys[this.animator.currentKeys.length - 1] == e.key) {
+						if (
+							this.animator.lastKey !== "P" + e.key &&
+							this.animator.currentKeys[this.animator.currentKeys.length - 1] == e.key
+						) {
 							this.animator.lastKey = "P" + e.key;
 						}
 
-						if (this.animator.currentKeys.length === 0 && this.animator.lastKey.startsWith("R")) {
+						if (
+							this.animator.currentKeys.length === 0 &&
+							this.animator.lastKey.startsWith("R")
+						) {
 							this.animator.lastKey = "";
 						}
 					}
@@ -192,11 +228,17 @@ export const input: { saga: <T extends Window | HTMLElement>(el: T) => InputList
 				event: "keyup",
 				action: function (this: InputHandler, e: Event & { key?: string }) {
 					if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
-						if (this.animator.currentKeys.length === 1 || e.key.slice(1) === this.animator.lastKey.slice(1)) {
+						if (
+							this.animator.currentKeys.length === 1 ||
+							e.key.slice(1) === this.animator.lastKey.slice(1)
+						) {
 							this.animator.lastKey = "R" + e.key;
 						}
 
-						this.animator.currentKeys.splice(this.animator.currentKeys.indexOf(e.key), 1);
+						this.animator.currentKeys.splice(
+							this.animator.currentKeys.indexOf(e.key),
+							1
+						);
 					}
 				},
 			},

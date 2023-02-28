@@ -72,7 +72,11 @@ export class SpriteController {
 		} = {};
 
 		arr.forEach((animation, i) => {
-			let frames: { location: { x: number; y: number }[]; speed: number; delayLoopSeconds: number } = {
+			let frames: {
+				location: { x: number; y: number }[];
+				speed: number;
+				delayLoopSeconds: number;
+			} = {
 				location: [],
 				speed: animation.speed,
 				delayLoopSeconds: animation.loopDelay,
@@ -105,18 +109,34 @@ export class SpriteController {
 
 			const frameX = this.spriteWidth * position;
 			const frameY = this.animations[this.currentAnimation].location[position].y;
-			ctx!.drawImage(this.spriteSheet, frameX, frameY, this.spriteWidth, this.spriteHeight, this.x, this.y, this.height, this.width);
+			ctx!.drawImage(
+				this.spriteSheet,
+				frameX,
+				frameY,
+				this.spriteWidth,
+				this.spriteHeight,
+				this.x,
+				this.y,
+				this.height,
+				this.width
+			);
 		}
 	}
 
 	setAnimation(name: string, startingFramePosition: number = 0) {
 		if (this.currentAnimation !== name) {
 			this.currentAnimation = name;
-			this.gameFrame = Math.floor(startingFramePosition * this.animations[this.currentAnimation].speed);
-			this.maxFrames = this.animations[this.currentAnimation].speed * this.animations[this.currentAnimation].location.length;
+			this.gameFrame = Math.floor(
+				startingFramePosition * this.animations[this.currentAnimation].speed
+			);
+			this.maxFrames =
+				this.animations[this.currentAnimation].speed *
+				this.animations[this.currentAnimation].location.length;
 			this.delayFrame = 0;
 			this.delaying = false;
-			this.delayAmount = Math.floor(this.animations[this.currentAnimation].delayLoopSeconds * 60);
+			this.delayAmount = Math.floor(
+				this.animations[this.currentAnimation].delayLoopSeconds * 60
+			);
 		}
 	}
 }

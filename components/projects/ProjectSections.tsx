@@ -10,24 +10,32 @@ export interface ImageSectionProps {
 
 export function ImageSection(props: ImageSectionProps) {
 	return (
-		<div className='flex flex-col w-full'>
+		<div className='flex w-full flex-col'>
 			<div
 				className={
 					props.classes
 						? `${props.classes}`
-						: `h-[75vh] md:min-h-[400px] lg:h-[800px] w-full lg:my-12 lg:py-10 flex items-center justify-center`
+						: `flex h-[75vh] w-full items-center justify-center md:min-h-[400px] lg:my-12 lg:h-[800px] lg:py-10`
 				}>
-				<div className='flex flex-col w-full h-full md:px-16 lg:px-0'>
-					<div className='relative w-[100%] h-[100%]'>
+				<div className='flex h-full w-full flex-col md:px-16 lg:px-0'>
+					<div className='relative h-[100%] w-[100%]'>
 						<Image
 							src={props.path}
-							className={props?.imgClasses ? `${"object-contain-cover md:object-contain"}` : "object-contain"}
+							className={
+								props?.imgClasses
+									? `${"object-contain-cover md:object-contain"}`
+									: "object-contain"
+							}
 							fill
 							alt='Image preview'
 							priority
 						/>
 					</div>
-					<div>{props.caption && <p className='font-gothic text-xs -mt-20'>{props.caption}</p>}</div>
+					<div>
+						{props.caption && (
+							<p className='-mt-20 font-gothic text-xs'>{props.caption}</p>
+						)}
+					</div>
 				</div>
 			</div>
 		</div>
@@ -36,10 +44,12 @@ export function ImageSection(props: ImageSectionProps) {
 
 export const InfoPoint = (props: { textClasses: string; title: string; text: string }) => {
 	return (
-		<div className='flex flex-col w-full items-center px-16 lg:px-0'>
-			<div className='max-w-[1100px] flex flex-col items-start w-full'>
-				<h5 className={`font-stolzl mt-10 mb-5 ${props.textClasses}`}>{props.title}</h5>
-				<p className='font-gothic font-light text-lg tracking-[0.02em] leading-8'>{props.text}</p>
+		<div className='flex w-full flex-col items-center px-16 lg:px-0'>
+			<div className='flex w-full max-w-[1100px] flex-col items-start'>
+				<h5 className={`mt-10 mb-5 font-stolzl ${props.textClasses}`}>{props.title}</h5>
+				<p className='font-gothic text-lg font-light leading-8 tracking-[0.02em]'>
+					{props.text}
+				</p>
 			</div>
 		</div>
 	);
@@ -47,10 +57,12 @@ export const InfoPoint = (props: { textClasses: string; title: string; text: str
 
 export const FeaturePoint = (props: { title: string; text: string }) => {
 	return (
-		<div className='flex flex-col w-full items-center px-16 lg:px-0'>
-			<div className='max-w-[1100px] flex flex-col items-start w-full'>
-				<h5 className='font-stolzl text-xl mb-5 mt-12 text-custom-black'>{props.title}</h5>
-				<p className='font-gothic font-light text-lg tracking-[0.02em] leading-8'>{props.text}</p>
+		<div className='flex w-full flex-col items-center px-16 lg:px-0'>
+			<div className='flex w-full max-w-[1100px] flex-col items-start'>
+				<h5 className='mb-5 mt-12 font-stolzl text-xl text-custom-black'>{props.title}</h5>
+				<p className='font-gothic text-lg font-light leading-8 tracking-[0.02em]'>
+					{props.text}
+				</p>
 			</div>
 		</div>
 	);

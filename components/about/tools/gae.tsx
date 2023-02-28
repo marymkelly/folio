@@ -1,7 +1,13 @@
 import React from "react";
 export default function GaeIcon<T extends { className: string }>(props: T): JSX.Element {
 	return (
-		<svg className={props.className} width='1171' height='1042' viewBox='0 0 1171 1042' fill='none' xmlns='http://www.w3.org/2000/svg'>
+		<svg
+			className={props.className}
+			width='1171'
+			height='1042'
+			viewBox='0 0 1171 1042'
+			fill='none'
+			xmlns='http://www.w3.org/2000/svg'>
 			<g clipPath='url(#clip0_1708_55271)'>
 				<rect x='235' y='170' width='705' height='677' fill='white' />
 				<path
