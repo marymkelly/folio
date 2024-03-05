@@ -24,6 +24,7 @@ export default function ParrotProjectPage() {
 				path='/images/projects/parrot/intro.png'
 				classes='bg-project-parrot-green-logo h-[75vh] min-h-[600px] lg:h-[800px] w-full mb-10 pt-8 flex items-center justify-center'
 				imgClasses='object-contain-cover md:object-contain'
+				priority
 			/>
 			<div className='flex w-full justify-center'>
 				<div className='mb-4 mt-20 w-full max-w-[1100px] px-16 lg:px-0'>

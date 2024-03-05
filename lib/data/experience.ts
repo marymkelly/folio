@@ -42,8 +42,8 @@ const experience: ExperienceItem[] = [
 		},
 	},
 	{
-		role: "Mercury Development",
-		company: "Business Analyst",
+		role: "Business Analyst",
+		company: "Mercury Development",
 		dates: {
 			start: 2018,
 			end: 2022,

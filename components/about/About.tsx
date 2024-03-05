@@ -39,15 +39,7 @@ export default function AboutPage() {
 							<span className='font-medium tracking-wide'>
 								Greetings! I hope you are doing well today.{" "}
 							</span>{" "}
-							My name is Mary Kelly and this is my porfolio site. Also, just to
-							clarify any potential confusion around my two &quot;first names&quot;,
-							my{" "}
-							<span className='underline-offset-3 underline'>first name is Mary</span>{" "}
-							and my{" "}
-							<span className='underline-offset- mr-4 underline'>
-								last name is Kelly.
-							</span>{" "}
-							:)
+							My name is Mary and this is my porfolio site.
 						</p>
 
 						<p className='mt-8 font-stolzl font-light leading-loose lg:mt-12 lg:text-lg'>
@@ -62,9 +54,7 @@ export default function AboutPage() {
 						<p className='mt-8 font-stolzl font-light leading-loose lg:mt-12 lg:text-lg'>
 							Outside of my professional and educational pursuits, I enjoy shooting
 							target archery and practicing music - my main instrument being the
-							trombone, which I started playing at the age of 10. I am also highly
-							susceptible and can often be found in locations that serve good coffee
-							and/or tea in a nice environment.
+							trombone, which I started playing at the age of 10.
 						</p>
 					</div>
 				</div>

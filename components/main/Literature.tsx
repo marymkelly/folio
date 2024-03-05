@@ -1,7 +1,8 @@
+import { Fragment } from "react";
+import Link from "next/link";
 import DotGroup from "../Dots";
 import { articles } from "../../lib/data/projects";
 import { convertMonth } from "../../lib/utils/date";
-import Link from "next/link";
 
 export default function Literature() {
 	return (
@@ -25,19 +26,19 @@ export default function Literature() {
 
 				<div>
 					{articles.map((article) => (
-						<Link key={article.title} href={article.href}>
-							<div
-								key={article.title}
-								className='flex items-baseline justify-between'>
-								<p className='xs:[20px] mb-9 font-itc text-lg font-medium tracking-wide text-custom-orange/90 underline decoration-custom-orange/40 decoration-[1.5px] underline-offset-8 last:mb-0 hover:text-custom-orange/100 hover:decoration-custom-orange/100 sm:text-[22px] md:text-2xl lg:mb-12'>
-									{article.title}
-								</p>
-								<p className='ml-4 text-right font-stolzl font-light text-custom-gray-blue/80 sm:text-lg'>
-									{convertMonth(article.date!.month, "abbreviation")}{" "}
-									{article.date!.year}
-								</p>
-							</div>
-						</Link>
+						<div
+							key={article.title}
+							className='mb-9 flex items-baseline justify-between lg:mb-12'>
+							<Link
+								href={article.href}
+								className='xs:[20px] font-itc text-lg font-medium tracking-wide text-custom-orange/90 underline decoration-custom-orange/40 decoration-[1.5px] underline-offset-8 last:mb-0 hover:text-custom-orange/100 hover:decoration-custom-orange/100 sm:text-[22px] md:text-2xl'>
+								{article.title}
+							</Link>
+							<p className='ml-4 text-right font-stolzl font-light text-custom-gray-blue/80 sm:text-lg'>
+								{convertMonth(article.date!.month, "abbreviation")}{" "}
+								{article.date!.year}
+							</p>
+						</div>
 					))}
 				</div>
 

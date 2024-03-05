@@ -28,13 +28,13 @@ export default function IntroTextBlurb<T extends Props>(props: T) {
 						{" "}
 						human-computer experience
 					</span>
-					. For several years, I have contributed to the strategy, design, and development
+					. For several years, I have contributed professionally to the strategy, design, and development
 					of different digital products through my roles as a{" "}
 					<span className='tracking-wide text-[#A6E4F8]'>
 						software developer
 					</span> and{" "}
 					<span className='tracking-wide text-[#A6E4F8]'>
-						business analyst (i.e. product designer)
+						business analyst
 					</span>
 					.
 				</p>

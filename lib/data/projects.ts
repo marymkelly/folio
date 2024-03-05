@@ -57,7 +57,9 @@ export interface ProjectProps {
 }
 
 export function getPreviewDateString<T extends DateRangeMY>(dates: T): string {
-	if (dates?.end && dates.end?.year && dates.end.year === dates.start.year) {
+	if (dates.end?.year && dates.end.year > dates.start.year) {
+		return `${dates.start.month} ${dates.start.year} - ${dates.end.month} ${dates.end.year}`;
+	} else if (dates?.end && dates.end?.year && dates.end.year === dates.start.year) {
 		return dates.start.month === dates.end.month
 			? `${dates.end.month} ${dates.end.year}`
 			: `${dates.start.month} - ${dates.end.month} ${dates.end.year}`;
@@ -73,12 +75,12 @@ export const projects: ProjectProps[] = [
 		id: "sinpin",
 		name: "Sin Pin",
 		role: ["Lead Software Developer", "Interface Designer"],
-		type: "Case Study",
+		type: "Product Development",
 		platforms: "Web",
 		industry: "Telecommunications",
 		dates: {
-			start: { month: "April", year: 2022 },
-			end: { month: "Current" },
+			start: { month: "April", year: 2022 },	
+			end: { month: "March", year: 2023 },
 		},
 		href: "/projects/sinpin",
 		preview: {

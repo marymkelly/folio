@@ -1,6 +1,8 @@
 import React from "react";
+import Link from "next/link";
 import ExperienceItemGroup from "./ExperienceEntry";
 import { experience, education, clients } from "../../lib/data/experience";
+import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 
 export default function FormalExperience() {
 	return (
@@ -13,7 +15,7 @@ export default function FormalExperience() {
 					Experience
 				</h1>
 			</div>
-			<div className='mt-36 flex w-[78%] self-center pb-24'>
+			<div className='mt-36 flex w-[78%] flex-col self-center pb-24'>
 				<div className='flex w-full flex-col justify-between lg:flex-row'>
 					<div className=' mr-32 flex w-full max-w-[480px] flex-col 2xl:max-w-[520px]'>
 						<h3 className='mb-12 font-itc text-4xl font-bold tracking-wide md:mb-[60px] md:text-4xl'>
@@ -49,7 +51,7 @@ export default function FormalExperience() {
 								/>
 							))}
 						</div>
-						<div className='mt-4 mb-3 flex flex-col'>
+						<div className='mt-4 mb-3 flex flex-col md:mt-6'>
 							<h5 className='mb-2 whitespace-nowrap font-stolzl text-4xl font-semibold tracking-[0.02em] md:mb-4 md:text-3xl 2xl:mb-8'>
 								Client Projects
 								<span className='ml-4 hidden text-sm font-light tracking-normal 2xl:inline-flex'>
@@ -78,6 +80,16 @@ export default function FormalExperience() {
 							</div>
 						</div>
 					</div>
+				</div>
+				<div className='mt-16 flex w-auto min-w-[80px] items-center justify-center sm:justify-start md:mt-12 lg:mt-6'>
+					<Link
+						href='/resume'
+						target='_blank'
+						rel='noreferrer'
+						className='group flex cursor-pointer items-center text-lg font-semibold tracking-[0.018em] text-custom-gray-blue underline decoration-custom-gray-blue/50 underline-offset-4 hover:text-logo-teal sm:no-underline'>
+						Resume
+						<ArrowLongRightIcon className='mt-1 ml-1.5 hidden h-5 w-0 stroke-[1.5] transition-all duration-150 group-hover:w-5 sm:flex' />
+					</Link>
 				</div>
 			</div>
 		</div>
