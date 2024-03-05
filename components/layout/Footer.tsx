@@ -11,7 +11,7 @@ export default function Footer<T extends FooterProps>(props: T) {
 			} ${props.color}`}>
 			<p className='mb-2 font-itc text-[11px] font-light tracking-wide'>
 				Design & Code by Mary Kelly ©{" "}
-				<span className='font-stolzl font-[300] tracking-wide'>2023</span>
+				<span className='font-stolzl font-[300] tracking-wide'>2024</span>
 			</p>
 			<div className='h-6 w-full bg-custom-navy' />
 		</footer>
