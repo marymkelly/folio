@@ -1,8 +1,8 @@
 import Image from "next/image";
-import ExperienceJourney from "./timeline/WalkJourney";
+import { useContext, useEffect } from "react";
+// import ExperienceJourney from "./timeline/WalkJourney";
 import SkillsAndTools from "./SkillsTools";
 import FormalExperience from "./FormalExperience";
-import { useContext, useEffect } from "react";
 import ThemeContext from "../../context/ThemeCtx";
 import Contact from "../main/Contact";
 
@@ -10,7 +10,6 @@ export default function AboutPage() {
 	const themeCtx = useContext(ThemeContext);
 
 	useEffect(() => {
-		// if (!themeCtx.footerFixed) 
 		themeCtx.setIsFooterFixed(true);
 
 		return () => {
@@ -60,9 +59,9 @@ export default function AboutPage() {
 					</div>
 				</div>
 			</div>
-			<div id='saga' className='relative hidden h-full w-full flex-col lg:inline-flex'>
+			{/* <div id='saga' className='relative hidden h-full w-full flex-col lg:inline-flex'>
 				<ExperienceJourney />
-			</div>
+			</div> */}
 			<FormalExperience />
 			<SkillsAndTools />
 			<Contact />

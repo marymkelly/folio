@@ -26,6 +26,7 @@ export function useIsRefInBounds(): [RefObject<HTMLDivElement | null>, boolean] 
 		}
 
 		document.addEventListener("scroll", handleScroll);
+		handleScroll();
 
 		return () => {
 			document.removeEventListener("scroll", handleScroll);
@@ -37,31 +38,13 @@ export function useIsRefInBounds(): [RefObject<HTMLDivElement | null>, boolean] 
 
 type Dimensions = { width: number; height: number };
 
-// function getWindowDimensions(): Dimensions {
-// 	const { innerWidth: width, innerHeight: height } = window;
-
-// 	return {
-// 		width,
-// 		height,
-// 	};
-// }
-
-// function getWindowDimensions(): Dimensions {
-// 	// const { innerWidth: width, innerHeight: height } = window;
-
-// 	return {
-// 		width: window.innerWidth,
-// 		height: window.innerHeight,
-// 	};
-// }
-
 function getWindowDimensions(): Dimensions {
 	const { innerWidth: width, innerHeight: height } = window;
 	return { width, height };
 }
 
 export function useScreenDimensions(): Dimensions {
-	const [windowDimensions, setWindowDimensions] = useState<Dimensions>(getWindowDimensions());
+	const [windowDimensions, setWindowDimensions] = useState<Dimensions>({ width: 0, height: 0 });
 
 	useEffect(() => {
 		function handleResize() {

@@ -194,7 +194,7 @@ export const timelineData: TimelineEvent[] = [
 		year: 2023,
 		title: "New Year, New Role",
 		summary:
-			"Started an exciting new opportunity with the team at Principle Studios as a Software Developer right after the new year.",
+			"Started an exciting new opportunity with the team at Principle Studios as a Software Developer at the start of the 2023 year.",
 		image: {
 			src: "/images/timeline/principle.jpg",
 			alt: "Principle Studio Logo",

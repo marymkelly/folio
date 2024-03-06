@@ -1,9 +1,8 @@
-import { LegacyRef, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SvgDots from "../Dots";
 import { CanvasController } from "../../lib/classes/canvas";
 import { sittingAnimation as animations } from "../../lib/constants";
 import { update } from "../../lib/utils/animation";
-import { useIsRefInBounds } from "../../lib/hooks/hooks";
 
 function getRandomInt(min: number, max: number): number {
 	min = Math.ceil(min);
@@ -20,25 +19,10 @@ export default function MainHeader() {
 		["Digital", "Solutionist"],
 		["Problem", "Solver"],
 	];
-
-	// const [adjIndex, setAdjIndex] = useState(3);
 	const [adjIndex, setAdjIndex] = useState(0);
-	const [hitTimer, setHitTimer] = useState<boolean>();
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const canvasControllerRef = useRef<CanvasController>();
-	const adjIndexRef = useRef<number>(0);
 	const hitTimerRef = useRef<boolean>();
-	const [headerRef, inBounds] = useIsRefInBounds();
-
-	// let canvasDimensions = { width: 400, height: 400 };
-
-	// useEffect(() => {
-	// 	if (window) {
-	// 		if (!hitTimer) {
-	// 			setHitTimer(true);
-	// 		}
-	// 	}
-	// }, []);
 
 	// INIT
 	useEffect(() => {
@@ -71,86 +55,36 @@ export default function MainHeader() {
 			canvasControllerRef.current = canvas;
 			animate();
 		}
+
+		return () => {
+			if (canvasControllerRef.current) {
+				canvasControllerRef.current?.remove();
+				canvasControllerRef.current = undefined;
+			}
+		};
 	}, []);
 
-	// useEffect(() => {
-	// 	if(typeof(hitTimer) === "undefined") setHitTimer(true)
-
-	// 	if (hitTimer) {
-	// 		let newIndex = getRandomInt(0, adjArray.length);
-
-	// 		if (newIndex === adjIndex) {
-	// 			adjIndex === 0 ? newIndex++ : newIndex--;
-	// 		}
-
-	// 		setHitTimer(false);
-	// 		setTimeout(() => {
-	// 			setHitTimer(true);
-	// 			setAdjIndex(newIndex);
-	// 		}, 3000);
-	// 	}
-	// }, [hitTimer]);
-
 	useEffect(() => {
-		// let timerId: NodeJS.Timeout | undefined;
-		if (typeof hitTimer === "undefined") setHitTimer(true);
+		let timerId: NodeJS.Timeout | undefined;
+		if (typeof hitTimerRef.current === "undefined") hitTimerRef.current = true;
 
-		if (hitTimer) {
-			let newIndex = getRandomInt(!adjIndexRef.current ? 1 : 0, adjArray.length);
+		if (hitTimerRef.current) {
+			let newIndex = getRandomInt(!adjIndex ? 1 : 0, adjArray.length);
 
-			if (newIndex === adjIndexRef.current) newIndex--;
+			if (newIndex === adjIndex) newIndex--;
 
-			// if (newIndex === adjIndex) {
-			// 	adjIndex === 0 ? newIndex++ : newIndex--;
-			// }
+			hitTimerRef.current = false;
 
-			setHitTimer(false);
-
-			setTimeout(() => {
-				setHitTimer(true);
-				// setAdjIndex(newIndex);
-				adjIndexRef.current = newIndex;
-				// timerId = undefined;
+			timerId = setTimeout(() => {
+				hitTimerRef.current = true;
+				setAdjIndex(newIndex);
+				timerId = undefined;
 			}, 3000);
 		}
-		// return () => {
-		// 	if (timerId) clearTimeout(timerId);
-		// };
-	}, [hitTimer, adjArray.length]);
+	}, [adjIndex, adjArray.length]);
 
-	// useEffect(() => {
-	// 	let timerId: NodeJS.Timeout | undefined;
-	// 	if (typeof hitTimerRef.current === "undefined") hitTimerRef.current = true;
-
-	// 	if (hitTimerRef.current) {
-	// 		let newIndex = getRandomInt(!adjIndex ? 1 : 0, adjArray.length);
-
-	// 		if (newIndex === adjIndex) newIndex--;
-
-	// 		// if (newIndex === adjIndex) {
-	// 		// 	adjIndex === 0 ? newIndex++ : newIndex--;
-	// 		// }
-
-	// 		// setHitTimer(false);
-	// 		hitTimerRef.current = false;
-
-	// 		timerId = setTimeout(() => {
-	// 			// setHitTimer(true);
-	// 			hitTimerRef.current = true;
-	// 			setAdjIndex(newIndex);
-	// 			// adjIndexRef.current = newIndex;
-	// 			timerId = undefined;
-	// 		}, 3000);
-	// 	}
-	// 	// return () => {
-	// 	// 	if (timerId) clearTimeout(timerId);
-	// 	// };
-	// }, [adjIndex, adjArray.length]);
-
-	// if(!canvasRef.current) return (<div>Loading...</div>)
 	return (
 		<header
-			ref={headerRef as LegacyRef<HTMLElement>}
 			id='landing'
 			className='align-center relative flex h-full min-h-[90vh] w-full items-center justify-center 2xl:pl-[2%] 3xl:justify-start 3xl:pl-[18%]'>
 			<section className='z-40 -mt-40 flex flex-col lg:-mr-[3%] lg:mt-0 lg:flex-row 2xl:-mr-[4%] 3xl:-mr-0'>
@@ -166,12 +100,10 @@ export default function MainHeader() {
 				<div className='mt-1.5 mb-16 hidden border-custom-navy lg:mx-16 lg:block lg:border-[3px] 2xl:mx-20 2xl:mt-3 2xl:mb-[60px] 2xl:border-[4px]' />
 				<div className='mt-3.5 ml-1.5 flex justify-center border border-custom-orange py-1 lg:mt-0 lg:ml-0 lg:hidden lg:flex-col lg:justify-start lg:border-none lg:py-0'>
 					<p className='mr-3 animate-tailfade font-itc text-[28px] font-light tracking-wider text-custom-orange lg:-mt-1 lg:mr-0 lg:animate-none lg:text-[65px] lg:font-medium lg:leading-none lg:tracking-normal 2xl:text-[100px]'>
-						{/* {adjArray[adjIndex][0]} */}
-						{adjArray[adjIndexRef.current][0]}
+						{adjArray[adjIndex][0]}
 					</p>
 					<p className='animate-tailfade font-itc text-[28px] font-light leading-normal tracking-wider text-custom-orange lg:animate-none lg:text-[85px] lg:font-medium lg:tracking-normal 2xl:text-[130px] 2xl:leading-snug'>
-						{/* {adjArray[adjIndex][1]} */}
-						{adjArray[adjIndexRef.current][1]}
+						{adjArray[adjIndex][1]}
 					</p>
 				</div>
 				<div className='mt-3.5 ml-1.5 hidden justify-center border border-custom-orange py-1 lg:-mt-2 lg:ml-0 lg:flex lg:flex-col lg:justify-start lg:border-none lg:py-0'>
