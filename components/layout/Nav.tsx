@@ -161,7 +161,7 @@ function MobileNav<T extends MobileNavProps>({ clicked, setClick, router }: T) {
 
 				<div className='mt-12 flex items-center'>
 					<Link
-						href='/resume'
+						href='https://storage.googleapis.com/portsite-b008f.appspot.com/public/Mary_Kelly-Resume_2024.pdf'
 						target='_blank'
 						rel='noreferrer'
 						className='font-stolzl text-base text-custom-gray-blue'>
@@ -322,7 +322,7 @@ export default function Nav<T extends NavProps>(props: T) {
 					);
 				})}
 				<Link
-					href='/resume'
+					href='https://storage.googleapis.com/portsite-b008f.appspot.com/public/Mary_Kelly-Resume_2024.pdf'
 					target='_blank'
 					rel='noreferrer'
 					className={`hover mt-6 ml-4 flex min-w-[80px] cursor-pointer items-center justify-end bg-cyan-100/0 p-2 text-[14px] hover:text-logo-teal ${
