@@ -109,7 +109,8 @@ const tabs = [
 	{
 		href: "/about",
 		name: "About",
-		sections: ["/journey", "/formal-experience", "/skills", "/contact"],
+		sections: ["/formal-experience", "/skills", "/contact"],
+		// sections: ["/journey", "/formal-experience", "/skills", "/contact"],
 	},
 ];
 interface MobileNavProps {
@@ -159,11 +160,7 @@ function MobileNav<T extends MobileNavProps>({ clicked, setClick, router }: T) {
 				</div>
 
 				<div className='mt-12 flex items-center'>
-					<Link
-						href='/resume'
-						target='_blank'
-						rel='noreferrer'
-						className='font-stolzl text-base text-custom-gray-blue'>
+					<Link href='/resume' className='font-stolzl text-base text-custom-gray-blue'>
 						Resume
 					</Link>
 				</div>
@@ -193,7 +190,7 @@ export default function Nav<T extends NavProps>(props: T) {
 			router.events.off("routeChangeComplete", handleRouteChange);
 		};
 	}, [router.events]);
-	
+
 	useEffect(() => {
 		function handleResize() {
 			if (window.visualViewport!.width > 640) {
@@ -322,8 +319,6 @@ export default function Nav<T extends NavProps>(props: T) {
 				})}
 				<Link
 					href='/resume'
-					target='_blank'
-					rel='noreferrer'
 					className={`hover mt-6 ml-4 flex min-w-[80px] cursor-pointer items-center justify-end bg-cyan-100/0 p-2 text-[14px] hover:text-logo-teal ${
 						router.asPath?.startsWith("/resume")
 							? "font-medium text-custom-teal"
@@ -333,14 +328,12 @@ export default function Nav<T extends NavProps>(props: T) {
 				</Link>
 				<Link
 					target='_blank'
-					rel='noreferrer'
 					className='mt-2.5 flex w-full justify-end pr-2'
 					href='https://github.com/marymkelly'>
 					<GithubIcon className='h-[26px] w-[26px] text-custom-gray-blue/40 hover:text-logo-blue/75' />
 				</Link>
 				<Link
 					target='_blank'
-					rel='noreferrer'
 					className='mt-4 flex w-full justify-end pr-2'
 					href='https://www.linkedin.com/in/mary-kelly-5040b6ab/'>
 					<LinkedinIcon className='h-[26px] w-[26px] text-custom-gray-blue/40 hover:text-logo-blue/75' />

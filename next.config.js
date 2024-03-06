@@ -8,10 +8,19 @@ const nextConfig = {
 			{
 				source: "/resume",
 				destination:
-					"https://storage.googleapis.com/portsite-b008f.appspot.com/public/Mary_Kelly-Resume_2024.pdf",
+					'https://storage.googleapis.com/portsite-b008f.appspot.com/public/Mary_Kelly-Resume_2024.pdf',
 			},
 		];
 	},
+	async redirects() {
+		return [
+		  {
+			source: '/resume',
+			destination: 'https://storage.googleapis.com/portsite-b008f.appspot.com/public/Mary_Kelly-Resume_2024.pdf',
+			permanent: true,
+		  },
+		]
+	  },
 };
 
 const withMDX = require("@next/mdx")({
