@@ -23,16 +23,17 @@ export default function GalactorPage<T extends ProjectPageProps>(props: T): JSX.
 	const overviewCategories = ["dates", "platforms", "role", "technologies"];
 
 	useEffect(() => {
-		themeCtx.setBackgroundColor("#092636");
-		themeCtx.setBackgroundIsDark(true);
-		themeCtx.setIsFooterFixed(true);
-
+		// if (!themeCtx.footerFixed) {
+			themeCtx.setBackgroundColor("#092636");
+			themeCtx.setBackgroundIsDark(true);
+			themeCtx.setIsFooterFixed(true);
+		// }
 		return () => {
 			themeCtx.setIsFooterFixed(false);
 			themeCtx.setBackgroundColor("#ffffff");
 			themeCtx.setBackgroundIsDark(false);
 		};
-	}, []);
+	}, [themeCtx]);
 
 	return (
 		<div className='flex w-full flex-col items-center bg-[#092636] text-white'>

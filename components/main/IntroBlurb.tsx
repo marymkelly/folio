@@ -7,19 +7,20 @@ interface Props {
 }
 
 export default function IntroTextBlurb<T extends Props>(props: T) {
-	const themeCtx = useContext(ThemeContext);
-	const introRef = useRef<HTMLDivElement>(null);
+	// const themeCtx = useContext(ThemeContext);
+	// const introRef = useRef<HTMLDivElement>(null);
 
-	useEffect(() => {
-		themeCtx.setDarkElements([introRef.current]);
-	}, []);
+	// useEffect(() => {
+	// 	themeCtx.setDarkElements([introRef.current]);
+	// }, []);
 
 	return (
 		<div
 			className='flex w-full flex-col items-end'
 			id='intro-blurb'
 			{...props}
-			ref={introRef as LegacyRef<HTMLDivElement>}>
+			// ref={introRef as LegacyRef<HTMLDivElement>}
+			>
 			<div className='z-[50] flex h-auto w-full min-w-[360px] justify-center self-end bg-custom-navy px-10 pt-12 pb-12 text-white md:px-[70px] md:pt-20 md:pb-24 xl:w-[90%]'>
 				<p className='font-itc text-lg font-light leading-[2.5] tracking-[.02em] sm:text-[24px] md:w-11/12 md:text-[28px] lg:text-[32px]'>
 					I am a problem solver invested in{" "}

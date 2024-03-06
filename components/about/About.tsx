@@ -10,12 +10,13 @@ export default function AboutPage() {
 	const themeCtx = useContext(ThemeContext);
 
 	useEffect(() => {
+		// if (!themeCtx.footerFixed) 
 		themeCtx.setIsFooterFixed(true);
 
 		return () => {
 			themeCtx.setIsFooterFixed(false);
 		};
-	}, []);
+	}, [themeCtx]);
 
 	return (
 		<div id='about' className='relative flex h-full w-full flex-1 flex-col flex-wrap pb-12'>

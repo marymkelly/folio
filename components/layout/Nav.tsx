@@ -192,7 +192,8 @@ export default function Nav<T extends NavProps>(props: T) {
 		return () => {
 			router.events.off("routeChangeComplete", handleRouteChange);
 		};
-	}, []);
+	}, [router.events]);
+	
 	useEffect(() => {
 		function handleResize() {
 			if (window.visualViewport!.width > 640) {
@@ -237,7 +238,7 @@ export default function Nav<T extends NavProps>(props: T) {
 			window.removeEventListener("scroll", handleScroll);
 			window.removeEventListener("resize", handleResize);
 		};
-	}, [themeCtx.darkElements]);
+	}, [themeCtx, router.asPath]);
 
 	return (
 		<nav

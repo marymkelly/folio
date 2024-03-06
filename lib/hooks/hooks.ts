@@ -30,7 +30,48 @@ export function useIsRefInBounds(): [RefObject<HTMLDivElement | null>, boolean] 
 		return () => {
 			document.removeEventListener("scroll", handleScroll);
 		};
-	}, [ref.current, inBounds]);
+	}, [ref, inBounds]);
 
 	return [ref, inBounds];
+}
+
+type Dimensions = { width: number; height: number };
+
+// function getWindowDimensions(): Dimensions {
+// 	const { innerWidth: width, innerHeight: height } = window;
+
+// 	return {
+// 		width,
+// 		height,
+// 	};
+// }
+
+// function getWindowDimensions(): Dimensions {
+// 	// const { innerWidth: width, innerHeight: height } = window;
+
+// 	return {
+// 		width: window.innerWidth,
+// 		height: window.innerHeight,
+// 	};
+// }
+
+function getWindowDimensions(): Dimensions {
+	const { innerWidth: width, innerHeight: height } = window;
+	return { width, height };
+}
+
+export function useScreenDimensions(): Dimensions {
+	const [windowDimensions, setWindowDimensions] = useState<Dimensions>(getWindowDimensions());
+
+	useEffect(() => {
+		function handleResize() {
+			setWindowDimensions(getWindowDimensions());
+		}
+
+		window.addEventListener("resize", handleResize);
+
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
+
+	return windowDimensions;
 }

@@ -8,10 +8,10 @@ export default function SkillsAndTools() {
 	const [query, setQuery] = useState<string>("");
 	const filteredTools = filter(query, technologies.items);
 	const skillsRef = useRef<HTMLDivElement>();
-	const themeCtx = useContext(ThemeContext);
+	// const themeCtx = useContext(ThemeContext);
 
 	useEffect(() => {
-		themeCtx.setDarkElements([skillsRef.current]);
+		// themeCtx.setDarkElements([skillsRef.current]);
 
 		function handleResize() {
 			if (window.visualViewport!.width < 768) {
